@@ -1,0 +1,4 @@
+User-agent: *
+
+Disallow: /product_search_ajax.jsp
+Disallow: /ajax_shop_cart.jsp

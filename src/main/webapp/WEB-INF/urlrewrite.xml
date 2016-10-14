@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- http://www.regular-expressions.info/unicode.html -->
+
+<!DOCTYPE urlrewrite
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+    "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite decode-using="utf-8">
+
+        <rule>
+                <from>^/site/category$</from>
+                <to>/product_catalog.jsp</to>
+        </rule>
+        <rule>
+                <from>^/site/category/[/a-z0-9-\p{InGreek}\p{InCyrillic}\p{S}\p{L}\p{M}\p{No}]*</from>
+                <to>/product_catalog.jsp</to>
+        </rule>
+        
+        <rule>
+                <from>^/site/search$</from>
+                <to>/product_search.jsp?action1=SEARCH</to>
+        </rule>
+        <rule>
+                <from>^/site/search/[/a-z0-9-\p{InGreek}\p{InCyrillic}\p{S}\p{L}\p{M}\p{No}]*</from>
+                <to>/product_search.jsp?action1=SEARCH</to>
+        </rule>
+        
+        <rule>
+                <from>^/site/product/[/a-z0-9-\p{InGreek}\p{InCyrillic}\p{S}\p{L}\p{M}\p{No}]*</from>
+                <to>/product_detail.jsp</to>
+        </rule>
+        
+        <rule>
+                <from>^/site/page$</from>
+                <to>/swift.jsp</to>
+        </rule>
+        <rule>
+                <from>^/site/page/[/a-z0-9-\p{InGreek}\p{InCyrillic}\p{S}\p{L}\p{M}\p{No}]*</from>
+                <to>/swift.jsp</to>
+        </rule>
+
+</urlrewrite>
