@@ -20,8 +20,8 @@ static {
 <%
 DbRet dbRet = null;
 
-//String createOrderURL = "https://www.vivapayments.com/api/orders", redirectURL = "https://www.vivapayments.com/web/checkout";
-String createOrderURL = "http://demo.vivapayments.com/api/orders", redirectURL = "http://demo.vivapayments.com/web/checkout";
+String createOrderURL = "https://www.vivapayments.com/api/orders", redirectURL = "https://www.vivapayments.com/web/checkout";
+//String createOrderURL = "http://demo.vivapayments.com/api/orders", redirectURL = "http://demo.vivapayments.com/web/checkout";
 
 String orderID = (String)request.getAttribute(databaseId + ".checkout.orderID");
 
