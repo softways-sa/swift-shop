@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<init-param>
+        <param-name>statusEnabled</param-name>
+        <param-value>false</param-value>
+    </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/site/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+  <servlet>
+    <servlet-name>PoolManager</servlet-name>
+    <servlet-class>gr.softways.dev.poolmanager.AppPoolServlet</servlet-class>
+    <init-param>
+      <param-name>propsName</param-name>
+      <param-value>/usr/local/www/vhosts/swift-shop-v3/WEB-INF/swconf/poolmanager.cfg</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/CustPrcZones</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.custprczone.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/ExchangeRate</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.currency.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/CountryZones</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.countryzones.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Country</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.country.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/AreaZones</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.areazones.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Area</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.area.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Manufacturer</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.manufacturer.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Supplier</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.supplier.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/News</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.news.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Product</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.ProductServlet2_3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/RelateProductCategory</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.RelateCat</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/ProductAttr1</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.attr1.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/ProductAttr2</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.attr2.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/ProductAttributes</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.servlets.doAttributes</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/StockMgr</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.stockmgr.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Order</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.orders.v2.servlets.OrdersServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/Customer</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.customer.v2.servlets.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>admin/PrdCategory</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.category.v2.servlets.PrdCategory2_2</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>admin/UploadFiles</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.uploadfiles.servlets.doUpload</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>NLSubscribe</servlet-name>
+    <servlet-class>gr.softways.dev.swift.emaillist.servlets.Subscribe</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>RegisterMember</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Register</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>RMActionDispatcher</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ForgotPassword</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProcessLogin</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Unsubscribe</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Subscribe</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.Dispatch</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ContactUs</servlet-name>
+    <servlet-class>gr.softways.dev.swift.contactus.servlets.ContactUs</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/SecurityObjects</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.securityobjects.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/Login</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.login.servlets.Login</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/FTActionGen</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.filetemplate.servlets.doActionGen</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>admin/FTFAction</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.filetemplateformat.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/FTUpload</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.filetemplate.servlets.doUpload</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/CMCategory</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmcategory.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/CMRow</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmrow.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/RelateCMRowCMCategory</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmrow.servlets.RelateCMCategory</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/RelateCMRow</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmrow.servlets.RelateCMRow</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/FTImportExport</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.filetemplate.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/AdminUsers</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.adminusers.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/UserGroups</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.usergroups.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/RegisteredMember</servlet-name>
+    <servlet-class>gr.softways.dev.swift.registeredmember.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/PendingMember</servlet-name>
+    <servlet-class>gr.softways.dev.swift.pendingmember.servlets.doAction</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>admin/Attribute</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.attribute.servlets.doAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/RelateAttribute</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.attribute.servlets.RelateAttribute</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/AttributeValue</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.attribute.servlets.AttributeValue</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/ProductMasterAttribute</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.ProductMasterAttribute</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>admin/ProductAttributeValue</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.ProductAttributeValue</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>admin/Logout</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.login.servlets.Logout</servlet-class>
+  </servlet>
+
+  
+  
+  <servlet>
+    <servlet-name>CustomerDirWrapper</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v4.CustomerDirWrapper</servlet-class>
+    
+    <init-param>
+        <param-name>databaseId</param-name>
+        <param-value>swift-shop-v3</param-value>
+    </init-param>
+    <init-param>
+        <param-name>loginPage</param-name>
+        <param-value>index.jsp</param-value>
+    </init-param>
+    <init-param>
+        <param-name>allow</param-name>
+        <param-value>0</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>admin/CustPrcZones</servlet-name>
+    <url-pattern>/servlet/admin/CustPrcZones</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/ExchangeRate</servlet-name>
+    <url-pattern>/servlet/admin/ExchangeRate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/CountryZones</servlet-name>
+    <url-pattern>/servlet/admin/CountryZones</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Country</servlet-name>
+    <url-pattern>/servlet/admin/Country</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/AreaZones</servlet-name>
+    <url-pattern>/servlet/admin/AreaZones</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Area</servlet-name>
+    <url-pattern>/servlet/admin/Area</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/PrdCategory</servlet-name>
+    <url-pattern>/servlet/admin/PrdCategory</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Manufacturer</servlet-name>
+    <url-pattern>/servlet/admin/Manufacturer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Supplier</servlet-name>
+    <url-pattern>/servlet/admin/Supplier</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/News</servlet-name>
+    <url-pattern>/servlet/admin/News</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Product</servlet-name>
+    <url-pattern>/servlet/admin/Product</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/RelateProductCategory</servlet-name>
+    <url-pattern>/servlet/admin/RelateProductCategory</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/ProductAttr1</servlet-name>
+    <url-pattern>/servlet/admin/ProductAttr1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/ProductAttr2</servlet-name>
+    <url-pattern>/servlet/admin/ProductAttr2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/ProductAttributes</servlet-name>
+    <url-pattern>/servlet/admin/ProductAttributes</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/StockMgr</servlet-name>
+    <url-pattern>/servlet/admin/StockMgr</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Order</servlet-name>
+    <url-pattern>/servlet/admin/Order</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>admin/Customer</servlet-name>
+    <url-pattern>/servlet/admin/Customer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ContactUs</servlet-name>
+    <url-pattern>/servlet/ContactUs</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>admin/UploadFiles</servlet-name>
+    <url-pattern>/servlet/admin/UploadFiles</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>NLSubscribe</servlet-name>
+    <url-pattern>/servlet/NLSubscribe</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RegisterMember</servlet-name>
+    <url-pattern>/servlet/RegisterMember</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>RMActionDispatcher</servlet-name>
+    <url-pattern>/servlet/RMActionDispatcher</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/ForgotPassword.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProcessLogin</servlet-name>
+    <url-pattern>/ProcessLogin.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Unsubscribe</servlet-name>
+    <url-pattern>/Unsubscribe.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Subscribe</servlet-name>
+    <url-pattern>/Subscribe.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/SecurityObjects</servlet-name>
+    <url-pattern>/servlet/admin/SecurityObjects</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/Login</servlet-name>
+    <url-pattern>/servlet/admin/Login</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/FTActionGen</servlet-name>
+    <url-pattern>/servlet/admin/FTActionGen</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/FTFAction</servlet-name>
+    <url-pattern>/servlet/admin/FTFAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/FTUpload</servlet-name>
+    <url-pattern>/servlet/admin/FTUpload</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/CMCategory</servlet-name>
+    <url-pattern>/servlet/admin/CMCategory</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/CMRow</servlet-name>
+    <url-pattern>/servlet/admin/CMRow</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/RelateCMRowCMCategory</servlet-name>
+    <url-pattern>/servlet/admin/RelateCMRowCMCategory</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/RelateCMRow</servlet-name>
+    <url-pattern>/servlet/admin/RelateCMRow</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/FTImportExport</servlet-name>
+    <url-pattern>/servlet/admin/FTImportExport</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/AdminUsers</servlet-name>
+    <url-pattern>/servlet/admin/AdminUsers</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/UserGroups</servlet-name>
+    <url-pattern>/servlet/admin/UserGroups</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/RegisteredMember</servlet-name>
+    <url-pattern>/servlet/admin/RegisteredMember</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/PendingMember</servlet-name>
+    <url-pattern>/servlet/admin/PendingMember</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>PoolManager</servlet-name>
+    <url-pattern>/servlet/PoolManager</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>admin/Attribute</servlet-name>
+    <url-pattern>/servlet/admin/Attribute</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/RelateAttribute</servlet-name>
+    <url-pattern>/servlet/admin/RelateAttribute</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/AttributeValue</servlet-name>
+    <url-pattern>/servlet/admin/AttributeValue</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/ProductMasterAttribute</servlet-name>
+    <url-pattern>/servlet/admin/ProductMasterAttribute</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>admin/ProductAttributeValue</servlet-name>
+    <url-pattern>/servlet/admin/ProductAttributeValue</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>admin/Logout</servlet-name>
+    <url-pattern>/servlet/admin/Logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>CustomerDirWrapper</servlet-name>
+    <url-pattern>/dn/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerActionServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.CustomerActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerActionServlet</servlet-name>
+    <url-pattern>/customer.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/ShipRange</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.shiprange.ShipRangeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ShipRange</servlet-name>
+    <url-pattern>/servlet/admin/ShipRange</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/ShipPricelist</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.shippricelist.ShipPricelistServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ShipPricelist</servlet-name>
+    <url-pattern>/servlet/admin/ShipPricelist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/ProductOptionsServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.ProductOptionsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ProductOptionsServlet</servlet-name>
+    <url-pattern>/servlet/admin/ProductOptions</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/Configuration</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.configuration.ConfigurationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/Configuration</servlet-name>
+    <url-pattern>/servlet/admin/Configuration</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PlaceOrderServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.PlaceOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlaceOrderServlet</servlet-name>
+    <url-pattern>/checkout_placeorder.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProxyPayValServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.ProxyPayValServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProxyPayValServlet</servlet-name>
+    <url-pattern>/proxypay_val.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ProxyPayConfirmServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.ProxyPayConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProxyPayConfirmServlet</servlet-name>
+    <url-pattern>/proxypay_confirm.do</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>DeltaPayConfirmServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.DeltaPayConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeltaPayConfirmServlet</servlet-name>
+    <url-pattern>/deltapay-confirm.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/ShipMethod</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.shipmethod.ShipMethodServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ShipMethod</servlet-name>
+    <url-pattern>/servlet/admin/ShipMethod</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/MailListSendEmail</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.sendemail.v2.SendNewsletterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/MailListSendEmail</servlet-name>
+    <url-pattern>/servlet/admin/MailListSendEmail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin/MailListMember</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.members.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/MailListMember</servlet-name>
+    <url-pattern>/servlet/admin/MailListMember</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin/MailList</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.lists.servlets.doAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/MailList</servlet-name>
+    <url-pattern>/servlet/admin/MailList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>NewsletterServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.newsletter.NewsletterServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewsletterServlet</servlet-name>
+    <url-pattern>/newsletter.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/SaveNewsletterServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.newsletter.SaveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/SaveNewsletterServlet</servlet-name>
+    <url-pattern>/admin/savenewsletter.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>admin/DeleteNewsletterServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.emaillists.newsletter.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/DeleteNewsletterServlet</servlet-name>
+    <url-pattern>/admin/deletenewsletter.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/OnSales</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.OnSalesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/OnSales</servlet-name>
+    <url-pattern>/servlet/admin/OnSales</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>admin/RelateProduct</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.RelateProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/RelateProduct</servlet-name>
+    <url-pattern>/servlet/admin/RelateProduct</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PayPalConfirmServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.PayPalConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayPalConfirmServlet</servlet-name>
+    <url-pattern>/paypal_confirm.do</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>admin/ProductImageScaleServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.ProductImageScaleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ProductImageScaleServlet</servlet-name>
+    <url-pattern>/servlet/admin/ProductImageScaleServlet</url-pattern>
+  </servlet-mapping>
+	<servlet>
+    <servlet-name>admin/ProductImageDeleteServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.ProductImageDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ProductImageDeleteServlet</servlet-name>
+    <url-pattern>/servlet/admin/ProductImageDeleteServlet</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>admin/GalleryImageScaleServlet</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmrow.GalleryImageScaleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/GalleryImageScaleServlet</servlet-name>
+    <url-pattern>/servlet/admin/GalleryImageScaleServlet</url-pattern>
+  </servlet-mapping>
+	<servlet>
+    <servlet-name>admin/GalleryImageDeleteServlet</servlet-name>
+    <servlet-class>gr.softways.dev.swift.cmrow.GalleryImageDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/GalleryImageDeleteServlet</servlet-name>
+    <url-pattern>/servlet/admin/GalleryImageDeleteServlet</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>admin/ProductBatchManager</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.batchimport.ProductManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/ProductBatchManager</servlet-name>
+    <url-pattern>/servlet/admin/ProductBatchManager</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>admin/orders/Export</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.orders.ExportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/orders/Export</servlet-name>
+    <url-pattern>/servlet/admin/orders/Export</url-pattern>
+  </servlet-mapping>
+  
+	<servlet>
+    <servlet-name>VIVAConfirmServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.VIVAConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VIVAConfirmServlet</servlet-name>
+    <url-pattern>/viva_confirm.do</url-pattern>
+  </servlet-mapping>
+	
+  <servlet>
+    <servlet-name>ProductsXML</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.product.v2.servlets.ExportXMLServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductsXML</servlet-name>
+    <url-pattern>/productsfeed.do</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>CardlinkConfirmServlet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.eways.v5.CardlinkConfirmServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CardlinkConfirmServlet</servlet-name>
+    <url-pattern>/cardlink_confirm.do</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>ContactUsForm</servlet-name>
+    <servlet-class>gr.softways.dev.swift.contactus.ProcessFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContactUsForm</servlet-name>
+    <url-pattern>/ContactUsForm.do</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>Kaptcha</servlet-name>
+    <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    <init-param>
+      <param-name>kaptcha.textproducer.font.size</param-name>
+      <param-value>60</param-value>
+    </init-param>
+    <init-param>
+      <param-name>kaptcha.image.width</param-name>
+      <param-value>240</param-value>
+    </init-param>
+    <init-param>
+      <param-name>kaptcha.image.height</param-name>
+      <param-value>80</param-value>
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Kaptcha</servlet-name>
+    <url-pattern>/servlet/captcha</url-pattern>
+  </servlet-mapping>
+	
+	<servlet>
+    <servlet-name>OrderChart</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.orders.v2.chart.ChartServlet</servlet-class>
+  </servlet>
+	<servlet-mapping>
+    <servlet-name>OrderChart</servlet-name>
+    <url-pattern>/servlet/admin/OrderChart</url-pattern>
+  </servlet-mapping>
+	
+	
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  
+  <env-entry>
+    <env-entry-name>swconf/databaseId</env-entry-name>
+    <env-entry-value>swift-shop-v3</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>poolmanager/propsName</env-entry-name>
+    <env-entry-value>/usr/local/www/vhosts/swift-shop-v3/WEB-INF/swconf/poolmanager.cfg</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>upload/properties</env-entry-name>
+    <env-entry-value>/usr/local/www/vhosts/swift-shop-v3/WEB-INF/swconf/uploadproperties.conf</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/vatIncluded</env-entry-name>
+    <env-entry-value>false</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/curr2Static</env-entry-name>
+    <env-entry-value>false</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/curr1Scale</env-entry-name>
+    <env-entry-value>4</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/curr2Scale</env-entry-name>
+    <env-entry-value>2</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <!-- Valid values are declared in eways.Order class -->
+  <env-entry>
+    <env-entry-name>swconf/inventoryType</env-entry-name>
+    <env-entry-value>2</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/charset</env-entry-name>
+    <env-entry-value>UTF-8</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>swconf/Director</env-entry-name>
+    <env-entry-value>gr.softways.dev.util.DirectorImpl</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+
+</web-app>
