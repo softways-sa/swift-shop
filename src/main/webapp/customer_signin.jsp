@@ -36,14 +36,17 @@ static {
     lb.put("forgotPassword","Ξεχάσατε τον κωδικό πρόσβασής σας;");
     lb.put("forgotPasswordLG","Forgot your password?");
     
-    lb.put("newCustText","<b>Εάν αυτή είναι η πρώτη σας αγορά από το ηλεκτρονικό μας κατάστημα</b> και δεν έχετε κωδικό πρόσβασης, παρακαλούμε πατήστε \"Εγγραφή\".");
-    lb.put("newCustTextLG","<b>If this is your first purchase from our shop,</b> please click \"Register\".");
+    lb.put("newCustText","<b>Εάν αυτή είναι η πρώτη σας αγορά από το ηλεκτρονικό μας κατάστημα</b> και δεν έχετε κωδικό πρόσβασης, παρακαλούμε πατήστε \"Εγγραφή\". <p>Στην περίπτωση που δεν επιθυμείτε να κάνετε εγγραφή πατήστε \"Αγορά ως Επισκέπτης\".</p>");
+    lb.put("newCustTextLG","<b>If this is your first purchase from our shop,</b> please click \"Register\". If you don't wish to register please click \"Guest Checkout\".");
     
     lb.put("returningCustText","<b>Εάν έχετε πραγματοποιήσει αγορά στο παρελθόν από το ηλεκτρονικό μας κατάστημα,</b> παρακαλούμε συμπληρώστε τα παρακάτω στοιχεία.");
     lb.put("returningCustTextLG","<b>If you have purchased from our shop,</b> please sign in below.");
     
     lb.put("invalid_login","Λάθος email ή κωδικός.");
     lb.put("invalid_loginLG","Incorrect e-mail or password.");
+    
+    lb.put("btnGuestCheckout","Αγορά ως Επισκέπτης");
+    lb.put("btnGuestCheckoutLG","Guest Checkout");
 }
 %>
 
@@ -78,13 +81,14 @@ if (request.getAttribute("signin") != null && request.getAttribute("signin").equ
 <div id="myaccountContainer" class="clearfix">
     
     <div id="newCustomerWrapper">
-    <div class="sectionHeader"><%= lb.get("newCustomers" + lang)%></div>
+      <div class="sectionHeader"><%= lb.get("newCustomers" + lang)%></div>
 
-    <p style="margin-bottom:15px;"><%= lb.get("newCustText" + lang)%></p>
+      <p><%= lb.get("newCustText" + lang)%></p>
 
-    <input type="button" onclick="location.href='<%= HTTP_PROTOCOL + serverName + "/" + "customer_create_account.jsp?target=" + target %>'" value="<%= lb.get("btSubmit" + lang) %>" class="button" />
+      <div class="fl mr"><input type="button" onclick="location.href='<%= HTTP_PROTOCOL + serverName + "/" + "customer_create_account.jsp?target=" + target %>'" value="<%=lb.get("btSubmit" + lang)%>" class="button" /></div>
+      <div class="fl"><input type="button" onclick="location.href='<%=HTTP_PROTOCOL + serverName + "/" + "customer.do?cmd=guest_checkout"%>'" value="<%=lb.get("btnGuestCheckout" + lang)%>" class="button" /></div>
     </div>
-        
+    
     <div id="existingCustomerWrapper">
     <div class="sectionHeader"><%= lb.get("rcustomers" + lang) %></div>
 

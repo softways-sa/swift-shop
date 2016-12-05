@@ -591,6 +591,11 @@ h5.entry-title {font-size: 150%;}
   border-top: 1px solid #ccc;
 }
 
+.fl {float: left;}
+.fr {float: right;}
+.ml {margin-left: 10px;}
+.mr {margin-right: 10px;}
+
 /* Media Queries */
 @media only screen and (max-width: 979px) {
   #headerWrapper {height: auto; margin-bottom: 10px;}

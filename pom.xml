@@ -1,17 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>gr.softways</groupId>
   <artifactId>swift-shop</artifactId>
+  
   <packaging>war</packaging>
-  <version>3.0.0</version>
+  <version>3.1.0</version>
   <name>swift-shop ecommerce platform</name>
+  
   <url>http://maven.apache.org</url>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
     
     <config.home>src/main/config/dev</config.home>
   </properties>
@@ -90,7 +93,7 @@
     <dependency>
       <groupId>gr.softways</groupId>
       <artifactId>swift-framework</artifactId>
-      <version>1.0</version>
+      <version>3.1.0</version>
     </dependency>
     
     <dependency>
@@ -107,8 +110,6 @@
   </dependencies>
   
   <build>
-    <finalName>swift-shop</finalName>
-    
     <plugins>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>

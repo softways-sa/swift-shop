@@ -208,7 +208,7 @@ int rows = 0;
 <form name="billingForm" method="post" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>">
 
 <input type="hidden" name="cmd" value="set_billing_address" />
-<input type="hidden" name="email" value="<%= email %>" />
+<%if (!customer.isGuestCheckout()) {%><input type="hidden" name="email" value="<%=email%>" /><%}%>
 
 <div class="formInput">
 
@@ -218,19 +218,20 @@ int rows = 0;
 <div class="clearfix"><span><%= lb.get("city" + lang) %></span> <input type="text" name="billingCity" value="<%= billingCity %>" class="text" maxlength="50" /></div>
 <div class="clearfix"><span><%= lb.get("zipcode" + lang) %></span> <input type="text" name="billingZipCode" value="<%= billingZipCode %>" class="text" maxlength="10" /></div>
 <div class="clearfix"><span><%= lb.get("country" + lang)%></span> 
-    <select name="billingCountryCode" class="text">
-            <option value="">---</option>
-            <%
-            rows = helperBean.getTable("country","countryName"+lang);
+  <select name="billingCountryCode" class="text">
+    <option value="">---</option>
+    <%
+    rows = helperBean.getTable("country","countryName"+lang);
 
-            for (int i=0; i<rows; i++) { %>
-                <option value="<%= helperBean.getColumn("countryCode") %>" <% if (billingCountryCode.equals(helperBean.getColumn("countryCode"))) out.print("SELECTED"); %>><%= helperBean.getColumn("countryName" + lang) %></option>
-            <%
-                helperBean.nextRow();
-            } %>
-        </select>
+    for (int i=0; i<rows; i++) {%>
+      <option value="<%= helperBean.getColumn("countryCode") %>" <% if (billingCountryCode.equals(helperBean.getColumn("countryCode"))) out.print("SELECTED"); %>><%= helperBean.getColumn("countryName" + lang) %></option>
+    <%
+      helperBean.nextRow();
+    }%>
+  </select>
 </div>
 <div class="clearfix"><span><%= lb.get("phoneNumber" + lang) %></span> <input type="text" name="billingPhone" value="<%= billingPhone %>" class="text" maxlength="30" /></div>
+<%if (customer.isGuestCheckout()) {%><div class="clearfix"><span><%= lb.get("email" + lang) %></span> <input type="text" name="email" value="<%=email%>" class="text" maxlength="50" /></div><%}%>
 </div>
 
 <div class="clearfix" style="margin-top:20px; font-weight:bold;"><span><%= lb.get("shipCheckText" + lang) %></span>&nbsp;&nbsp;&nbsp;&nbsp;<b><%= lb.get("yes" + lang) %></b> <input type="radio" name="useBilling" value="1" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp;<b><%= lb.get("no" + lang) %></b> <input type="radio" name="useBilling" value="0" /></div>
