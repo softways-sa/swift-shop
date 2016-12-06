@@ -94,6 +94,9 @@ static {
     lb.put("continueBtnLG","&gt; Continue");
     lb.put("continueExpl","(θα έχετε την δυνατότητα να ελέγξετε την παραγγελία σας πριν οριστικοποιηθεί)");
     lb.put("continueExplLG","(You can review this order before it is final)");
+
+    lb.put("jsEnterEmail","Παρακαλούμε ελέγξτε το email σας.");
+    lb.put("jsEnterEmailLG","Please check your email address.");
 }
 %>
 
@@ -178,6 +181,13 @@ int rows = 0;
             form.billingPhone.focus();
             return false;
         }
+        <%if (customer.isGuestCheckout()) {%>
+          else if (isEmpty(form.email.value) == true || emailCheck(form.email.value) == false) {
+            alert("<%= lb.get("jsEnterEmail" + lang) %>");
+            form.email.focus();
+            return false;
+          }
+        <%}%>
         else return true;
     }
     
