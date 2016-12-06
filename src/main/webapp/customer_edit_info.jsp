@@ -6,7 +6,7 @@
 
 <% whereAmI = "/customer_edit_info.jsp"; %>
 
-<%@ include file="/include/shopping_auth.jsp" %>
+<%@ include file="/include/customer_auth.jsp" %>
 
 <%@ page import="gr.softways.dev.eshop.emaillists.newsletter.Newsletter" %>
 

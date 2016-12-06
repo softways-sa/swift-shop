@@ -6,7 +6,7 @@
 
 <% whereAmI = "/customer_myaccount.jsp"; %>
 
-<%@ include file="/include/shopping_auth.jsp" %>
+<%@ include file="/include/customer_auth.jsp" %>
 
 <%!
 static Hashtable lb = new Hashtable();

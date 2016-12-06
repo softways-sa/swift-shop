@@ -6,7 +6,7 @@
 
 <% whereAmI = "/customer_messages.jsp"; %>
 
-<%@ include file="/include/shopping_auth.jsp" %>
+<%@ include file="/include/customer_auth.jsp" %>
 
 <jsp:useBean id="helperBean" scope="page" class="gr.softways.dev.util.JSPBean" />
 
