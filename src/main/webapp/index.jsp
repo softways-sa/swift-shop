@@ -287,7 +287,7 @@ else {
 <%=CMRBodyHTML%>
 
 <script src='/js/owl.carousel.min.js'></script>
-<script>$(document).ready(function() {$('.owl-carousel').owlCarousel({items : 5, itemsDesktop : [1200,4], itemsDesktopSmall : [900,3], itemsTablet: [640,3], itemsMobile : [540,1]});});</script>
+<script>$(document).ready(function() {$('.owl-carousel').owlCarousel({navigation: true, items : 5, itemsDesktop : [1200,4], itemsDesktopSmall : [900,3], itemsTablet: [640,3], itemsMobile : [540,1]});});</script>
 
 <%
 searchArticle.closeResources();
