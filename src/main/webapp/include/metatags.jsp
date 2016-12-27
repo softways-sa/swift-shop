@@ -3,34 +3,27 @@
 <jsp:useBean id="metatag_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
 
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
-<link rel="shortcut icon" href="/images/favicon.ico" />
-
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/css/megamenu.css" />
-
-<link rel="stylesheet" type="text/css" href="/css/core.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
-
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/css/megamenu.css">
+<link rel="stylesheet" type="text/css" href="/css/core.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" href="/css/royalslider/royalslider.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="/js/typeahead.bundle.js"></script>
-
 <script src="/js/megamenu_plugins.js"></script>
 <script src="/js/megamenu.min.js"></script>
-
 <script type="text/javascript" src="/js/pure_min.js"></script>
-
 <script src="/js/jquery.royalslider.min.js"></script>
-
 <script type="text/javascript" src="/js/jsfunctions.js"></script>
 
-<script type="text/javascript">
+<script>
 var productSearch = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -60,7 +53,7 @@ function addLoadEvent(func) {
   }
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
   $(".item-box-image a img").hover(function() {
       $(this).stop().animate({opacity: "0.65"}, 500);
   },
