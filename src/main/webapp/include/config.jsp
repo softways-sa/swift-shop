@@ -8,11 +8,17 @@
                 ,gr.softways.dev.eshop.product.v2.ProductOptionsValue,gr.softways.dev.swift.cmcategory.v1.*
                 ,gr.softways.dev.eshop.category.v2.PrdCategoryMenuOption2" %>
 
-<%@ include file="/deployment/deployment.jsp" %>
-
 <%
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html; charset=UTF-8");
+
+String databaseId = SwissKnife.jndiLookup("swconf/databaseId");
+
+String wwwrootFilePath = application.getRealPath("");
+
+String serverName = request.getServerName();
+
+String appDir = "";
 
 String whereAmI = "", HTTP_PROTOCOL = "", top_jsp_path = "",
     MEGAMENU_PRDPROMO_URL = null;
@@ -61,17 +67,17 @@ String authUsername = defaultAuthUsername, authPassword = defaultAuthPassword;
 int maxRecentlyViewedProducts = 7;
 
 if (session.getAttribute(databaseId + ".authUsername") == null) {
-    session.setAttribute(databaseId + ".authUsername", authUsername);
+  session.setAttribute(databaseId + ".authUsername", authUsername);
 }
 else {
-    authUsername = session.getAttribute(databaseId + ".authUsername").toString();
+  authUsername = session.getAttribute(databaseId + ".authUsername").toString();
 }
 
 if (session.getAttribute(databaseId + ".authPassword") == null) {
-    session.setAttribute(databaseId + ".authPassword", authPassword);
+  session.setAttribute(databaseId + ".authPassword", authPassword);
 }
 else {
-    authPassword = session.getAttribute(databaseId + ".authPassword").toString();
+  authPassword = session.getAttribute(databaseId + ".authPassword").toString();
 }
 
 String lang = (String) session.getAttribute(databaseId + ".lang");
@@ -98,7 +104,7 @@ if (lang.equals("LG")) {
 // ------- catalog section
 BigDecimal exchangeRate = new BigDecimal("1");
 
-int curr1Scale = Integer.parseInt(gr.softways.dev.util.SwissKnife.jndiLookup("swconf/curr1Scale"));
+int curr1Scale = Integer.parseInt(SwissKnife.jndiLookup("swconf/curr1Scale"));
 
 int curr1DisplayScale = 2, curr2DisplayScale = 0;
 int minCurr1DispFractionDigits = 2, minCurr2DispFractionDigits = 0;
