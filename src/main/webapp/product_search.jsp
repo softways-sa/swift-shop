@@ -155,27 +155,26 @@ if (totalRowCount == 1) {
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
-    <%@ include file="/include/metatags.jsp" %>
-    
-    <title><%= htmlTitle %></title>
-    
-    <style>
-    .searchSort {margin:0 0 10px 0; float:right;}
-    .searchSort select {
-        font-size:11px;
-        padding:0;
-        height:18px;
-        margin:0;
-        width:155px;
-    }
-    .searchSort .pperpage {
-        width:40px;
-        margin-right:8px;
-    }
-    </style>
+  <%@ include file="/include/metatags.jsp" %>
+
+  <title><%= htmlTitle %></title>
+
+  <style>
+  .searchSort {margin:0 0 10px 0; float:right;}
+  .searchSort select {
+      font-size:11px;
+      padding:0;
+      height:18px;
+      margin:0;
+      width:155px;
+  }
+  .searchSort .pperpage {
+      width:40px;
+      margin-right:8px;
+  }
+  </style>
 </head>
 
 <body>
@@ -184,11 +183,12 @@ if (totalRowCount == 1) {
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer">
+<div class="container" id="contentContainer">
   
 <%@ include file="/include/prd_catalog_path.jsp" %>
 
-<div id="prdContainer" class="clearfix">
+<div id="prdContainer" class="row">
+<div class="col-xs-12">
     
 <%@ include file="/include/product_catalog_left.jsp" %>
 
@@ -265,7 +265,7 @@ if (totalRowCount > 0) {
             <div class="item-box-wrapper <%if (i == (cols_by_row-1)) out.print("item-last");%>">
             
             <div class="item-box-image">
-              <a href="<%=viewPrdPageURL%>"><img src="<%=prd_img%>" alt="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>" title="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>" width="160" height="160" /></a>
+              <a href="<%=viewPrdPageURL%>"><img src="<%=prd_img%>" alt="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>" title="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>"/></a>
               
               <div class="product_labels">
               <%if (isOffer == true) {%><p><span class="heylabel sale"><%=lb.get("pLabelSale" + lang)%></span></p><%}%>
@@ -425,11 +425,11 @@ if (recentlyViewedProducts.getSize() > 0) { %>
 }
 %>
 
-</div> <!-- end: productMain -->
+</div> <!-- /productMain -->
 
-</div> <!-- end: prdContainer -->
-
-</div> <!-- end: contentContainer -->
+</div> <!-- /col -->
+</div> <!-- /prdContainer -->
+</div> <!-- /contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 

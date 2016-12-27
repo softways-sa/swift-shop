@@ -5,6 +5,7 @@ body {
   font-weight: normal;
   font-size: 14px;
   color: #000000;
+  line-height: inherit;
 }
 
 ol, ul {list-style: none outside none;}

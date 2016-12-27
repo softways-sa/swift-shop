@@ -89,22 +89,20 @@ else {
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="keywords" content="<%= htmlKeywords %>" />
-    
-    <%@ include file="/include/metatags.jsp" %>
-    
-    <title><%= htmlTitle %></title>
-    
-    <link href='/css/owl-carousel/owl.carousel.css' rel='stylesheet'>
-    <link href='/css/owl-carousel/owl.theme.css' rel='stylesheet'>
-    
-    <style>#hdItemsCarouselWrapper{margin-top: 10px;} .owl-carousel .item-box-wrapper{margin-right: 0; display: block; float: none; margin: 0 auto;}</style>
-    
-    <%=CMRHeadHTML%>
+  <%@ include file="/include/metatags.jsp" %>
+  
+  <%if (htmlKeywords.length() > 0) {%><meta name="keywords" content="<%=htmlKeywords%>"><%}%>
+  
+  <title><%=htmlTitle%></title>
+
+  <link href='/css/owl-carousel/owl.carousel.css' rel='stylesheet'>
+  <link href='/css/owl-carousel/owl.theme.css' rel='stylesheet'>
+
+  <style>#hdItemsCarouselWrapper{margin-top: 10px;} .owl-carousel .item-box-wrapper{margin-right: 0; display: block; float: none; margin: 0 auto;}</style>
+
+  <%=CMRHeadHTML%>
 </head>
 
 <body>
@@ -115,7 +113,9 @@ else {
 
 <%=searchArticle.getColumn("CMRSummary" + lang)%>
 
-<div id="homeContainer">
+<div class="container" id="homeContainer">
+<div class="row">
+<div class="col-xs-12">
 
 <div id="homeContainerMain" class="clearfix">
     <%
@@ -278,7 +278,9 @@ else {
   <%if (totalRowCount == 1) {%><div class="clearfix"><%= searchArticle.getColumn("CMRText" + lang) %></div><%}%>
 </div> <!-- end: homeContainerMain -->
 
-</div> <!-- end: homeContainer -->
+</div> <!-- /col -->
+</div> <!-- /row -->
+</div> <!-- /homeContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 

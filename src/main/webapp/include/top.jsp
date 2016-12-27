@@ -63,8 +63,10 @@ String top_MenuURL = "";
 
 <div id="headerContainer">
   
-<div id="header">
-    
+<div class="container" id="header">
+<div class="row">
+<div class="col-xs-12">
+  
 <div><form name="langForm" method="post" action="#"><input type="hidden" name="lang" value="" /></form></div>
 <div><noscript><a href="<%="http://" + serverName + "/?extLang="%>">ΕΛΛΗΝΙΚΑ</a></noscript></div>
 <div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
@@ -81,15 +83,15 @@ String top_MenuURL = "";
 <ul>
     <%
     if (customer.isSignedIn() == false) { %>
-      <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><%=top_jsp_lb.get("signin" + lang)%></a></li>
+      <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
     <%
     }
     else { %>
-      <li class="first"><a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
+      <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
     <%
     }
     %>
-    <li><a href="/wishlist.jsp">Wish List</a></li>
+    <li><a href="/wishlist.jsp"><span style="color: red;" class="glyphicon glyphicon-heart" aria-hidden="true"></span> Wish List</a></li>
 </ul>
 </div>
 <div id="langSelector">
@@ -305,7 +307,9 @@ String top_MenuURL = "";
         
         </div><!-- End Menu Container -->
 
-</div> <!-- end: header -->
+</div> <!-- /col -->
+</div> <!-- /row -->
+</div> <!-- /header -->
 
 </div> <!-- /headerContainer -->
 
