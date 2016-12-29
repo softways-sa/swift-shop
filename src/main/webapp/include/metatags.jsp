@@ -6,12 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="shortcut icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="/css/megamenu.css">
-<link rel="stylesheet" type="text/css" href="/css/core.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="/css/megamenu.css">
+<link rel="stylesheet" href="/css/core.css">
+<link rel="stylesheet" href="/css/catalog-sidemenu.css">
+<link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/royalslider/royalslider.css">
+<link rel="stylesheet" href="/css/responsive.css">
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
@@ -21,7 +24,7 @@
 <script src="/js/megamenu.min.js"></script>
 <script type="text/javascript" src="/js/pure_min.js"></script>
 <script src="/js/jquery.royalslider.min.js"></script>
-<script type="text/javascript" src="/js/jsfunctions.js"></script>
+<script src="/js/jsfunctions.js"></script>
 
 <script>
 var productSearch = new Bloodhound({

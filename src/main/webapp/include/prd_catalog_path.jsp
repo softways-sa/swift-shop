@@ -8,6 +8,8 @@ if (category_path_length > 0) {
     
     
 %>
+    <div class="row">
+    <div class="col-xs-12">
     <div id="prdCatalogPath">
     
     <h3><%=lb.get("rootCat" + lang)%>&nbsp;&rsaquo;&rsaquo;</h3>
@@ -25,10 +27,12 @@ if (category_path_length > 0) {
     }
     %>
     </div>
+    </div>
+    </div>
     <% if (product_catalogue.getColumn("catDescr" + lang).length()>0 && !whereAmI.equals("/product_detail.jsp")) { %><div id="productSearchCatDescr"><%= product_catalogue.getColumn("catDescr" + lang) %></div><% } %>
 <%    
 }
 else { %>
-    <div id="prdCatalogPath"><h3><%=lb.get("rootCat" + lang)%></h3></div>
+  <div class="row"><div id="prdCatalogPath"><div class="col-xs-12"><h3><%=lb.get("rootCat" + lang)%></h3></div></div></div>
 <%
 } %>

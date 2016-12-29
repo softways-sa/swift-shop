@@ -164,15 +164,14 @@ if (totalRowCount == 1) {
   <style>
   .searchSort {margin:0 0 10px 0; float:right;}
   .searchSort select {
-      font-size:11px;
-      padding:0;
-      height:18px;
-      margin:0;
-      width:155px;
+    font-size:11px;
+    padding:0;
+    height:18px;
+    margin:0;
+    width:155px;
   }
   .searchSort .pperpage {
-      width:40px;
-      margin-right:8px;
+    width:40px;
   }
   </style>
 </head>
@@ -188,29 +187,24 @@ if (totalRowCount == 1) {
 <%@ include file="/include/prd_catalog_path.jsp" %>
 
 <div id="prdContainer" class="row">
-<div class="col-xs-12">
-    
-<%@ include file="/include/product_catalog_left.jsp" %>
+  <div class="col-md-2 hidden-xs hidden-sm"><%@ include file="/include/product_catalog_left.jsp" %></div>
+  
+  <div class="col-md-10">
 
-<div id="productMain">
-
-<%
-if (product_search.getQID().length()>0) { %>
-  <div id="productSearchFor">
-    <b><%= lb.get("resultsFor" + lang) %> "<%= product_search.getQID() %>"</b>
-  </div>
-<% } %>
+    <%if (product_search.getQID().length()>0) {%>
+      <div id="productSearchFor">
+        <b><%= lb.get("resultsFor" + lang) %> "<%= product_search.getQID() %>"</b>
+      </div>
+    <%}%>
 
 <%
 if (totalRowCount > 0) {
-    int cols_by_row = 4;
-    
     String prd_img = "", viewPrdPageURL = "";
-    
-    int index = 0;
 %>
-    <div class="searchSort" style="float:right;">
-    <form id="searchSortForm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
+    <div class="row">
+      <div class="col-xs-12">
+      <div class="searchSort">
+      <form id="searchSortForm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
         <input name="qid" value="<%=product_search.getQID()%>" type="hidden"/>
         <input name="catId" value="<%=product_search.getCatId()%>" type="hidden">
         <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
@@ -230,100 +224,94 @@ if (totalRowCount > 0) {
           <option value="32" <%if ("32".equals(pperpage)) out.print("selected");%>>32</option>
           <option value="48" <%if ("48".equals(pperpage)) out.print("selected");%>>48</option>
         </select>
-    </form>
-    </div><br style="clear:both;" />
-    <div id="productSearchListSection">
-<%
-    while (product_search.inBounds() == true) {
-    %>
-        <div class="item-box-spacer clearfix">
-        <%
-        for (int i=0; i<cols_by_row && product_search.inBounds() == true; i++) {
-            index++;
-            
-            prdPrice = null;
-            
-            isOffer = false;
-            
-            if (PriceChecker.isOffer(product_search.getQueryDataSet(),customerType)) {
-                isOffer = true;
-                hdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,isOffer,customer.getDiscountPct());
-
-                oldPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
-            }
-            prdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
-            
-            viewPrdPageURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
-            
-            if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg")) {
-                prd_img = "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg";
-            }
-            else {
-                prd_img = "/images/img_not_avail.jpg";
-            }
-        %>
-            <div class="item-box-wrapper <%if (i == (cols_by_row-1)) out.print("item-last");%>">
-            
-            <div class="item-box-image">
-              <a href="<%=viewPrdPageURL%>"><img src="<%=prd_img%>" alt="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>" title="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>"/></a>
-              
-              <div class="product_labels">
-              <%if (isOffer == true) {%><p><span class="heylabel sale"><%=lb.get("pLabelSale" + lang)%></span></p><%}%>
-              <%if ("1".equals(product_search.getColumn("prdCompFlag"))) {%><p><span class="newlabel"><%=lb.get("pLabelNew" + lang)%></span></p><%}%>
-              </div> <!-- /product_labels -->
-            </div>
-            <div class="item-box-content">
-            <div class="item-box-bottom">
-            <div class="item-box-price">
-            <div class="item-box-addcart"><a href="<%=viewPrdPageURL%>"><img src="/images/add-to-cart.png" alt="<%=lb.get("addtocart" + lang)%>" title="<%=lb.get("addtocart" + lang)%>"/></a></div>
-            <div class="item-box-amount">
-            <%
-            if (isOffer == true) { %>
-            <span style="text-decoration:line-through;"><%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? oldPrice.getUnitNetCurr1() : oldPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%></span> &euro;&nbsp;<%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? hdPrice.getUnitNetCurr1() : hdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
-            <%
-            } else { %>
-            <%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? prdPrice.getUnitNetCurr1() : prdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
-            <% } %>
-            </div>
-            </div>
-            </div>
-            <div class="item-box-name"><a href="<%= viewPrdPageURL%>"><%= product_search.getColumn("name" + lang)%></a></div>
-            </div>
-
-            </div>
-            <%
-            product_search.nextRow();
-        }
-        %>
-        </div>
+      </form>
+      </div>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+    
+    <div id="productSearchListSection" class="row">
     <%
-    }
+    while (product_search.inBounds() == true) {
+      prdPrice = null;
+
+      isOffer = false;
+
+      if (PriceChecker.isOffer(product_search.getQueryDataSet(),customerType)) {
+          isOffer = true;
+          hdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,isOffer,customer.getDiscountPct());
+
+          oldPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
+      }
+      prdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
+
+      viewPrdPageURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
+
+      if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg")) {
+        prd_img = "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg";
+      }
+      else {
+        prd_img = "/images/img_not_avail.jpg";
+      }
     %>
+      <div class="col-md-3 col-sm-4 col-xs-6 mb">
+        <div class="item-box-image">
+        <a href="<%=viewPrdPageURL%>"><img src="<%=prd_img%>" alt="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>" title="<%=product_search.getColumn("name" + lang).replace("\"", "&quot;")%>"/></a>
+
+        <div class="product_labels">
+        <%if (isOffer == true) {%><p><span class="heylabel sale"><%=lb.get("pLabelSale" + lang)%></span></p><%}%>
+        <%if ("1".equals(product_search.getColumn("prdCompFlag"))) {%><p><span class="newlabel"><%=lb.get("pLabelNew" + lang)%></span></p><%}%>
+        </div> <!-- /product_labels -->
+        </div>
+        <div class="item-box-content">
+        <div class="item-box-bottom">
+        <div class="item-box-price">
+        <div class="item-box-addcart"><a href="<%=viewPrdPageURL%>"><img src="/images/add-to-cart.png" alt="<%=lb.get("addtocart" + lang)%>" title="<%=lb.get("addtocart" + lang)%>"/></a></div>
+        <div class="item-box-amount">
+        <%
+        if (isOffer == true) { %>
+        <span style="text-decoration:line-through;"><%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? oldPrice.getUnitNetCurr1() : oldPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%></span> &euro;&nbsp;<%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? hdPrice.getUnitNetCurr1() : hdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
+        <%
+        } else { %>
+        <%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? prdPrice.getUnitNetCurr1() : prdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
+        <% } %>
+        </div>
+        </div>
+        </div>
+        <div class="item-box-name"><a href="<%= viewPrdPageURL%>"><%= product_search.getColumn("name" + lang)%></a></div>
+        </div>
+      </div> <!-- /col -->
+    <%
+      product_search.nextRow();
+    }%>
     </div> <!-- /productSearchListSection -->
-      
-    <div class="searchSort hidden-xs" style="float:right;">
-    <form id="searchSortFormBtm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
-        <input name="qid" value="<%=product_search.getQID()%>" type="hidden"/>
-        <input name="catId" value="<%=product_search.getCatId()%>" type="hidden">
-        <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
-        <input name="fprd" value="<%=product_search.getPrdNewColl()%>" type="hidden">
-        <input name="newarr" value="<%=product_search.getPrdCompFlag()%>" type="hidden">
-        <input name="action1" value="SEARCH" type="hidden">
+    
+    <div class="row">
+      <div class="col-xs-12">
+      <div class="searchSort hidden-xs">
+      <form id="searchSortFormBtm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
+          <input name="qid" value="<%=product_search.getQID()%>" type="hidden"/>
+          <input name="catId" value="<%=product_search.getCatId()%>" type="hidden">
+          <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
+          <input name="fprd" value="<%=product_search.getPrdNewColl()%>" type="hidden">
+          <input name="newarr" value="<%=product_search.getPrdCompFlag()%>" type="hidden">
+          <input name="action1" value="SEARCH" type="hidden">
 
-        <select name="sort" onchange="this.form.submit();" title="<%=lb.get("sortLabel" + lang)%>">
-          <option value="" <%if ("".equals(sort)) out.print("selected");%>><%=lb.get("sortLabel" + lang)%></option>
-          <option value="priceasc" <%if ("priceasc".equals(sort)) out.print("selected");%>><%=lb.get("sortAscLabel" + lang)%></option>
-          <option value="pricedesc" <%if ("pricedesc".equals(sort)) out.print("selected");%>><%=lb.get("sortDescLabel" + lang)%></option>
-          <option value="newfirst" <%if ("newfirst".equals(sort)) out.print("selected");%>><%=lb.get("newfirstLabel" + lang)%></option>
-        </select>
+          <select name="sort" onchange="this.form.submit();" title="<%=lb.get("sortLabel" + lang)%>">
+            <option value="" <%if ("".equals(sort)) out.print("selected");%>><%=lb.get("sortLabel" + lang)%></option>
+            <option value="priceasc" <%if ("priceasc".equals(sort)) out.print("selected");%>><%=lb.get("sortAscLabel" + lang)%></option>
+            <option value="pricedesc" <%if ("pricedesc".equals(sort)) out.print("selected");%>><%=lb.get("sortDescLabel" + lang)%></option>
+            <option value="newfirst" <%if ("newfirst".equals(sort)) out.print("selected");%>><%=lb.get("newfirstLabel" + lang)%></option>
+          </select>
 
-        <select name="pperpage" class="pperpage" onchange="this.form.submit();" title="<%=lb.get("itemsPerPageLabel" + lang)%>">
-          <option value="16" <%if ("16".equals(pperpage)) out.print("selected");%>>16</option>
-          <option value="32" <%if ("32".equals(pperpage)) out.print("selected");%>>32</option>
-          <option value="48" <%if ("48".equals(pperpage)) out.print("selected");%>>48</option>
-        </select>
-    </form>
-    </div><br style="clear:both;" />
+          <select name="pperpage" class="pperpage" onchange="this.form.submit();" title="<%=lb.get("itemsPerPageLabel" + lang)%>">
+            <option value="16" <%if ("16".equals(pperpage)) out.print("selected");%>>16</option>
+            <option value="32" <%if ("32".equals(pperpage)) out.print("selected");%>>32</option>
+            <option value="48" <%if ("48".equals(pperpage)) out.print("selected");%>>48</option>
+          </select>
+      </form>
+      </div>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
     
     <%
     if (totalPages > 1) {
@@ -425,9 +413,8 @@ if (recentlyViewedProducts.getSize() > 0) { %>
 }
 %>
 
-</div> <!-- /productMain -->
-
 </div> <!-- /col -->
+
 </div> <!-- /prdContainer -->
 </div> <!-- /contentContainer -->
 

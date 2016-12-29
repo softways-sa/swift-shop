@@ -58,21 +58,6 @@ h6 {
     font-weight: normal;
 }
 
-.clearfix:after {
-    content:".";
-    display:block;
-    height:0;
-    font-size:0;
-    clear:both;
-    visibility:hidden;
-}
-.clearfix {display:inline-block;}
-
-/* Hides from IE-mac \*/
-* html .clearfix {height: 1%;}
-.clearfix {display: block;}
-/* End hide from IE-mac */
-
 /* start: pagination */
 #searchPagination {width:100%; margin:0 auto; text-align:center; padding-bottom:15px;}
 

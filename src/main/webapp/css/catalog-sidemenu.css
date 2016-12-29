@@ -1,0 +1,37 @@
+/**.LeftNavTree{width:210px;}**/
+.LeftNavTree .AspNet-TreeView-ClickableNonLink{display:block;}
+.LeftNavTree UL{display:block;}
+.LeftNavTree UL UL UL{padding-bottom:0!important;display:none;}
+.LeftNavTree LI{display:block; font-size:12px;}
+.LeftNavTree LI A{display:block; text-decoration:none; outline:0;}
+.LeftNavTree LI LI A{padding:8px 8px!important; background-color:#f3f3f3; font-weight:bold; color:#565656;}
+.LeftNavTree LI LI LI A{padding:8px 3px 8px 15px!important;}
+.LeftNavTree LI LI LI LI A{padding:4px 3px 4px 30px!important;}
+.LeftNavTree LI LI LI LI {background-image:url(/images/bg_li.png); background-repeat:no-repeat; background-position:16px;}
+.LeftNavTree LI LI A:hover{background-color:#e7e7e7;color:#333333;}
+.LeftNavTree LI LI LI A:hover{text-decoration:underline!important; color:#000000!important;}
+
+.LeftNavTree LI LI.AspNet-TreeView-ChildSelected A,.LeftNavTree LI LI.AspNet-TreeView-Selected A{background-color:#f3f3f3;color:#333333;font-weight:bold;}
+
+.LeftNavTree LI LI.AspNet-TreeView-ChildSelected LI A,.LeftNavTree LI LI.AspNet-TreeView-Selected LI A{background-color:transparent;color:#333333;font-weight:bold;}
+.LeftNavTree LI LI.AspNet-TreeView-ChildSelected UL,.LeftNavTree LI LI.AspNet-TreeView-Selected UL{display:block;}
+.LeftNavTree LI LI.AspNet-TreeView-ChildSelected UL UL,.LeftNavTree LI LI.AspNet-TreeView-Selected UL UL{display:none;}
+
+.LeftNavTree LI LI LI.AspNet-TreeView-ChildSelected A {text-decoration:none;font-weight:bold;}
+
+.LeftNavTree LI LI LI.AspNet-TreeView-Selected A{text-decoration:none;font-weight:bold; background-color:#cccccc;}
+.LeftNavTree LI LI LI LI.AspNet-TreeView-Leaf A{text-decoration:none;font-weight:normal; background-color:transparent;}
+.LeftNavTree LI LI LI LI.AspNet-TreeView-Selected A{text-decoration:none; font-weight:bold;}
+
+.LeftNavTree LI LI LI.AspNet-TreeView-Parent UL{display:none;}
+.LeftNavTree LI LI LI.AspNet-TreeView-Selected UL{display:block;}
+.LeftNavTree LI LI LI.AspNet-TreeView-ChildSelected UL{display:block;}
+.LeftNavTree LI LI LI LI.AspNet-TreeView-ParentSelected A{text-decoration:none;}
+
+div.AspNet-TreeView{margin:0; padding:0;}
+
+div.AspNet-TreeView ul{margin:0; padding:0; list-style:none;}
+
+.AspNet-TreeView-Show{ }
+
+.AspNet-TreeView-Hide{display:none;}
