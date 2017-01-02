@@ -4,7 +4,7 @@
 <jsp:useBean id="top_jsp_menu" scope="page" class="gr.softways.dev.swift.cmcategory.v1.Menu2" />
 
 <%!
-static Hashtable top_jsp_lb = new Hashtable();
+static HashMap top_jsp_lb = new HashMap();
 static {
   top_jsp_lb.put("allprds","Όλα τα προϊόντα");
   top_jsp_lb.put("allprdsLG","All products");
@@ -60,255 +60,83 @@ String top_MenuURL = "";
 %>
 
 <div id="headerWrapper">
-
-<div id="headerContainer">
+  <div><form name="langForm" method="post" action="#"><input type="hidden" name="lang" value="" /></form></div>
+  <div><noscript><a href="<%="http://" + serverName + "/?extLang="%>">ΕΛΛΗΝΙΚΑ</a></noscript></div>
+  <div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
   
-<div class="container" id="header">
-<div class="row">
-<div class="col-xs-12">
+  <div id="headerContainer">
   
-<div><form name="langForm" method="post" action="#"><input type="hidden" name="lang" value="" /></form></div>
-<div><noscript><a href="<%="http://" + serverName + "/?extLang="%>">ΕΛΛΗΝΙΚΑ</a></noscript></div>
-<div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
+    <div class="container" id="header">
 
-<div class="clearfix">
-    
-<div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%= lang %>.png" alt="logo" style="width: 100%;"/></a></div>
-
-<div id="headerRight">
-
-<div id="fastMenuWrapper" class="clearfix">
-<div style="float:right;">
-<div id="fastMenu">
-<ul>
-    <%
-    if (customer.isSignedIn() == false) { %>
-      <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
-    <%
-    }
-    else { %>
-      <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
-    <%
-    }
-    %>
-    <li><a href="/wishlist.jsp"><span style="color: red;" class="glyphicon glyphicon-heart" aria-hidden="true"></span> Wish List</a></li>
-</ul>
-</div>
-<div id="langSelector">
-  <div id="topLangSel"><% if (!lang.equals("")) {%><a href="javascript:document.langForm.lang.value='';document.langForm.submit();void(0);"><%}%><img src="/images/flag.png" alt="Ελληνικά" title="Ελληνικά" /><% if (!lang.equals("")) { %></a><% } %></div>
-  <div id="topLangLGSel"><% if (!lang.equals("LG")) {%><a href="javascript:document.langForm.lang.value='LG';document.langForm.submit();void(0);"><%}%><img src="/images/flagLG.png" alt="English" title="English" /><% if (!lang.equals("LG")) { %></a><% } %></div>  
-</div>
-</div>
-</div>
-
-<div class="clearfix">
-    
-<div>
-<div id="search">
-<form name="searchForm" action="/site/search" method="get">
-
-<input type="text" id="qid" name="qid" class="form-text typeahead" placeholder="<%=top_jsp_lb.get("productSearch" + lang)%>" onclick="this.value=''"/>
-<input type="submit" name="search-submit" class="btn" value="Search"/>
-
-</form>
-</div>
-
-<div id="minicartBar">
-    <img src="/images/cart.png" alt="" style="display:inline; vertical-align:middle;"/><a href="/shopping_cart.jsp"><%=top_jsp_lb.get("shoppingCart" + lang)%>: <span id="minicartBarQuan"></span>&nbsp;<span id="minicartBarItemWord"><%=top_jsp_lb.get("items" + lang)%></span> <span id="minicartBarSubtotal"></span></a>
-</div>
-</div>
-
-</div>
-
-</div> <!-- end: headerRight -->
-
-</div>
-
-        <div class="megamenu_container megamenu_light_bar megamenu_light"><!-- Begin Menu Container -->
+      <div class="row">
+        <div class="col-md-4 col-sm-5 col-xs-12"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%= lang %>.png" alt="logo" style="width: 100%;"/></a></div></div>
         
-        <ul class="megamenu"><!-- Begin Mega Menu -->
-           
-            <li class="megamenu_button"><a href="#_"><%=top_jsp_lb.get("menuTitle" + lang)%></a></li>
-            
-            <%
-            if (USE_MEGAMENU) { %>
-            
-            <%-- product megamenu --%>
-            <li><a href="#_" class="megamenu_drop"><%=top_jsp_lb.get("prdTitle" + lang)%></a><!-- Begin Item -->
-              <div class="dropdown_fullwidth"><!-- Begin Item Container -->
+        <div class="col-md-8 col-sm-7 col-xs-12">
+          <div style="float:right;">
+          <div id="fastMenu">
+          <ul>
+              <%
+              if (customer.isSignedIn() == false) { %>
+                <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
+              <%
+              }
+              else { %>
+                <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
+              <%
+              }
+              %>
+              <li><a href="/wishlist.jsp"><span style="color: red;" class="glyphicon glyphicon-heart" aria-hidden="true"></span> Wish List</a></li>
+          </ul>
+          </div>
+          <div id="langSelector">
+            <div id="topLangSel"><% if (!lang.equals("")) {%><a href="javascript:document.langForm.lang.value='';document.langForm.submit();void(0);"><%}%><img src="/images/flag.png" alt="Ελληνικά" title="Ελληνικά" /><% if (!lang.equals("")) { %></a><% } %></div>
+            <div id="topLangLGSel"><% if (!lang.equals("LG")) {%><a href="javascript:document.langForm.lang.value='LG';document.langForm.submit();void(0);"><%}%><img src="/images/flagLG.png" alt="English" title="English" /><% if (!lang.equals("LG")) { %></a><% } %></div>  
+          </div>
+          </div>
+        </div>
+          
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-6">
+              <div id="product-search-top" class="pull-right">
+             
+              <style>.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+                }</style>
+                <form id="searchForm" name="searchForm" action="/site/search" method="get">
+                <div class="input-group stylish-input-group">
+                    <input id="qid" name="qid" type="text" class="form-control typeahead" placeholder="Search">
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+                  </form>
+              
+              </div>
                 
-                <div class="col_9">
-                <%
-                menuLevel = 0;
-                
-                int li_level = 0, divLevel = 0, megamenuCols = 3;
-                
-                for (int i=0; i<top_jsp_prdCatMenuLength; i++) {
-                  PrdCategoryMenuOption2 menuOption = top_jsp_prdCatMenu.getMenuOption(i);
-                %>
-
-                <%if ("<ul>".equals(menuOption.getTag()) || ("<a>".equals(menuOption.getTag()) && menuOption.getCode().length() == 2) ) {
-                  menuLevel++;
-                %>
-                  <%if (menuLevel == 1) {%><div class="col_4 myprdmenu"><%}%>
-                  
-                  <ul class="level-<%=(menuLevel > 3) ? 3 : menuLevel%>">
-                <%
-                }%>
-                  
-                <%if ("</li>".equals(menuOption.getTag())) {
-                  li_level--;
-                %>
-                  </li>
-                  <%if (li_level == 0) {menuLevel--;%></ul></div><%divLevel++; if (divLevel == megamenuCols) {divLevel = 0; out.print("<div class='clearfix'></div>");}}%>
-                <%
-                }%>
-                
-                <%if ("</ul>".equals(menuOption.getTag())) {
-                  menuLevel--;
-                %>
-                  </ul>
-                  <%if (menuLevel == 0) {%></div><%}%>
-                <%
-                }%>
+            </div>
+            <div class="col-xs-6">
+              <div id="minicartBar"><img src="/images/cart.png" alt="" style="display:inline; vertical-align:middle;"/><a href="/shopping_cart.jsp"><span class="hidden-xs"><%=top_jsp_lb.get("shoppingCart" + lang)%>: </span><span id="minicartBarQuan"></span>&nbsp;<span id="minicartBarItemWord"><%=top_jsp_lb.get("items" + lang)%></span> <span id="minicartBarSubtotal"></span></a></div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /row -->
       
-                <%
-                if ("<a>".equals(menuOption.getTag())) {
-                  if ("1".equals(menuOption.getParent())) top_MenuURL = "http://" + serverName + "/site/category/" + menuOption.getSefFullPath() + "?catId=" + menuOption.getCode() + "&amp;extLang=" + lang;
-                  else top_MenuURL = "http://" + serverName + "/site/search/" + menuOption.getSefFullPath() + "?catId=" + menuOption.getCode() + "&amp;extLang=" + lang;
-                  
-                  li_level++;
-                %>
-                <li class="level-<%=(menuLevel > 3) ? 3 : menuLevel%>"><a href="<%=top_MenuURL%>"><%=menuOption.getTitle()%></a>
-                <%
-                }%>
-
-                <%
-                } %>
-                </div>
-              
-                <div id="megamenuAllCategories" class="col_3">
-                  <%if (MEGAMENU_PRDPROMO_URL != null && MEGAMENU_PRDPROMO_URL.length() > 0){%><a href="<%=MEGAMENU_PRDPROMO_URL%>"><%}%><img src="/images/products_mega_menu_promo<%=lang%>.png" alt="promo"/><%if (MEGAMENU_PRDPROMO_URL != null && MEGAMENU_PRDPROMO_URL.length() > 0){%></a><%}%>
-                  <div id="megamenuAllCategoriesBlock"><hr/><a href="/site/category?extLang=<%=lang%>"><%=top_jsp_lb.get("showAllCat" + lang)%>&nbsp;&rsaquo;&rsaquo;</a></div>
-                </div>
-              
-              </div><!-- End Item Container -->
-            </li><!-- End Item -->
-            
-            <%
-            } // /product megamenu
-            else { %>
-            
-            <%-- product menu flyout --%>
-            <li>
-                <a href="#_" class="megamenu_drop"><%=top_jsp_lb.get("prdTitle" + lang)%></a><!-- Begin Item -->
-                <div class="dropdown_2columns dropdown_container"><!-- Begin Item Container -->
-                <ul class="dropdown_flyout">
-                  
-                <%
-                menuLevel = 1;
-                
-                for (int i=0; i<top_jsp_prdCatMenuLength; i++) {
-                  PrdCategoryMenuOption2 menuOption = top_jsp_prdCatMenu.getMenuOption(i);
-                %>
-
-                <%
-                if ("<a>".equals(menuOption.getTag()) && !"1".equals(menuOption.getParent())) {
-                  top_MenuURL = "http://" + serverName + "/site/search/" + menuOption.getSefFullPath() + "?catId=" + menuOption.getCode() + "&amp;extLang=" + lang;
-                %>
-                  <li><a href="<%=top_MenuURL%>"><%=menuOption.getTitle()%></a><!-- Simple Link -->
-                <%
-                  //if (menuOption.getCode().length() == 2) menuLevel = 1;
-                }%>
-
-                <%
-                if ("<a>".equals(menuOption.getTag()) && "1".equals(menuOption.getParent())) {
-                  top_MenuURL = "http://" + serverName + "/site/category/" + menuOption.getSefFullPath() + "?catId=" + menuOption.getCode() + "&amp;extLang=" + lang;
-                %>
-                  <li class="dropdown_parent"><a href="<%=top_MenuURL%>"><%=menuOption.getTitle()%></a><ul class="dropdown_flyout_level">
-                <%}%>
-
-                <% if ("</li>".equals(menuOption.getTag())) {%></li><%}%>
-
-                <% if ("<ul>".equals(menuOption.getTag())) {
-                  menuLevel++;
-                }%>
-
-                <% if ("</ul>".equals(menuOption.getTag()) && menuLevel > 1) {%>
-                  </ul>
-                <%
-                  menuLevel--;
-                }%>
-
-                <%
-                } %>
-                <li id="flyoutAllCategories"><hr/><a href="/site/category?extLang=<%=lang%>"><%=top_jsp_lb.get("showAllCatFly" + lang)%></a></li>
-              </ul></div>
-            </li>
-            
-            <%
-            } // /product menu flyout
-            %>
-            
-            <%-- options menu --%>
-            <%
-            menuLevel = 0;
-            
-            for (int i=0; i<top_jsp_menuLength; i++) {
-              MenuOption menuOption = top_jsp_menu.getMenuOption(i);
-            %>
-            
-            <%if ("<a>".equals(menuOption.getTag()) && menuOption.getCode().length() == 4 && "1".equals(menuOption.getParent())) {%>
-              <li>
-                <a href="#_" class="megamenu_drop"><%=menuOption.getTitle()%></a><!-- Begin Item -->
-                <div class="dropdown_2columns dropdown_container"><!-- Begin Item Container -->
-                <ul class="dropdown_flyout">
-            <%
-              menuLevel = 1;
-            }%>
-            
-            <%
-            if ("<a>".equals(menuOption.getTag()) && menuOption.getCode().length() >= 4 && !"1".equals(menuOption.getParent())) {
-              if (menuOption.getURL() == null) top_MenuURL = "http://" + serverName + "/site/page/" + SwissKnife.sefEncode(menuOption.getTitle()) + "?CMCCode=" + menuOption.getCode() + "&amp;extLang=" + lang;
-              else top_MenuURL = menuOption.getURL();
-            %>
-              <li><a href="<%=top_MenuURL%>"><%=menuOption.getTitle()%></a><!-- Simple Link -->
-            <%
-              if (menuOption.getCode().length() == 4) menuLevel = 0;
-            }%>
-            
-            <%if ("<a>".equals(menuOption.getTag()) && menuOption.getCode().length() > 4 && "1".equals(menuOption.getParent())) {%>
-              <li class="dropdown_parent"><a href="#_"><%=menuOption.getTitle()%></a><ul class="dropdown_flyout_level">
-            <%}%>
-        
-            <%if ("</li>".equals(menuOption.getTag()) && menuLevel == 1) out.print("</div></li>"); else if ("</li>".equals(menuOption.getTag())) out.print("</li>");%>
-            
-            <% if ("</ul>".equals(menuOption.getTag()) && menuLevel == 1) {%>
-              </ul></div>
-            <%
-              menuLevel = 0;
-            }%>
-            
-            <% if ("<ul>".equals(menuOption.getTag())) {
-              menuLevel++;
-            }%>
-            
-            <% if ("</ul>".equals(menuOption.getTag()) && menuLevel > 1) {%>
-              </ul>
-            <%
-              menuLevel--;
-            }%>
-            
-            <%
-            } %>
-            <%-- /options menu --%>
-            
-        </ul><!-- End Mega Menu -->
-        
-        </div><!-- End Menu Container -->
-
-</div> <!-- /col -->
-</div> <!-- /row -->
+      
+  <div class="row">
+    <%@ include file="/include/top_menu.jsp" %>
+  </div> <!-- /row -->
 </div> <!-- /header -->
 
 </div> <!-- /headerContainer -->

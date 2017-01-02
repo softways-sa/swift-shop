@@ -78,7 +78,7 @@ $(document).ready(function() {
       menu_responsive: 1 // 1 = Responsive, 0 = Not responsive
   });
   
-  $('#search .typeahead').typeahead({
+  $('#product-search-top .typeahead').typeahead({
       minLength: 3
     },
     {

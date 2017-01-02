@@ -6,6 +6,9 @@
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  #headerWrapper {height: 137px; margin-bottom: 10px;}
+  #headerContainer {z-index: 300; position: fixed; top: 0; width: 100%; height: 137px; background:transparent url('/images/header_bg.png') no-repeat center top;}
+  
   .megamenu_container {display: block;}
 }
 
