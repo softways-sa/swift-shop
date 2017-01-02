@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 
-<jsp:useBean id="btm_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
+<jsp:useBean id="bottom_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
 
 <%
 top_jsp_menu.getMenu("10", lang);
@@ -8,19 +8,16 @@ top_jsp_menuLength = top_jsp_menu.getMenuLength();
 %>
 
 <%!
-static Hashtable bottom_lb = new Hashtable();
+static HashMap bottom_lb = new HashMap();
 static {
-  bottom_lb.put("nlTitle","Εγγραφείτε στο newsletter");
-  bottom_lb.put("nlTitleLG","<b>Sign up in our newsletter</b>");
+  bottom_lb.put("nlTitle","Εγγραφή στο newsletter");
+  bottom_lb.put("nlTitleLG","Sign up in our newsletter");
   bottom_lb.put("nlText","Το email σας");
   bottom_lb.put("nlTextLG","Enter your email");
   bottom_lb.put("subscribe","εγγραφή &gt;");
   bottom_lb.put("subscribeLG","subscribe &gt;");
   bottom_lb.put("js_email","Παρακαλούμε ελέγξτε το email σας.");
   bottom_lb.put("js_emailLG","Please check your email spelling.");
-
-  bottom_lb.put("socialMsg","Ακολουθήστε μας");
-  bottom_lb.put("socialMsgLG","Follow us");
 
   bottom_lb.put("errorResponse","Παρουσιάστηκε κάποιο πρόβλημα. Παρακαλούμε δοκιμάστε αργότερα.");
   bottom_lb.put("errorResponseLG","There was some problem. Please try again later.");
@@ -36,72 +33,68 @@ static {
 
 <div id="footer" class="clearfix">
     
-    <div id="footerNavWrapper" class="clearfix">
+    <div id="footerNavWrapper" class="container">
     <div id="footerNav" class="clearfix">
 
-    <div class="clearfix"> <!-- start: clearfix -->
-    <%
-    boolean firstColumn = true;
-    
-    for (int i=0; i<top_jsp_menuLength; i++) {
-      MenuOption menuOption = top_jsp_menu.getMenuOption(i); %>
-      
-      <% if ("<ul>".equals(menuOption.getTag())) { %><ul><% } %>
-      <% if ("</ul>".equals(menuOption.getTag())) {%></ul></div><% }%>
+    <div class="row">
+      <%
+      for (int i=0; i<top_jsp_menuLength; i++) {
+        MenuOption menuOption = top_jsp_menu.getMenuOption(i); %>
 
+        <% if ("<ul>".equals(menuOption.getTag())) { %><ul><% } %>
+        <% if ("</ul>".equals(menuOption.getTag())) {%></ul></div><% }%>
+
+        <%
+        if ("<a>".equals(menuOption.getTag()) && "1".equals(menuOption.getParent())) { %>
+          <div class="col-md-3 col-sm-6 column">
+          <h3><%= menuOption.getTitle() %></h3>
+        <%
+        }
+        else if ("<a>".equals(menuOption.getTag()) && !"1".equals(menuOption.getParent())) { %>
+            <li>
+            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() == null) { %><a href="<%="http://" + serverName + "/site/page/" + SwissKnife.sefEncode(menuOption.getTitle()) + "?CMCCode=" + menuOption.getCode() + "&amp;extLang=" + lang%>"><%= menuOption.getTitle() %></a><% } %>
+            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() != null) { %><a href="<% if (menuOption.getURL().startsWith("/")) out.print("http://" + serverName + menuOption.getURL()); else out.print(menuOption.getURL()); %>"><%= menuOption.getTitle() %></a><% } %>
+            </li>
+        <% } %>
       <%
-      if ("<a>".equals(menuOption.getTag()) && "1".equals(menuOption.getParent())) { %>
-        <div class="column <%if (firstColumn == true) out.print("first");%>">
-        <h3><%= menuOption.getTitle() %></h3>
-      <%
-        firstColumn = false;
       }
-      else if ("<a>".equals(menuOption.getTag()) && !"1".equals(menuOption.getParent())) { %>
-          <li>
-          <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() == null) { %><a href="<%="http://" + serverName + "/site/page/" + SwissKnife.sefEncode(menuOption.getTitle()) + "?CMCCode=" + menuOption.getCode() + "&amp;extLang=" + lang%>"><%= menuOption.getTitle() %></a><% } %>
-          <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() != null) { %><a href="<% if (menuOption.getURL().startsWith("/")) out.print("http://" + serverName + menuOption.getURL()); else out.print(menuOption.getURL()); %>"><%= menuOption.getTitle() %></a><% } %>
-          </li>
-      <% } %>
-    <%
-    }
-    %>
+      %>
     
-    <%if (SwissKnife.fileExists(wwwrootFilePath + "/images/footer_right_img" + lang + ".png")) {%><div id="footerBanners"><img src="/images/footer_right_img<%=lang%>.png" alt=""/></div><%}%>
-    
-    </div> <!-- end: clearfix -->
-    
-    <div id="footerNewsletterSocial" class="clearfix">
-    
-      <div id="leftNewsLetterFrameContainer" style="float: left;"> <!-- start: leftNewsLetterFrameContainer -->
-      <div id="leftNewsLetterFrame">
+      <div class="col-md-3 col-sm-6 column">
+        <h3><%=bottom_lb.get("nlTitle" + lang)%></h3>
+        
+        <div id="leftNewsLetterFrameContainer">
+        <div id="leftNewsLetterFrame">
 
-      <div class="clearfix">
-      <span style="float:left; margin:5px 10px 0 0;"><%=bottom_lb.get("nlTitle" + lang)%></span>
-      <input type="text" id="leftNewsletterEmail" name="leftNewsletterEmail" class="form-text" value="<%=bottom_lb.get("nlText" + lang)%>" onfocus="if (this.value == '<%=bottom_lb.get("nlText" + lang)%>') this.value='';" onblur="if (this.value == '') this.value='<%=bottom_lb.get("nlText" + lang)%>';" maxlength="75"/>
-      <input type="button" name="search-submit" class="btn" value="register" onclick="return sendNewsletterForm();"/>
-      </div>
+        <div class="clearfix">
+        <input type="text" id="leftNewsletterEmail" name="leftNewsletterEmail" class="form-text" value="<%=bottom_lb.get("nlText" + lang)%>" onfocus="if (this.value == '<%=bottom_lb.get("nlText" + lang)%>') this.value='';" onblur="if (this.value == '') this.value='<%=bottom_lb.get("nlText" + lang)%>';" maxlength="75"/>
+        <input type="button" name="search-submit" class="btn" value="register" onclick="return sendNewsletterForm();"/>
+        </div>
 
-      <div id="leftNewsletterValidatorErrorMessages"></div>
-      </div>
-      </div> <!-- /leftNewsLetterFrameContainer -->
-      
-      <div id="footerSocial"><%=bottom_lb.get("socialMsg" + lang)%>&nbsp;&nbsp;<a href="#"><img alt="" style="display:inline; vertical-align:middle;" src="/images/fb_bottom.png"></a></div>
+        <div id="leftNewsletterValidatorErrorMessages"></div>
+        </div>
+        </div> <!-- /leftNewsLetterFrameContainer -->  
+        <%
+        bottom_cmrow.initBean(databaseId, request, response, this, session);
+        bottom_cmrow.getCMRow("0180", "");
+        if (bottom_cmrow.inBounds() == true) {out.println(bottom_cmrow.getColumn("CMRHeadHTML")); out.println(bottom_cmrow.getColumn("CMRText" + lang)); out.println(bottom_cmrow.getColumn("CMRBodyHTML"));}
+        bottom_cmrow.closeResources();
+        %>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
     
-    </div> <!-- /bottom1001 -->
+    </div> <!-- /footerNav -->
+    </div> <!-- /footerNavWrapper -->
     
-    </div> <!-- end: footerNav -->
-    </div> <!-- end: footerNavWrapper -->
-    
-</div> <!-- end: footer -->
+</div> <!-- /footer -->
 
 <div id="footerBottomWrapper">
-<div id="footerBottom">
-  <div class="clearfix">
-  <div class="left"><%--<img src="/images/vivapayments_logo_small.png" alt="viva logo"/> <img src="/images/paypal_logo_small.png" alt="paypal logo"/>--%></div>
-  
-  <div class="right" style="padding-top: 20px;">&copy; SOFTWAYS HELLAS SA&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="http://www.softways.gr/" target="_blank">Softways</a></div>
+  <div id="footerBottom" class="container">
+    <div class="row">
+      <div class="col-sm-6"><img src="/images/vivapayments_logo_small.png" alt="viva logo"/> <img src="/images/paypal_logo_small.png" alt="paypal logo"/></div>
+      <div class="col-sm-6"><span class="copyright">&copy; SOFTWAYS HELLAS SA&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="http://www.softways.gr/" target="_blank">Softways</a></span></div>
+    </div>
   </div>
-</div>
 </div>
 
 <script type="text/javascript">
@@ -131,9 +124,8 @@ function sendNewsletterData(email) {
 }
 </script>
 
-<% 
-btm_cmrow.initBean(databaseId, request, response, this, session);
-btm_cmrow.getCMRow("0105", "");
-while (btm_cmrow.inBounds() == true) {out.println(btm_cmrow.getColumn("CMRBodyHTML")); btm_cmrow.nextRow();}
-btm_cmrow.closeResources();
+<%
+metatag_cmrow.goToRow(0);
+while (metatag_cmrow.inBounds() == true) {out.println(metatag_cmrow.getColumn("CMRBodyHTML")); metatag_cmrow.nextRow();}
+metatag_cmrow.closeResources();
 %>

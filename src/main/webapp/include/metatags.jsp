@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=greek" rel="stylesheet">
+
 <link rel="shortcut icon" href="/images/favicon.ico">
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -99,5 +101,4 @@ $(document).ready(function() {
 metatag_cmrow.initBean(databaseId, request, response, this, session);
 metatag_cmrow.getCMRow("0105", "");
 while (metatag_cmrow.inBounds() == true) {out.println(metatag_cmrow.getColumn("CMRHeadHTML")); metatag_cmrow.nextRow();}
-metatag_cmrow.closeResources();
 %>

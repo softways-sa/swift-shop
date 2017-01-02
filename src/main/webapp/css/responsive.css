@@ -1,6 +1,7 @@
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  
+  #footerBottom {padding: 20px 15px 30px;}
+  .copyright {float: right;}
 }
 
 /* Medium devices (desktops, 992px and up) */
