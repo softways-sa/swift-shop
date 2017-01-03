@@ -60,6 +60,8 @@ String top_MenuURL = "";
 %>
 
 <div id="headerWrapper">
+  <%@ include file="/include/mobile_menu.jsp" %>
+  
   <div><form name="langForm" method="post" action="#"><input type="hidden" name="lang" value="" /></form></div>
   <div><noscript><a href="<%="http://" + serverName + "/?extLang="%>">ΕΛΛΗΝΙΚΑ</a></noscript></div>
   <div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
@@ -69,9 +71,11 @@ String top_MenuURL = "";
     <div class="container" id="header">
 
       <div class="row">
-        <div class="col-md-4 col-sm-5 col-xs-12"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%= lang %>.png" alt="logo" style="width: 100%;"/></a></div></div>
+        <div class="col-md-4 col-sm-4 col-xs-12"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%=lang%>.png" alt="logo" style="width: 100%;"/></a></div></div>
         
-        <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          
+          <div class="row">
           <div style="float:right;">
           <div id="fastMenu">
           <ul>
@@ -93,11 +97,13 @@ String top_MenuURL = "";
             <div id="topLangLGSel"><% if (!lang.equals("LG")) {%><a href="javascript:document.langForm.lang.value='LG';document.langForm.submit();void(0);"><%}%><img src="/images/flagLG.png" alt="English" title="English" /><% if (!lang.equals("LG")) { %></a><% } %></div>  
           </div>
           </div>
-        </div>
+          </div>
           
-        <div class="col-xs-12">
+          <div class="col-xs-12">
           <div class="row">
             <div class="col-xs-6">
+              
+              <div id="product-search-top-wrapper">
               <div id="product-search-top" class="pull-right">
              
               <style>.stylish-input-group .input-group-addon{
@@ -123,14 +129,18 @@ String top_MenuURL = "";
                 </div>
                   </form>
               
-              </div>
-                
+              </div> <!-- /product-search-top -->
+            </div> <!-- /product-search-top-wrapper -->
+              
             </div>
             <div class="col-xs-6">
               <div id="minicartBar"><img src="/images/cart.png" alt="" style="display:inline; vertical-align:middle;"/><a href="/shopping_cart.jsp"><span class="hidden-xs"><%=top_jsp_lb.get("shoppingCart" + lang)%>: </span><span id="minicartBarQuan"></span>&nbsp;<span id="minicartBarItemWord"><%=top_jsp_lb.get("items" + lang)%></span> <span id="minicartBarSubtotal"></span></a></div>
             </div>
           </div>
         </div>
+          
+        </div>
+        
       </div> <!-- /row -->
       
       
@@ -141,46 +151,14 @@ String top_MenuURL = "";
 
 </div> <!-- /headerContainer -->
 
+<div id="mobile-wrapper" class="Fixed">
+  <nav id="mobile-nav">
+    <a href="#" id="mobile-menu-link"><img src="/images/mobile-menu-icon.png"></a>
+    <a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a>
+  </nav>
+</div>
+
 </div> <!-- /headerWrapper -->
-
-<%
-String top_jsp_catId = "", top_jsp_CMCCode = "", top_img_code = "", top_jsp_bg_id = "";
-
-if (request.getAttribute("CMCCode") != null) top_jsp_CMCCode = request.getAttribute("CMCCode").toString();
-
-if (request.getAttribute("catId") != null) top_jsp_catId = request.getAttribute("catId").toString();
-if ( ("/product_catalog.jsp".equals(whereAmI) && top_jsp_catId.length() == 0) || ("/product_search.jsp".equals(whereAmI) && top_jsp_catId.length() == 0) ) top_jsp_catId = "__";
-
-if (top_jsp_catId.length()>0) {
-    top_img_code = top_jsp_catId;
-    top_jsp_bg_id = "_cid";
-}
-else if (top_jsp_CMCCode.length()>0) top_img_code = top_jsp_CMCCode;
-
-if ( (top_jsp_path != null && top_jsp_path.length()>0) || top_jsp_catId.length()>0) {
-    String bg_top_img = "bg_top.jpg";
-    boolean bg_top_img_exists = false;
-    
-    if (top_img_code.length() > 6) top_img_code = top_img_code.substring(0,6);
-    
-    if ( (bg_top_img_exists = SwissKnife.fileExists(wwwrootFilePath + "/images/bg_top" + top_jsp_bg_id + top_img_code + ".jpg")) == true) bg_top_img = "bg_top" + top_jsp_bg_id + top_img_code + ".jpg";
-    
-    if (bg_top_img_exists == false && top_img_code.length() > 4) {
-        top_img_code = top_img_code.substring(0,4);
-        
-        if ( (bg_top_img_exists = SwissKnife.fileExists(wwwrootFilePath + "/images/bg_top" + top_jsp_bg_id + top_img_code + ".jpg")) == true) bg_top_img = "bg_top" + top_jsp_bg_id + top_img_code + ".jpg";
-    }
-    
-    if (bg_top_img_exists == false && top_img_code.length() > 2) {
-        top_img_code = top_img_code.substring(0,2);
-
-        if (SwissKnife.fileExists(wwwrootFilePath + "/images/bg_top" + top_jsp_bg_id + top_img_code + ".jpg")) bg_top_img = "bg_top" + top_jsp_bg_id + top_img_code + ".jpg";
-    }
-%>
-    <%--<div id="topMenuPath" class="clearfix" style="background:url('/images/<%=bg_top_img%>') no-repeat;">
-        <% if (top_jsp_path.length()>0) {%><div style="float:right; height:40px; margin:140px 0 0 0; background:url('/images/bg_top_path_title.png') repeat-x;"><h6 style="font-size:16px;font-weight:normal;color:#ffffff;margin:11px 25px 0 0"><%=top_jsp_path%></h6></div><div style="float:right; width:274px; height:40px; margin:140px 0 0 0; background:url('/images/bg_top_path_fade.png')"><!-- empty --></div><%}%>
-    </div>--%>
-<% } %>
 
 <%
 top_jsp_menu.closeResources();

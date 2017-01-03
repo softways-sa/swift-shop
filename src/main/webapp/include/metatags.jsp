@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/megamenu.css">
+<link rel="stylesheet" href="/css/mmenu/jquery.mmenu.css">
 <link rel="stylesheet" href="/css/core.css">
 <link rel="stylesheet" href="/css/catalog-sidemenu.css">
 <link rel="stylesheet" href="/css/style.css">
@@ -27,6 +28,9 @@
 <script type="text/javascript" src="/js/pure_min.js"></script>
 <script src="/js/jquery.royalslider.min.js"></script>
 <script src="/js/jsfunctions.js"></script>
+<script src="/js/fastclick.js"></script>
+<script src="/js/mmenu/jquery.mmenu.min.js"></script>
+<script src="/js/mmenu/jquery.mmenu.fixedelements.min.js"></script>
 
 <script>
 var productSearch = new Bloodhound({
@@ -78,6 +82,12 @@ $(document).ready(function() {
       menu_responsive: 1 // 1 = Responsive, 0 = Not responsive
   });
   
+  //FastClick.attach(document.getElementById('mobile-menu-link'));
+  
+  $("#mobile-menu").mmenu();
+  var mmenuAPI = $("#mobile-menu").data("mmenu");
+  $("#mobile-menu-link").on("click", function(event){event.preventDefault(); mmenuAPI.open()});
+    
   $('#product-search-top .typeahead').typeahead({
       minLength: 3
     },
