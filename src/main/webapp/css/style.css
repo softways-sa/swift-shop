@@ -3,7 +3,6 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
 #headerWrapper {height: 65px;}
 #headerContainer {display: none;}
 
-
 #topMenuPath {height: 200px; width: 980px; margin: 0 auto;}
 
 #contentContainer {background-color: #ffffff; min-height: 300px;}
@@ -30,16 +29,9 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
 
 #langSelector {float: left; margin: 0 0 0 40px;}
 
-#top_wide_searchbox{float:right; margin:15px 30px 0 0}
-#top_wide_searchbox td{vertical-align:top; padding-right:5px}
-#top_wide_searchbox select.category{width:120px}
-#top_wide_searchbox input.inputtext{width:150px}
-
 #top_shop_links{float:right; margin:10px 0 0 0}
 #top_shop_linksCart{float:left; margin:0 10px 0 0}
 #top_shop_linksMyaccount{float:left; margin:0 20px 0 0}
-
-#topSpacer{height:2px; background-color:#ffffff;}
 
 #homeContainerMain {padding:20px 0 0 0; background-color:#ffffff;}
 #homeContainerMainContent {float:left; width:750px;}
@@ -310,6 +302,7 @@ h5.entry-title {font-size: 150%;}
 .ml {margin-left: 10px;}
 .mr {margin-right: 10px;}
 .mb {margin-bottom: 10px;}
+.mt {margin-top: 10px;}
 
 /** ============== Menu? ============== **/
 ul#navmenu,
@@ -426,7 +419,11 @@ ul#navmenu li:hover ul,ul#navmenu ul li:hover ul,ul#navmenu ul ul li:hover ul,ul
   display: block;
 }
 
-/** ============== Bottom ============== **/
+/** ===================================
+
+  Bottom
+
+======================================== **/
 #footerNavWrapper {color: #666666; margin: 0 auto;}
 
 #footer {width: 100%; padding: 20px 0 10px 0; background: transparent url('/images/footer_bg.png') no-repeat center top; margin-top: 20px;}
@@ -485,55 +482,74 @@ ul#navmenu li:hover ul,ul#navmenu ul li:hover ul,ul#navmenu ul ul li:hover ul,ul
 
 .copyright {display: block; padding-top: 20px;}
 
+/** ===================================
 
-/** ============== search typeahead ============== **/
+  Product search
+
+======================================== **/
 #product-search-top-wrapper {width: 100%; max-width: 320px;}
 #product-search-top {width: 100%;}
-#product-search-top form {
+#product-search-top form, #mobileSearchForm {
   position: relative;
 }
 #product-search-top input {
   margin: 0;
   padding-right: 43px;
 }
-#product-search-top .submit {
+#product-search-top .submit, #mobileSearchForm .submit {
   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
   color: #ccc;
-  height: 38px;
+  height: 34px;
+  width: 34px;
   outline: medium none;
   padding: 0;
   position: absolute;
   right: 1px;
-  top: 1px;
-  width: 38px;
+  top: 0;
+  border-width: 0;
+  text-decoration: none;
 }
-#product-search-top .submit .glyphicon {
+#product-search-top .submit .glyphicon, #mobileSearchForm .submit .glyphicon {
   line-height: 20px;
 }
+#product-search-top .empty-message, #mobileSearchForm .empty-message {
+  padding: 5px 10px;
+  text-align: center;
+}
+#product-search-top .footer-message, #mobileSearchForm .footer-message {
+  padding: 5px 10px;
+  text-align: left;
+  border-top: 1px solid #ccc;
+}
 
+/** ===================================
+
+  Typeahead search
+
+======================================== **/
+.tt-hint {
+  font-size: 14px;
+}
 .tt-dropdown-menu {
-  width: 280px;
   margin-top: 12px;
   padding: 8px 0;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
   border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
   z-index: 99999 !important;
 }
 .tt-suggestion {
   padding: 5px 10px;
-  font-size: 12px;
 }
+.tt-suggestion p {font-size: 14px;}
 .tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: #0097cf;
+  background-color: #97ca4b;
   cursor: pointer;
+}
+.tt-suggestion.tt-cursor p {
+  color: #ffffff;
 }
 .tt-suggestion p {
   margin: 0;
@@ -541,17 +557,15 @@ ul#navmenu li:hover ul,ul#navmenu ul li:hover ul,ul#navmenu ul ul li:hover ul,ul
 .twitter-typeahead {
    width: 100%;
 }
-#product-search-top .empty-message {
-  padding: 5px 10px;
-  text-align: center;
-}
-#product-search-top .footer-message {
-  padding: 5px 10px;
-  text-align: left;
-  border-top: 1px solid #ccc;
+.tt-dropdown-menu .tt-suggestion.tt-cursor a {
+  color: #ffffff;
 }
 
-/** ============== mobile header ============== **/
+/** ===================================
+
+  Mobile header
+
+======================================== **/
 #mobile-wrapper {
   z-index: 999;
   position: fixed;

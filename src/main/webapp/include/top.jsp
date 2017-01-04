@@ -104,34 +104,14 @@ String top_MenuURL = "";
             <div class="col-xs-6">
               
               <div id="product-search-top-wrapper">
-              <div id="product-search-top" class="pull-right">
-             
-              <style>.stylish-input-group .input-group-addon{
-    background: white !important; 
-}
-.stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
-	border-color:#ccc;
-}
-.stylish-input-group button{
-    border:0;
-    background:transparent;
-                }</style>
-                <form id="searchForm" name="searchForm" action="/site/search" method="get">
-                <div class="input-group stylish-input-group">
-                    <input id="qid" name="qid" type="text" class="form-control typeahead" placeholder="Search">
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    </span>
-                </div>
+                <div id="product-search-top" class="pull-right">
+                  <form id="searchForm" name="searchForm" action="/site/search" method="get">
+                    <input id="qid" name="qid" class="form-control typeahead" type="text" placeholder="<%=top_jsp_lb.get("productSearch" + lang)%>" onclick="this.value=''">
+                    <button class="submit"><span class="glyphicon glyphicon-search"></span></button>
                   </form>
-              
-              </div> <!-- /product-search-top -->
-            </div> <!-- /product-search-top-wrapper -->
-              
+                </div>
+              </div>
+                  
             </div>
             <div class="col-xs-6">
               <div id="minicartBar"><img src="/images/cart.png" alt="" style="display:inline; vertical-align:middle;"/><a href="/shopping_cart.jsp"><span class="hidden-xs"><%=top_jsp_lb.get("shoppingCart" + lang)%>: </span><span id="minicartBarQuan"></span>&nbsp;<span id="minicartBarItemWord"><%=top_jsp_lb.get("items" + lang)%></span> <span id="minicartBarSubtotal"></span></a></div>
@@ -142,7 +122,6 @@ String top_MenuURL = "";
         </div>
         
       </div> <!-- /row -->
-      
       
   <div class="row">
     <%@ include file="/include/top_menu.jsp" %>

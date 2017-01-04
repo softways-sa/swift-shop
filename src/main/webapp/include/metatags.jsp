@@ -88,7 +88,7 @@ $(document).ready(function() {
   var mmenuAPI = $("#mobile-menu").data("mmenu");
   $("#mobile-menu-link").on("click", function(event){event.preventDefault(); mmenuAPI.open()});
     
-  $('#product-search-top .typeahead').typeahead({
+  $('.typeahead').typeahead({
       minLength: 3
     },
     {
