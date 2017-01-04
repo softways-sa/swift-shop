@@ -152,8 +152,7 @@ htmlTitle += " - " + helperBean.getColumn("name" + lang);
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
     <%@ include file="/include/metatags.jsp" %>
     
@@ -181,13 +180,13 @@ htmlTitle += " - " + helperBean.getColumn("name" + lang);
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer">
+<div class="container" id="contentContainer">
   
 <%@ include file="/include/prd_catalog_path.jsp" %>
-    
-<div id="prdContainer" class="clearfix">
 
-<%@ include file="/include/product_catalog_left.jsp" %>
+<div id="prdContainer" class="row">
+
+<div class="col-md-12">
 
 <div id="productMain">
     
@@ -720,7 +719,9 @@ for (int i=1; i<=5; i++) {
     %>
     </div>
 
-</div> <!-- end: productMain -->
+</div> <!-- /productMain -->
+
+</div> <!-- /col-->
 
 </div> <!-- end: prdContainer -->
 

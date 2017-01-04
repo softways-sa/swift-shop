@@ -67,68 +67,65 @@ String top_MenuURL = "";
   <div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
   
   <div id="headerContainer">
-  
     <div class="container" id="header">
 
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%=lang%>.png" alt="logo" style="width: 100%;"/></a></div></div>
+      <div id="headerLogoLinks" class="row">
+        <div class="col-md-4"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%=lang%>.png" alt="logo" style="width: 100%;"/></a></div></div>
         
-        <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="col-md-8">
+        <div class="row">
           
-          <div class="row">
-          <div style="float:right;">
-          <div id="fastMenu">
-          <ul>
-              <%
-              if (customer.isSignedIn() == false) { %>
-                <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
-              <%
-              }
-              else { %>
-                <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
-              <%
-              }
-              %>
-              <li><a href="/wishlist.jsp"><span style="color: red;" class="glyphicon glyphicon-heart" aria-hidden="true"></span> Wish List</a></li>
-          </ul>
+          <div id="accountWrap" class="col-md-12">
+            <div class="pull-right">
+              <div id="fastMenu">
+              <ul>
+                  <%
+                  if (customer.isSignedIn() == false) { %>
+                    <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
+                  <%
+                  }
+                  else { %>
+                    <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
+                  <%
+                  }
+                  %>
+                  <li><a href="/wishlist.jsp"><span style="color: red;" class="glyphicon glyphicon-heart" aria-hidden="true"></span> Wish List</a></li>
+              </ul>
+              </div>
+              <div id="langSelector">
+                <div id="topLangSel"><% if (!lang.equals("")) {%><a href="javascript:document.langForm.lang.value='';document.langForm.submit();void(0);"><%}%><img src="/images/flag.png" alt="Ελληνικά" title="Ελληνικά" /><% if (!lang.equals("")) { %></a><% } %></div>
+                <div id="topLangLGSel"><% if (!lang.equals("LG")) {%><a href="javascript:document.langForm.lang.value='LG';document.langForm.submit();void(0);"><%}%><img src="/images/flagLG.png" alt="English" title="English" /><% if (!lang.equals("LG")) { %></a><% } %></div>  
+              </div>
           </div>
-          <div id="langSelector">
-            <div id="topLangSel"><% if (!lang.equals("")) {%><a href="javascript:document.langForm.lang.value='';document.langForm.submit();void(0);"><%}%><img src="/images/flag.png" alt="Ελληνικά" title="Ελληνικά" /><% if (!lang.equals("")) { %></a><% } %></div>
-            <div id="topLangLGSel"><% if (!lang.equals("LG")) {%><a href="javascript:document.langForm.lang.value='LG';document.langForm.submit();void(0);"><%}%><img src="/images/flagLG.png" alt="English" title="English" /><% if (!lang.equals("LG")) { %></a><% } %></div>  
-          </div>
-          </div>
-          </div>
+          </div> <!-- /col -->
           
-          <div class="col-xs-12">
-          <div class="row">
-            <div class="col-xs-6">
-              
+          <div id="searchCartWrap" class="col-md-12">
+            <div class="pull-right">
               <div id="product-search-top-wrapper">
-                <div id="product-search-top" class="pull-right">
+                <div id="product-search-top">
                   <form id="searchForm" name="searchForm" action="/site/search" method="get">
                     <input id="qid" name="qid" class="form-control typeahead" type="text" placeholder="<%=top_jsp_lb.get("productSearch" + lang)%>" onclick="this.value=''">
                     <button class="submit"><span class="glyphicon glyphicon-search"></span></button>
                   </form>
                 </div>
               </div>
-                  
-            </div>
-            <div class="col-xs-6">
+
               <div id="minicartBar"><img src="/images/cart.png" alt="" style="display:inline; vertical-align:middle;"/><a href="/shopping_cart.jsp"><span class="hidden-xs"><%=top_jsp_lb.get("shoppingCart" + lang)%>: </span><span id="minicartBarQuan"></span>&nbsp;<span id="minicartBarItemWord"><%=top_jsp_lb.get("items" + lang)%></span> <span id="minicartBarSubtotal"></span></a></div>
             </div>
-          </div>
-        </div>
+          </div> <!-- /col -->
           
-        </div>
-        
+        </div> <!-- /row -->
+        </div> <!-- /col -->
       </div> <!-- /row -->
       
-  <div class="row">
-    <%@ include file="/include/top_menu.jsp" %>
-  </div> <!-- /row -->
-</div> <!-- /header -->
-
-</div> <!-- /headerContainer -->
+      <div class="row">
+        <div class="col-md-12">
+          <%@ include file="/include/top_menu.jsp" %>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+      
+    </div> <!-- /header -->
+  </div> <!-- /headerContainer -->
 
 <div id="mobile-wrapper" class="Fixed">
   <nav id="mobile-nav">

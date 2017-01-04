@@ -12,8 +12,9 @@
   
   .megamenu_container {display: block;}
   
-  #headerWrapper {height: 137px; margin-bottom: 10px;}
-  #headerContainer {z-index: 300; position: fixed; top: 0; width: 100%; height: 137px; background:transparent url('/images/header_bg.png') no-repeat center top;}
+  #headerLogoLinks {height: 100px;}
+  #headerWrapper {height: 149px; margin-bottom: 10px;}
+  #headerContainer {height: 149px; z-index: 300; position: fixed; top: 0; width: 100%; background:transparent url('/images/header_bg.png') no-repeat center top;}
 }
 
 /* Large devices (large desktops, 1200px and up) */

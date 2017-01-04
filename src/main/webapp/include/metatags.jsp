@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+<style>#mobile-menu.hidden {display: none;}</style> <!-- Avoid Flash of Unstyled Content -->
+
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=greek" rel="stylesheet">
 
 <link rel="shortcut icon" href="/images/favicon.ico">
@@ -84,10 +86,11 @@ $(document).ready(function() {
   
   //FastClick.attach(document.getElementById('mobile-menu-link'));
   
+  $("#mobile-menu").removeClass('hidden');
   $("#mobile-menu").mmenu();
   var mmenuAPI = $("#mobile-menu").data("mmenu");
   $("#mobile-menu-link").on("click", function(event){event.preventDefault(); mmenuAPI.open()});
-    
+  
   $('.typeahead').typeahead({
       minLength: 3
     },

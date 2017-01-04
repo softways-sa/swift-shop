@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8"%>
 
-<nav id="mobile-menu">
+<nav id="mobile-menu" class="hidden">
   <ul>
     <li><span style="overflow: visible;"><form id="mobileSearchForm" name="mobileSearchForm" action="/site/search" method="get"><input type="text" name="qid" class="form-control typeahead" placeholder="<%=top_jsp_lb.get("productSearch" + lang)%>"><button class="submit"><span class="glyphicon glyphicon-search"></span></button></form></span></li>
     <li><a href="<%="http://" + serverName + "/"%>">Home</a></li>
