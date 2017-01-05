@@ -8,16 +8,12 @@ static HashMap top_jsp_lb = new HashMap();
 static {
   top_jsp_lb.put("allprds","Όλα τα προϊόντα");
   top_jsp_lb.put("allprdsLG","All products");
-
   top_jsp_lb.put("prdTitle","Προϊόντα");
   top_jsp_lb.put("prdTitleLG","Products");
-
   top_jsp_lb.put("menuTitle","Επιλογές");
   top_jsp_lb.put("menuTitleLG","Menu");
-
   top_jsp_lb.put("productSearch","Αναζήτηση προϊόντων");
   top_jsp_lb.put("productSearchLG","Search products");
-
   top_jsp_lb.put("shoppingCart","Καλάθι αγορών");
   top_jsp_lb.put("shoppingCartLG","Shopping cart");
   top_jsp_lb.put("myAccount","Ο Λογαριασμός μου");
@@ -26,15 +22,14 @@ static {
   top_jsp_lb.put("signinLG","Sign in");
   top_jsp_lb.put("signout","έξοδος");
   top_jsp_lb.put("signoutLG","sign out");
-
   top_jsp_lb.put("items","προϊόντα - ");
   top_jsp_lb.put("itemsLG","items - ");
-  
   top_jsp_lb.put("showAllCat","Δείτε όλες τις κατηγορίες");
   top_jsp_lb.put("showAllCatLG","Show all categories");
-  
   top_jsp_lb.put("showAllCatFly","Όλες οι κατηγορίες");
   top_jsp_lb.put("showAllCatFlyLG","All categories");
+  top_jsp_lb.put("languageSelector","Γλώσσα");
+  top_jsp_lb.put("languageSelectorLG","Language");
 }
 %>
 
@@ -129,8 +124,14 @@ String top_MenuURL = "";
 
 <div id="mobile-wrapper" class="Fixed">
   <nav id="mobile-nav">
-    <a href="#" id="mobile-menu-link"><img src="/images/mobile-menu-icon.png"></a>
-    <a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a>
+    <div class="mobileMenuBtnWrap"><a href="#" id="mobile-menu-link"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
+    <div class="mobileLogoWrap"><a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
+    <div class="mobileAccountWrap">
+      <div class="mobileAccountContainer">
+        <a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+        <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+      </div>
+    </div>
   </nav>
 </div>
 

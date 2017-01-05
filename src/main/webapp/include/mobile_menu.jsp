@@ -9,8 +9,8 @@
     <li><a href="<%="/" + "/browse/onsale/?onSale=1"%>"><span><%=top_jsp_lb.get("onsaleProductsCategory" + lang)%></span></a></li>
     <li><span><%=top_jsp_lb.get("languageSelector" + lang)%></span>
        <ul>
-          <li><a href="/el/welcome">Ελληνικά</a></li>
-          <li><a href="/en/welcome">Αγγλικά</a></li>
+          <li><a href="/?lang=">Ελληνικά</a></li>
+          <li><a href="/?lang=LG">English</a></li>
        </ul>
     </li>
  </ul>

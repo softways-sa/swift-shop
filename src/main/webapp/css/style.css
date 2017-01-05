@@ -489,7 +489,7 @@ ul#navmenu li:hover ul,ul#navmenu ul li:hover ul,ul#navmenu ul ul li:hover ul,ul
 }
 #leftNewsletterValidatorErrorMessages {margin:5px 0 0 0; color:red;}
 
-.copyright {display: block; padding-top: 20px;}
+.copyright {display: block; padding: 20px 0 10px 0;}
 
 /** ===================================
 
@@ -588,27 +588,47 @@ ul#navmenu li:hover ul,ul#navmenu ul li:hover ul,ul#navmenu ul ul li:hover ul,ul
   float: left;
   width: 100%;
 }
-#mobile-nav ul {
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-#mobile-nav ul li {
+
+.mobileMenuBtnWrap {
   float: left;
-  height: 65px;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
+  width: 20%;
+}
+#mobile-menu-link {
+  height: 30px;
+  float: left;
+  margin: 17px 0 0 15px;
+  padding-top: 7px;
+}
+#mobile-menu-link .icon-bar {
+  border-radius: 1px;
+  display: block;
+  height: 2px;
+  width: 22px;
+  background-color: #ffffff;
+}
+#mobile-menu-link .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+.mobileLogoWrap {
+  float: left;
   width: 50%;
 }
-#mobile-nav #mobile-menu-link {
-  height: 20px;
-  float: left;
-}
-a#mobile-logo {
-  float: right;
-  max-width: 150px;
-}
 a#mobile-logo img {
-  width: 100%;
+  width: 160px;
+  margin: 12px auto;
+}
+
+.mobileAccountWrap {
+  float: left;
+  width: 30%;
+}
+.mobileAccountContainer {
+  float: right;
+  padding-top: 20px;
+}
+.mobileAccountContainer a {
+  color: #ffffff;
+  font-size: 20px;
+  margin-right: 8px;
 }
