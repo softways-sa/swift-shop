@@ -119,7 +119,7 @@ legend {
 
 input.text {
     font-family:Arial, Tahoma, "Trebuchet MS";
-    width: 200px;
+    /**width: 200px;**/
     background: #fefefe;
     border: 1px solid #bbb;
     padding:2px 4px 4px 4px;

@@ -27,10 +27,9 @@
 <script src="/js/typeahead.bundle.js"></script>
 <script src="/js/megamenu_plugins.js"></script>
 <script src="/js/megamenu.min.js"></script>
-<script type="text/javascript" src="/js/pure_min.js"></script>
+<script src="/js/pure_min.js"></script>
 <script src="/js/jquery.royalslider.min.js"></script>
 <script src="/js/jsfunctions.js"></script>
-<script src="/js/fastclick.js"></script>
 <script src="/js/mmenu/jquery.mmenu.min.js"></script>
 <script src="/js/mmenu/jquery.mmenu.fixedelements.min.js"></script>
 
@@ -44,12 +43,14 @@ var productSearch = new Bloodhound({
 productSearch.initialize();
 
 function updateMinicartBar(quan, subtotal, flash) {
-  if ('1' == flash) {
-    $('#minicartBar').effect("highlight", {'color':'#000000'}, 3000);
-  }
-
   $('#minicartBarQuan').html(quan);
   $('#minicartBarSubtotal').html(subtotal);
+  
+  $('.mobileCartContent .cartItemsCount').html(quan);
+  
+  if (quan > 0) {
+    $('.mobileCartContent').addClass("hasProducts");
+  }
 }
 
 function addLoadEvent(func) {
@@ -72,8 +73,6 @@ $(document).ready(function() {
       $(this).stop().animate({opacity: "1"}, 500);
   });
     
-  updateMinicartBar('<%=order.getProductCount().intValue()%>','<%=SwissKnife.formatNumber(order.getOrderPrice().getGrossCurr1(),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%>&nbsp;&euro;','0');
-    
   $('.megamenu').megaMenuCompleteSet({
       menu_speed_show : 0, // Time (in milliseconds) to show a drop down
       menu_speed_hide : 0, // Time (in milliseconds) to hide a drop down
@@ -83,8 +82,6 @@ $(document).ready(function() {
       menu_show_onload : 0, // Drop down to show on page load (type the number of the drop down, 0 for none)
       menu_responsive: 1 // 1 = Responsive, 0 = Not responsive
   });
-  
-  //FastClick.attach(document.getElementById('mobile-menu-link'));
   
   $("#mobile-menu").removeClass('hidden');
   $("#mobile-menu").mmenu();
@@ -107,6 +104,10 @@ $(document).ready(function() {
   ).on('typeahead:selected', function($e, suggestion) {
     window.location = suggestion.link;
   });
+});
+
+$(window).ready(function() {
+  updateMinicartBar('<%=order.getProductCount().intValue()%>','<%=SwissKnife.formatNumber(order.getOrderPrice().getGrossCurr1(),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%>&nbsp;&euro;','0');
 });
 </script>
 

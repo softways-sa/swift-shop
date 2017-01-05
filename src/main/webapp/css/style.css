@@ -155,7 +155,7 @@ td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:in
 #shipMethodSection label {position:relative; display:block;} 
 #shipMethodSection label .price {position:absolute; right:0px;}
 
-#shopWrapper {width:940px; border:1px #ffffff solid; -moz-border-radius:7px 7px 7px 7px; background-color:#ffffff; padding:10px; margin:0 auto; min-height:350px}
+/**#shopWrapper {border:1px #ffffff solid; -moz-border-radius:7px 7px 7px 7px; background-color:#ffffff; padding:10px; margin:0 auto; min-height:350px}**/
 
 #cart-table li {margin:0; padding:0}
 #cart-table .title {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:25px; padding:8px 10px 0 10px; font-size:15px; color:#343333; font-weight:bold; background-color:#cfcfcf; margin-bottom:10px; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
@@ -239,9 +239,6 @@ h2.homeTitle {font-size: 20px; margin-bottom: 12px; border-bottom: 2px solid #ea
   margin-bottom: 5px;
 }
 
-#newCustomerWrapper {width: 450px; float:left; margin-right: 40px;}
-#existingCustomerWrapper {width: 450px; float: left;}
-#signinForgPasswdWrapper {margin-left:160px;}
 
 #ccShopCartWrapper {width:700px; float:left;}
 #ccCustomerInfoWrapper {width: 220px; margin-left: 20px; float:left;}
@@ -625,10 +622,47 @@ a#mobile-logo img {
 }
 .mobileAccountContainer {
   float: right;
-  padding-top: 20px;
+  padding-top: 22px;
 }
-.mobileAccountContainer a {
+.mobileAccountContainer div {
+  float: left;
+}
+.mobileAccountContainer div a {
   color: #ffffff;
   font-size: 20px;
-  margin-right: 8px;
+  margin-right: 18px;
 }
+
+.mobileAccountContainer .mobileCartContent {
+  position: relative;
+}
+.mobileCartContent .cartItemsCount {
+  color: #ffffff;
+  background-color: red;
+  position: absolute;
+  height: 20px;
+  min-width: 23px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 50%;
+  right: 5px;
+  top: -15px;
+  padding: 0 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+.mobileCartContent.hasProducts .cartItemsCount {
+  opacity: 1;
+  visibility: visible;
+}
+
+/** ===================================
+
+  Login page
+
+======================================== **/
+#newCustomerWrapper {margin-bottom: 20px;}
+#signinForgPasswdWrapper {}

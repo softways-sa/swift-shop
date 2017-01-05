@@ -493,22 +493,6 @@ for (int i=1; i<=5; i++) {
             
             <%if (helperBean.getColumn("prdHomePageLink").length() > 0) {%><div style="margin:10px 0 5px 0;"><%=lb.get("manufact" + lang)%>: <%=helperBean.getColumn("prdHomePageLink")%></div><%}%>
             
-            <div style="border-bottom:dotted 1px #696464;" class="clearfix hidden-xs">
-            <div style="float:right; margin-bottom:5px;">
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style">
-            <a class="addthis_button_facebook_like" fb:like:width="125" fb:like:layout="button_count" ></a>
-            <a class="addthis_button_google_plusone" g:plusone:annotation="none"></a>
-            <a class="addthis_button_twitter"></a>
-            <a class="addthis_button_email"></a>
-            <a class="addthis_button_print"></a>
-            <a class="addthis_button_compact"></a>
-            <a class="addthis_counter addthis_bubble_style"></a>
-            </div>
-            <!-- AddThis Button END -->
-            </div>
-            </div>
-        
             <div style="margin:8px 0 10px 0;" class="clearfix"><%= helperBean.getColumn("descr" + lang)%></div>
             
             <%
@@ -735,14 +719,6 @@ for (int i=1; i<=5; i++) {
 helperBean.closeResources();
 product_catalogue.closeResources();
 %>
-
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#async=1"></script>
-<script type="text/javascript">
-var addthis_config = {
-  ui_use_css : false
-}
-$(document).ready(function(){addthis.init()});
-</script>
 
 </body>
 </html>

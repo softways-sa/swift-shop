@@ -59,8 +59,7 @@ if (request.getAttribute("signin") != null && request.getAttribute("signin").equ
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
     <%@ include file="/include/metatags.jsp" %>
     
@@ -69,68 +68,64 @@ if (request.getAttribute("signin") != null && request.getAttribute("signin").equ
 
 <body>
 
-<div id="siteContainer">
 <div id="site">
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer" class="clearfix">
+<div id="contentContainer" class="container">
 
-<div id="shopWrapper">
+  <div class="row">
     
-<div id="myaccountContainer" class="clearfix">
-    
-    <div id="newCustomerWrapper">
+    <div class="col-sm-6" id="newCustomerWrapper">
       <div class="sectionHeader"><%= lb.get("newCustomers" + lang)%></div>
 
       <p><%= lb.get("newCustText" + lang)%></p>
 
-      <div class="fl mr"><input type="button" onclick="location.href='<%= HTTP_PROTOCOL + serverName + "/" + "customer_create_account.jsp?target=" + target %>'" value="<%=lb.get("btSubmit" + lang)%>" class="button" /></div>
-      <div class="fl"><input type="button" onclick="location.href='<%=HTTP_PROTOCOL + serverName + "/" + "customer.do?cmd=guest_checkout"%>'" value="<%=lb.get("btnGuestCheckout" + lang)%>" class="button" /></div>
+      <div class="clearfix">
+        <div class="fl mr"><input type="button" onclick="location.href='<%= HTTP_PROTOCOL + serverName + "/" + "customer_create_account.jsp?target=" + target %>'" value="<%=lb.get("btSubmit" + lang)%>" class="button" /></div>
+        <div class="fl"><input type="button" onclick="location.href='<%=HTTP_PROTOCOL + serverName + "/" + "customer.do?cmd=guest_checkout"%>'" value="<%=lb.get("btnGuestCheckout" + lang)%>" class="button" /></div>
+      </div>
     </div>
     
-    <div id="existingCustomerWrapper">
-    <div class="sectionHeader"><%= lb.get("rcustomers" + lang) %></div>
+    <div class="col-sm-6" id="existingCustomerWrapper">
+      <div class="sectionHeader"><%= lb.get("rcustomers" + lang) %></div>
 
-    <div>
-        <form name="signinForm" action="<%= HTTP_PROTOCOL + serverName + "/" + "customer.do" %>" method="POST">
+      <div>
+          <form name="signinForm" action="<%= HTTP_PROTOCOL + serverName + "/" + "customer.do" %>" method="POST">
 
-        <input type="hidden" name="cmd" value="signin" />
-        <input type="hidden" name="target" value="<%= target %>" />
+          <input type="hidden" name="cmd" value="signin" />
+          <input type="hidden" name="target" value="<%= target %>" />
 
-        <p><%= lb.get("returningCustText" + lang)%></p>
-        
-        <div class="formInput">
-        <div class="clearfix"><span>Email:</span> <input name="username" type="text" value="" class="text"/></div>
-        <div class="clearfix"><span><%= lb.get("password" + lang)%>:</span> <input name="password" type="password" class="text"/></div>
-        </div>
-        
-        <div id="signinForgPasswdWrapper">
-        
-        <%
-        if (customer_signin_jsp_invalid_login == true) { %>
-            <h3 style="color:#D21920; margin-top:15px;"><%= lb.get("invalid_login" + lang) %></h3>
-        <% } %>
-        
-        <div style="margin-top:15px;"><a href="<%= "http://" + serverName + "/" + "customer_forgot_password.jsp"%>" style="text-decoration:underline;"><%= lb.get("forgotPassword" + lang)%></a></div>
+          <p><%= lb.get("returningCustText" + lang)%></p>
 
-        <div style="margin-top:15px;"><input type="submit" value="<%= lb.get("btSignIn" + lang)%>" class="button" /></div>
-        </div>
+          <div class="formInput">
+          <div class="clearfix"><span>Email:</span> <input name="username" type="text" value="" class="text"/></div>
+          <div class="clearfix"><span><%= lb.get("password" + lang)%>:</span> <input name="password" type="password" class="text"/></div>
+          </div>
 
-        </form>
+          <div id="signinForgPasswdWrapper">
+
+          <%
+          if (customer_signin_jsp_invalid_login == true) { %>
+              <h3 style="color:#D21920; margin-top:15px;"><%= lb.get("invalid_login" + lang) %></h3>
+          <% } %>
+
+          <div style="margin-top:15px;"><a href="<%= "http://" + serverName + "/" + "customer_forgot_password.jsp"%>" style="text-decoration:underline;"><%= lb.get("forgotPassword" + lang)%></a></div>
+
+          <div style="margin-top:15px;"><input type="submit" value="<%= lb.get("btSignIn" + lang)%>" class="button" /></div>
+          </div>
+
+          </form>
+      </div>
     </div>
-    </div>
 
-</div> <!-- end: myaccountContainer -->
-
-</div> <!-- end: shopWrapper -->
-
+  </div>
+        
 </div> <!-- end: contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
 </div> <!-- end: site -->
-</div> <!-- end: siteContainer -->
 
 </body>
 </html>

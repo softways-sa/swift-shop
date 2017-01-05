@@ -128,8 +128,11 @@ String top_MenuURL = "";
     <div class="mobileLogoWrap"><a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
     <div class="mobileAccountWrap">
       <div class="mobileAccountContainer">
-        <a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-        <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+        <div class="myAccountContent"><a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+        <div class="mobileCartContent">
+          <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+          <div class="cartItemsCount"></div>
+        </div>
       </div>
     </div>
   </nav>
