@@ -9,7 +9,7 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
   Header
 
 ======================================== **/
-#headerWrapper {height: 65px;}
+#headerWrapper {height: 65px; margin-bottom: 10px;}
 
 #headerContainer {display: none;}
 .megamenu_container {display: none;}
