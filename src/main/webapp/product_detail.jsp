@@ -11,59 +11,32 @@
 <jsp:useBean id="product_catalogue" scope="page" class="gr.softways.dev.eshop.category.v2.Present" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
   lb.put("zoom","Μεγέθυνση");
   lb.put("zoomLG","Enlarge image");
-  lb.put("zoomLG1","Enlarge image");
-
-  lb.put("goback","Επιστροφή στην προηγούμενη σελίδα");
-  lb.put("gobackLG","Back to Previous Page");
-  lb.put("gobackLG1","Back to Previous Page");
-
   lb.put("rootCat","Προϊόντα");
   lb.put("rootCatLG","Products");
-  lb.put("rootCatLG1","Products");
-
   lb.put("addcart","ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ");
   lb.put("addcartLG","Add to Cart");
-  lb.put("addcartLG1","Add to Cart");
-
   lb.put("addwishlist","Προσθήκη στη Wish List");
   lb.put("addwishlistLG","Add to Wish List");
-  lb.put("addwishlistLG1","Add to Wish List");
-
   lb.put("prdCode","Κωδ.");
   lb.put("prdCodeLG","Code");
-  lb.put("prdCodeLG1","Code");
-
   lb.put("productOptions","Επιλογές");
   lb.put("productOptionsLG","Options");
-  lb.put("productOptionsLG1","Options");
-
   lb.put("productOptionsSelect","Επιλέξτε");
   lb.put("productOptionsSelectLG","Select");
-  lb.put("productOptionsSelectLG1","Select");
-
   lb.put("productOptionsValue","Τιμή");
   lb.put("productOptionsValueLG","Price");
-  lb.put("productOptionsValueLG1","Price");
-
   lb.put("choose_PRD_GiftWrap","Επιλέξτε για συσκευασία δώρου");
   lb.put("choose_PRD_GiftWrapLG","Gift wrap");
-  lb.put("choose_PRD_GiftWrapLG1","Gift wrap");
-
   lb.put("jsSelectOption","Παρακαλούμε επιλέξτε μία από τις διαθέσιμες επιλογές.");
   lb.put("jsSelectOptionLG","Please select one of the available options.");
-  lb.put("jsSelectOptionLG1","Please select one of the available options.");
-
   lb.put("addedwishlist","Προστέθηκε στη wish list σας");
   lb.put("addedwishlistLG","Added to your wish list");
-  lb.put("addedwishlistLG1","Added to your wish list");
   lb.put("viewwishlist","Δείτε τη wish list");
   lb.put("viewwishlistLG","View your wish list");
-  lb.put("viewwishlistLG1","View your wish list");
-
   lb.put("addedtoyourcart","Προστέθηκε στο καλάθι σας");
   lb.put("addedtoyourcartLG","Added to your cart");
   lb.put("itemsincart","προϊόντα στο καλάθι σας");
@@ -72,16 +45,12 @@ static {
   lb.put("totalCartLG","TOTAL");
   lb.put("checkout","Ταμείο");
   lb.put("checkoutLG","Checkout");
-
   lb.put("seealso","Δείτε επίσης");
   lb.put("seealsoLG","See also");
-
   lb.put("availability","Διαθεσιμότητα");
   lb.put("availabilityLG","Availability");
-
   lb.put("manufact","Κατασκευαστής");
   lb.put("manufactLG","Brand");
-
   lb.put("availability_1","Σε απόθεμα");
   lb.put("availability_1LG","In stock");
   lb.put("availability_2","1 έως 3 ημέρες");
@@ -94,12 +63,10 @@ static {
   lb.put("availability_5LG","Upon Request");
   lb.put("availability_6","Προ-παραγγελία");
   lb.put("availability_6LG","Preorder");
-    
   lb.put("pLabelNew","ΝΕΟ!");
   lb.put("pLabelNewLG","NEW!");
   lb.put("pLabelSale","ΠΡΟΣΦΟΡΑ!");
   lb.put("pLabelSaleLG","SALE!");
-  
   lb.put("priceStart","από");
   lb.put("priceStartLG","from");
   lb.put("priceNow","τώρα");
@@ -427,22 +394,20 @@ for (int i=1; i<=5; i++) {
     </script>
     
     <div>
-        <form id="prdForm" name="prdForm" method="post" action="<%= "http://" + serverName + "/" + response.encodeURL("shopping_cart.jsp") %>">
+        <form id="prdForm" name="prdForm" method="post" action="<%= "http://" + serverName + "/shopping_cart.jsp" %>">
 
         <div>
         <input name="prdId" type="hidden" value="<%= helperBean.getHexColumn("prdId") %>" />
         <input name="action1" type="hidden" value="CART_ADD" />
         </div>
         
-        <div id="item-main" class="clearfix">
+        <div id="item-main" class="row">
             
-        <div class="item-images clearfix">
+        <div class="item-images col-sm-5">
 
-        <img class="visible-xs" src="<%=prd_img%>" style="width:100%;" alt="<%=helperBean.getColumn("name" + lang).replace("\"", "&quot;")%>"/>
-        
         <div id="item-views">
         <div class="active-view" style="position: relative;">
-            <a id="item_gallery" href="<%=zoom_prd_img%>" class="MagicZoomPlus" rel="opacity:80;zoom-width:410px;zoom-height:410px;hint:false;show-title:false;opacity-reverse:true;zoom-distance:20px;zoom-align:center;top:200px;pan-zoom:false"><img class="preImage" src="<%=prd_img%>" alt="<%=helperBean.getColumn("name" + lang).replace("\"", "&quot;")%>" width="320" height="320" /></a>
+            <a id="item_gallery" href="<%=zoom_prd_img%>" class="MagicZoomPlus" rel="opacity: 80; hint: false; show-title: false; opacity-reverse: true; zoom-position: inner;"><img class="preImage" src="<%=prd_img%>" alt="<%=helperBean.getColumn("name" + lang).replace("\"", "&quot;")%>" /></a>
             
             <div class="product_labels">
               <%if (isOffer == true) {%><p><span class="heylabel sale"><%=lb.get("pLabelSale" + lang)%></span></p><%}%>
@@ -456,27 +421,26 @@ for (int i=1; i<=5; i++) {
           <div class="alternative-wrp">
 
           <div class="alternative-view">
-              <a href="<%=zoom_prd_img%>" rel="zoom-id:item_gallery" rev="<%=prd_img%>" class="alternative-view-box selected first"><img src="<%=prd_img%>" width="70" height="70" alt="thumbnail"/></a>
-              <%
-              int prdImagesFound = 1;
-              
-              for (int i=2; i<=8; i++) {
-                  if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + ".jpg")) {
-                      prdImagesFound++;
-                      
-                      prd_img = "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + ".jpg";
+            <a href="<%=zoom_prd_img%>" rel="zoom-id:item_gallery" rev="<%=prd_img%>" class="alternative-view-box selected first"><img src="<%=prd_img%>" width="70" height="70" alt="thumbnail"/></a>
+            <%
+            int prdImagesFound = 1;
 
-                      if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + "z.jpg")) {
-                          zoom_prd_img = "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + "z.jpg";
-                      }
-                      else zoom_prd_img = "";
-              %>
-                      <%if (prdImagesFound == 5) {%><br style="clear: both;"/><%}%>
-                      <a href="<%=zoom_prd_img%>" rel="zoom-id:item_gallery" rev="<%=prd_img%>" class="alternative-view-box <%if (prdImagesFound == 5) {out.print("first"); prdImagesFound = 1;}%>"><img src="<%=prd_img%>" width="70" height="70" alt="<%=helperBean.getColumn("name" + lang).replace("\"", "&quot;")%>"/></a>
-              <%
+            for (int i=2; i<=10; i++) {
+                if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + ".jpg")) {
+                  prdImagesFound++;
+
+                  prd_img = "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + ".jpg";
+
+                  if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + "z.jpg")) {
+                      zoom_prd_img = "/prd_images/" + helperBean.getColumn("prdId") + "-" + i + "z.jpg";
                   }
-              }
-              %>
+                  else zoom_prd_img = "";
+            %>
+                  <a href="<%=zoom_prd_img%>" rel="zoom-id:item_gallery" rev="<%=prd_img%>" class="alternative-view-box <%if (prdImagesFound == 5) {out.print("first"); prdImagesFound = 1;}%>"><img src="<%=prd_img%>" width="70" height="70" alt="<%=helperBean.getColumn("name" + lang).replace("\"", "&quot;")%>"/></a>
+            <%
+                }
+            }
+            %>
           </div>
 
           </div>
@@ -485,7 +449,7 @@ for (int i=1; i<=5; i++) {
         
         </div> <!-- end: item-images -->
       
-        <div class="item-options clearfix">
+        <div class="item-options col-sm-7">
 
         <h2 style="line-height: 22px;"><%= helperBean.getColumn("name" + lang)%></h2>
         
@@ -576,10 +540,7 @@ for (int i=1; i<=5; i++) {
           <div class="addtocart_textbtn"><a class="addtocart" href="#"><%= lb.get("addcart" + lang)%></a></div>
       </div>
       
-      <%
-      if ("1".equals(helperBean.getColumn("PRD_GiftWrapAvail"))) {%>
-        <div id="item-PRD_GiftWrap"><input type="checkbox" name="PRD_GiftWrap" value="1"/>&nbsp;&nbsp;<%= lb.get("choose_PRD_GiftWrap" + lang)%> (+<%=SwissKnife.formatNumber(helperBean.getBig("giftPrcEU"),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%> &euro;)</div>
-      <% } %>
+      <%if ("1".equals(helperBean.getColumn("PRD_GiftWrapAvail"))) {%><div id="item-PRD_GiftWrap"><input type="checkbox" name="PRD_GiftWrap" value="1"/>&nbsp;&nbsp;<%= lb.get("choose_PRD_GiftWrap" + lang)%> (+<%=SwissKnife.formatNumber(helperBean.getBig("giftPrcEU"),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%> &euro;)</div><%}%>
       
         <div id="wishlist-btn" style="float:left; margin-top:20px;">
             <img style="display:inline; vertical-align:middle;" src="/images/favorites_add.png" alt="<%=lb.get("addwishlist" + lang)%>"/>

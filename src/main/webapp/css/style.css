@@ -86,7 +86,7 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
 .rvpbox-item-last {margin-right:0;}
 .rvpbox-item-name a{color:#666666;}
 
-.addtocart_textbtn {float:left; height:21px; margin-left:2px; padding:5px 20px; background-color:#29a8df; line-height:21px;}
+.addtocart_textbtn {float: left; height: 31px; margin-left: 2px; padding: 5px 20px; background-color: #29a8df; line-height: 23px;}
 .addtocart_textbtn .addtocart {color:#ffffff;}
 
 tr.prdOptionTR {background-color:#f3f3f3;}

@@ -1195,7 +1195,7 @@ prdadmin.closeResources();
                 <input type="hidden" name="prdId" value="<%=prdId%>" />
                 <input type="hidden" name="uploadPath" value="<%=productImagesFilePath%>" />
 
-                <input type="hidden" name="maxDimension" value="320" />
+                <input type="hidden" name="maxDimension" value="500" />
                 <input type="hidden" name="bgColor" value="#ffffff" />
 
                 <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">
@@ -1212,7 +1212,7 @@ prdadmin.closeResources();
                 </tr>--%>
 
                 <%
-                for (int i=1; i<=8; i++) {
+                for (int i=1; i<=10; i++) {
                 %>
                   <tr>
                     <td class="inputFrmLabelTD">Φωτογραφία #<%=i%></td>
