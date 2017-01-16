@@ -93,39 +93,6 @@ tr.prdOptionTR {background-color:#f3f3f3;}
 td.prdOptionTD {color:#000000;}
 td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:inline;}
 
-#checkout-steps-wrapper {margin:0 0 20px 0;}
-#checkout-steps {
-    padding:9px 0 8px 0;
-    background: url("/images/sprite.png") repeat-x left -548px transparent;
-    border:1px solid #E5E5E5;
-}
-#checkout-steps ul {float:left; background: url("/images/sprite.png") repeat-x 0 -590px transparent;}
-#checkout-steps ol, #checkout-steps ul {
-    list-style: none outside none;
-    margin:0; padding:0;
-}
-#checkout-steps ul li {line-height: 1em; float:left; padding:0 0 0 25px; background:url('/images/sprite.png') no-repeat scroll 0 0 transparent; font-size:14px; text-transform:uppercase;}
-
-#checkout-steps ul .num1 {width:225px; background-position:0 -606px;}
-#checkout-steps ul .num2 {width:225px; background-position:0 -635px;}
-#checkout-steps ul .num3 {width:225px; background-position:0 -664px;}
-#checkout-steps ul .num4 {float:right; background-position:0 -693px;}
-
-#checkout-steps ul .num1.active {background-position:0 -620px;}
-#checkout-steps ul .num2.active {background-position:0 -649px;}
-#checkout-steps ul .num3.active {background-position:0 -678px;}
-#checkout-steps ul .num4.active {background-position:0 -707px;}
-
-#checkout-steps ul li span {
-    background: url('/images/sprite.png') repeat-x scroll 0 -822px transparent;
-    color:#969898;
-    padding-right: 10px;
-    text-decoration: none;
-}
-#checkout-steps ul li.active span {
-    color: #000000;
-}
-
 /* start: CONTACT US */
 .contact {color: #FEFEFE; float: left; margin: 0 0 0 40px; padding: 60px 0 0 20px; width: 412px;}
 .contact h1 {color: #FEFEFE; float: left; font-size: 11px; font-weight: normal; margin: 0; padding: 5px 0 0 0; width: 150px;}
@@ -155,31 +122,6 @@ td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:in
 #shipMethodSection label {position:relative; display:block;} 
 #shipMethodSection label .price {position:absolute; right:0px;}
 
-/**#shopWrapper {border:1px #ffffff solid; -moz-border-radius:7px 7px 7px 7px; background-color:#ffffff; padding:10px; margin:0 auto; min-height:350px}**/
-
-#cart-table li {margin:0; padding:0}
-#cart-table .title {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:25px; padding:8px 10px 0 10px; font-size:15px; color:#343333; font-weight:bold; background-color:#cfcfcf; margin-bottom:10px; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
-#cart-table .title div {float:left;}
-#cart-table .items {width:518px;}
-#cart-table .price {width:100px; margin-left:20px;}
-#cart-table .qty {width:120px;}
-#cart-table .total {width:160px;}
-
-#cart-table .product-line {padding:0 10px; clear:left; height:90px; border-bottom:1px dotted #cccccc; margin-bottom:10px;}
-#cart-table .product-line div {float:left;}
-#cart-table .product-line .product-image {width:80px; border:1px solid #cccccc; margin-right:5px;}
-#cart-table .product-line .product-descr {width:432px; margin-top:25px;}
-#cart-table .product-line .product-price {width:100px; margin-left:20px; margin-top:25px;}
-#cart-table .product-line .product-qty {width:120px; margin-top:25px;}
-#cart-table .product-line .product-total {width:120px; margin-top:25px; font-weight:bold;}
-#cart-table .product-line .product-remove {width:40px; margin-top:25px;}
-
-#cart-table .cart-total-row div {float:left; margin:15px 0 0 0;}
-#cart-table .cart-total-row .cart-tips {width:680px; text-align:right; margin-top:20px;}
-#cart-table .cart-total-row .cart-total {height:31px; padding:7px 20px 0 20px; color:#343333; float:right;}
-#cart-table .cart-total-row .cart-total h2 {display:inline; color:#565656; font-size:20px; margin:0; padding:0;}
-#cart-table .cart-total-row .cart-total h2.shopcart-totalnum {color:#000000;}
-
 .sectionHeader {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:25px; padding:8px 10px 0 10px; font-size:15px; color:#343333; font-weight:bold; background-color:#cfcfcf; margin-bottom:10px; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
 
 .formInput span {line-height:24px; float:left; width:150px; text-align:right; vertical-align:middle; margin-right:10px;}
@@ -193,14 +135,12 @@ td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:in
 #cart-table-checkout .price {width:80px; text-align:right; margin-left:20px;}
 #cart-table-checkout .qty {width:90px; margin-left:60px;}
 #cart-table-checkout .total {width:100px; text-align:right;}
-
 #cart-table-checkout .product-line {padding:0 10px; clear:left; height:50px; border-bottom:1px dotted #cccccc; margin-bottom:10px;}
 #cart-table-checkout .product-line div {float:left;}
 #cart-table-checkout .product-line .product-descr {width:318px; margin-top:0px;}
 #cart-table-checkout .product-line .product-price {width:80px; margin-left:20px; margin-top:0px; text-align:right;}
 #cart-table-checkout .product-line .product-qty {width:100px; text-align:right; margin-left:20px; margin-top:0px;}
 #cart-table-checkout .product-line .product-total {width:100px; text-align:right; margin-top:0px; margin-left:30px;}
-
 .cart-total-checkout {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:31px; margin:10px 0 0 0; padding:7px 20px 0 20px; color:#343333; background-color:#cfcfcf; float:right; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
 .cart-total-checkout h2 {display:inline; color:#ffffff; font-size:20px; margin:0; padding:0;}
 .cart-total-checkout h2.shopcart-totalnum {color:#000000;}
@@ -666,3 +606,41 @@ a#mobile-logo img {
 ======================================== **/
 #newCustomerWrapper {margin-bottom: 20px;}
 #signinForgPasswdWrapper {}
+
+/** ===================================
+
+  Checkout steps
+
+======================================== **/
+#checkout-steps-wrapper {margin:0 0 20px 0;}
+#checkout-steps {
+  padding: 9px 8px 8px 0;
+  background: url("/images/sprite.png") repeat-x left -548px transparent;
+  border:1px solid #E5E5E5;
+}
+#checkout-steps ul {float:left; background: url("/images/sprite.png") repeat-x 0 -590px transparent; width: 100%;}
+#checkout-steps ol, #checkout-steps ul {
+  list-style: none outside none;
+  margin:0; padding:0;
+}
+#checkout-steps ul li {text-transform: uppercase; line-height: 14px; font-size: 15px; float:left; padding:0 0 0 25px; background:url('/images/sprite.png') no-repeat scroll 0 0 transparent;}
+
+#checkout-steps ul .num1 {width: 25%; background-position:0 -606px;}
+#checkout-steps ul .num2 {width: 25%; background-position:0 -635px;}
+#checkout-steps ul .num3 {width: 25%; background-position:0 -664px;}
+#checkout-steps ul .num4 {width: 25%; background-position:0 -693px;}
+
+#checkout-steps ul .num1.active {background-position:0 -620px;}
+#checkout-steps ul .num2.active {background-position:0 -649px;}
+#checkout-steps ul .num3.active {background-position:0 -678px;}
+#checkout-steps ul .num4.active {background-position:0 -707px;}
+
+#checkout-steps ul li span {
+  background: url('/images/sprite.png') repeat-x scroll 0 -822px transparent;
+  color:#969898;
+  padding-right: 10px;
+  text-decoration: none;
+}
+#checkout-steps ul li.active span {
+  color: #000000;
+}
