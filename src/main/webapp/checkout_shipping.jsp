@@ -11,59 +11,52 @@
 <jsp:useBean id="helperBean" scope="page" class="gr.softways.dev.util.JSPBean" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
-    lb.put("htmlTitle","Στοιχεία Αποστολής");
-    lb.put("htmlTitleLG","Delivery Information");
-    
-    lb.put("recipientTitle","ΣΤΟΙΧΕΙΑ ΑΠΟΣΤΟΛΗΣ");
-    lb.put("recipientTitleLG","DELIVERY INFORMATION");
-    
-    lb.put("note","*Τα πεδία με <b>έντονη γραφή</b> είναι απαραίτητα.");
-    lb.put("noteLG","*<b>Bold</b> fields are required.");
-    
-    lb.put("shippingName","Ονομ/μο:");
-    lb.put("shippingNameLG","Full name:");
-    lb.put("shippingAddress","Διεύθυνση:");
-    lb.put("shippingAddressLG","Address:");
-    lb.put("shippingCity","Πόλη:");
-    lb.put("shippingCityLG","City:");
-    lb.put("shippingZipCode","Τ.Κ.:");
-    lb.put("shippingZipCodeLG","ZIP/Postal code:");
-    lb.put("shippingArea","Περιοχή:");
-    lb.put("shippingAreaLG","Area:");
-    lb.put("shippingCountry","Χώρα:");
-    lb.put("shippingCountryLG","Country:");
-    lb.put("shippingPhone","Τηλέφωνο:");
-    lb.put("shippingPhoneLG","Phone number:");
-    
-    lb.put("district","Χώρα:");
-    lb.put("districtLG","Country:");
-    lb.put("location","Γεωγρ. διαμέρισμα:");
-    lb.put("locationLG","Region:");
-    
-    lb.put("jsShippingName1","Παρακαλούμε συμπληρώστε το ονοματεπώνυμο.");
-    lb.put("jsShippingName1LG","Please enter full name.");
-    lb.put("jsShippingAddress1","Παρακαλούμε συμπληρώστε την διεύθυνση.");
-    lb.put("jsShippingAddress1LG","Please enter address.");
-    lb.put("jsShippingCity1","Παρακαλούμε συμπληρώστε την πόλη.");
-    lb.put("jsShippingCity1LG","Please enter city.");
-    lb.put("jsShippingCountry1","Παρακαλούμε επιλέξτε την χώρα.");
-    lb.put("jsShippingCountry1LG","Please select country.");
-    lb.put("jsShippingZipCode1","Παρακαλούμε συμπληρώστε τον ταχυδρομικό κώδικα.");
-    lb.put("jsShippingZipCode1LG","Please enter zip/postal code.");
-    lb.put("jsShippingPhone1","Παρακαλούμε συμπληρώστε το τηλέφωνο.");
-    lb.put("jsShippingPhone1LG","Please enter phone number.");
-    
-    lb.put("jsDistrict","Παρακαλούμε επιλέξτε χώρα.");
-    lb.put("jsDistrictLG","Please select a country.");
-    lb.put("jsLocation","Παρακαλούμε επιλέξτε γεωγραφικό διαμέρισμα.");
-    lb.put("jsLocationLG","Please select a region.");
-    
-    lb.put("continueBtn","&gt; Συνέχεια");
-    lb.put("continueBtnLG","&gt; Continue");
-    lb.put("continueExpl","(θα έχετε την δυνατότητα να ελέγξετε την παραγγελία σας πριν οριστικοποιηθεί)");
-    lb.put("continueExplLG","(You can review this order before it is final)");
+  lb.put("htmlTitle","Στοιχεία Αποστολής");
+  lb.put("htmlTitleLG","Delivery Information");
+  lb.put("recipientTitle","ΣΤΟΙΧΕΙΑ ΑΠΟΣΤΟΛΗΣ");
+  lb.put("recipientTitleLG","DELIVERY INFORMATION");
+  lb.put("note","*Τα πεδία με <b>έντονη γραφή</b> είναι απαραίτητα.");
+  lb.put("noteLG","*<b>Bold</b> fields are required.");
+  lb.put("shippingName","Ονομ/μο:");
+  lb.put("shippingNameLG","Full name:");
+  lb.put("shippingAddress","Διεύθυνση:");
+  lb.put("shippingAddressLG","Address:");
+  lb.put("shippingCity","Πόλη:");
+  lb.put("shippingCityLG","City:");
+  lb.put("shippingZipCode","Τ.Κ.:");
+  lb.put("shippingZipCodeLG","ZIP/Postal code:");
+  lb.put("shippingArea","Περιοχή:");
+  lb.put("shippingAreaLG","Area:");
+  lb.put("shippingCountry","Χώρα:");
+  lb.put("shippingCountryLG","Country:");
+  lb.put("shippingPhone","Τηλέφωνο:");
+  lb.put("shippingPhoneLG","Phone number:");
+  lb.put("district","Χώρα:");
+  lb.put("districtLG","Country:");
+  lb.put("location","Γεωγρ. διαμέρισμα:");
+  lb.put("locationLG","Region:");
+  lb.put("jsShippingName1","Παρακαλούμε συμπληρώστε το ονοματεπώνυμο.");
+  lb.put("jsShippingName1LG","Please enter full name.");
+  lb.put("jsShippingAddress1","Παρακαλούμε συμπληρώστε την διεύθυνση.");
+  lb.put("jsShippingAddress1LG","Please enter address.");
+  lb.put("jsShippingCity1","Παρακαλούμε συμπληρώστε την πόλη.");
+  lb.put("jsShippingCity1LG","Please enter city.");
+  lb.put("jsShippingCountry1","Παρακαλούμε επιλέξτε την χώρα.");
+  lb.put("jsShippingCountry1LG","Please select country.");
+  lb.put("jsShippingZipCode1","Παρακαλούμε συμπληρώστε τον ταχυδρομικό κώδικα.");
+  lb.put("jsShippingZipCode1LG","Please enter zip/postal code.");
+  lb.put("jsShippingPhone1","Παρακαλούμε συμπληρώστε το τηλέφωνο.");
+  lb.put("jsShippingPhone1LG","Please enter phone number.");
+  lb.put("jsDistrict","Παρακαλούμε επιλέξτε χώρα.");
+  lb.put("jsDistrictLG","Please select a country.");
+  lb.put("jsLocation","Παρακαλούμε επιλέξτε γεωγραφικό διαμέρισμα.");
+  lb.put("jsLocationLG","Please select a region.");
+  lb.put("continueBtn","Συνέχεια");
+  lb.put("continueBtnLG","Continue");
+  lb.put("continueExpl","(θα έχετε την δυνατότητα να ελέγξετε την παραγγελία σας πριν οριστικοποιηθεί)");
+  lb.put("continueExplLG","(You can review this order before it is final)");
 }
 %>
 
@@ -96,8 +89,7 @@ int rows = 0;
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
     <%@ include file="/include/metatags.jsp" %>
     
@@ -152,55 +144,53 @@ int rows = 0;
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer" class="clearfix">
+<div id="contentContainer" class="container">
 
 <%@ include file="/include/checkout_steps.jsp" %>
 
-<div id="shopWrapper">
+<div class="row">
+  <div class="col-xs-12">
     
-<div id="myaccountContainer" class="clearfix">
+    <div class="sectionHeader"><%= lb.get("recipientTitle" + lang) %></div>
 
-<div class="sectionHeader"><%= lb.get("recipientTitle" + lang) %></div>
+    <form name="shippingForm" method="post" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>">
 
-<form name="shippingForm" method="post" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>">
+    <input type="hidden" name="cmd" value="set_shipping_address" />
 
-<input type="hidden" name="cmd" value="set_shipping_address" />
+    <div class="formInput">
 
-<div class="formInput">
+    <div class="clearfix"><span><%= lb.get("shippingName" + lang) %></span> <input type="text" name="shippingName" class="text" value="<%= shippingName %>" maxlength="75" /></div>
+    <div class="clearfix"><span><%= lb.get("shippingAddress" + lang)%></span> <input type="text" name="shippingAddress" class="text" value="<%= shippingAddress %>" maxlength="100" /></div>
+    <div class="clearfix"><span><%= lb.get("shippingZipCode" + lang) %></span> <input type="text" name="shippingZipCode" class="text" value="<%= shippingZipCode %>" maxlength="20" /></div>
+    <div class="clearfix"><span><%= lb.get("shippingCity" + lang) %></span> <input type="text" name="shippingCity" class="text" value="<%= shippingCity %>" maxlength="50" /></div>
+    <div class="clearfix"><span><%= lb.get("shippingCountry" + lang)%></span> 
+        <select name="shippingCountryCode" class="text">
+            <option value="">---</option>
+            <%
+            rows = helperBean.getTable("country","countryName" + lang);
 
-<div class="clearfix"><span><%= lb.get("shippingName" + lang) %></span> <input type="text" name="shippingName" class="text" value="<%= shippingName %>" maxlength="75" /></div>
-<div class="clearfix"><span><%= lb.get("shippingAddress" + lang)%></span> <input type="text" name="shippingAddress" class="text" value="<%= shippingAddress %>" maxlength="100" /></div>
-<div class="clearfix"><span><%= lb.get("shippingZipCode" + lang) %></span> <input type="text" name="shippingZipCode" class="text" value="<%= shippingZipCode %>" maxlength="20" /></div>
-<div class="clearfix"><span><%= lb.get("shippingCity" + lang) %></span> <input type="text" name="shippingCity" class="text" value="<%= shippingCity %>" maxlength="50" /></div>
-<div class="clearfix"><span><%= lb.get("shippingCountry" + lang)%></span> 
-    <select name="shippingCountryCode" class="text">
-        <option value="">---</option>
-        <%
-        rows = helperBean.getTable("country","countryName" + lang);
+            for (int i=0; i<rows; i++) { %>
+                <option value="<%= helperBean.getColumn("countryCode") %>" <% if (shippingCountryCode.equals(helperBean.getColumn("countryCode"))) out.print("SELECTED"); %>><%= helperBean.getColumn("countryName" + lang) %></option>
+            <%
+                helperBean.nextRow();
+            } %>
+        </select>
+    </div>
+    <div class="clearfix"><span><%= lb.get("shippingPhone" + lang) %></span> <input type="text" name="shippingPhone" class="text" value="<%= shippingPhone %>" maxlength="30" /></div>
 
-        for (int i=0; i<rows; i++) { %>
-            <option value="<%= helperBean.getColumn("countryCode") %>" <% if (shippingCountryCode.equals(helperBean.getColumn("countryCode"))) out.print("SELECTED"); %>><%= helperBean.getColumn("countryName" + lang) %></option>
-        <%
-            helperBean.nextRow();
-        } %>
-    </select>
+    </div>
+
+    </form>
+
+    <div style="float:left; margin:20px 0 0 160px;">
+      <div style="float:left; margin-right:10px;"><a href="javascript:confirmContinue();void(0);"><span class="button"><%= lb.get("continueBtn" + lang)%></span></a></div>
+      <div style="float:left; line-height:35px; vertical-alignment:middle;"><span class="shop-tips"><%= lb.get("continueExpl" + lang)%></span></div>
+    </div>
+    
+  </div>
 </div>
-<div class="clearfix"><span><%= lb.get("shippingPhone" + lang) %></span> <input type="text" name="shippingPhone" class="text" value="<%= shippingPhone %>" maxlength="30" /></div>
 
-</div>
-
-</form>
-
-<div style="float:left; margin:20px 0 0 160px;">
-<div style="float:left; margin-right:10px;"><a href="javascript:confirmContinue();void(0);"><span class="button"><%= lb.get("continueBtn" + lang)%></span></a></div>
-<div style="float:left; line-height:35px; vertical-alignment:middle;"><span class="shop-tips"><%= lb.get("continueExpl" + lang)%></span></div>
-</div>
-
-</div> <!-- end: myaccountContainer -->
-
-</div> <!-- end: shopWrapper -->
-
-</div> <!-- end: contentContainer -->
+</div> <!-- /contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
