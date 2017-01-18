@@ -112,40 +112,23 @@ td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:in
 #prdCatalogPath h3, #prdCatalogPath h3 a {font-weight: normal; color: #000000; text-decoration: none; font-size: 14px; display: inline;}
 #prdCatalogPath h3 a:hover {text-decoration: underline;}
 
-#shipMethodWrapper {margin:20px 0 10px 0;}
-#shipMethodTitle {font-weight:bold; height:21px;}
-#shipMethodSection {padding:5px 0px 10px 0px;}
-#shipMethodSection .item {padding:10px 0 10px 0;}
-#shipMethodSection .item.selected {color:#000000; background-color:#e9e9e9; border:0px solid #86E491;}
-#shipMethodSection .checkbox {float:left; width:40px;}
-#shipMethodSection .info {float:left; width:500px;}
-#shipMethodSection label {position:relative; display:block;} 
-#shipMethodSection label .price {position:absolute; right:0px;}
-
-.sectionHeader {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:25px; padding:8px 10px 0 10px; font-size:15px; color:#343333; font-weight:bold; background-color:#cfcfcf; margin-bottom:10px; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
+.sectionHeader {
+  border-radius: 7px 7px 7px 7px;
+  border: 1px solid #cfcfcf;
+  height: 33px;
+  padding: 8px 10px 0 10px;
+  font-size: 15px;
+  color: #343333;
+  font-weight: 700;
+  background-color: #cfcfcf;
+  margin-bottom: 10px;
+  background-image: url(/images/button_highlighter.png);
+  background-repeat: repeat-x;
+}
 
 .formInput span {line-height:24px; float:left; width:150px; text-align:right; vertical-align:middle; margin-right:10px;}
 .formInput input {float:left;}
 .formInput div {margin-top:10px;}
-
-#cart-table-checkout li {margin:0; padding:0}
-#cart-table-checkout .title {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:25px; padding:8px 10px 0 10px; font-size:15px; color:#343333; font-weight:bold; background-color:#cfcfcf; margin-bottom:10px; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
-#cart-table-checkout .title div {float:left;}
-#cart-table-checkout .items {width:318px;}
-#cart-table-checkout .price {width:80px; text-align:right; margin-left:20px;}
-#cart-table-checkout .qty {width:90px; margin-left:60px;}
-#cart-table-checkout .total {width:100px; text-align:right;}
-#cart-table-checkout .product-line {padding:0 10px; clear:left; height:50px; border-bottom:1px dotted #cccccc; margin-bottom:10px;}
-#cart-table-checkout .product-line div {float:left;}
-#cart-table-checkout .product-line .product-descr {width:318px; margin-top:0px;}
-#cart-table-checkout .product-line .product-price {width:80px; margin-left:20px; margin-top:0px; text-align:right;}
-#cart-table-checkout .product-line .product-qty {width:100px; text-align:right; margin-left:20px; margin-top:0px;}
-#cart-table-checkout .product-line .product-total {width:100px; text-align:right; margin-top:0px; margin-left:30px;}
-.cart-total-checkout {-moz-border-radius:7px 7px 7px 7px; border:1px solid #cfcfcf; height:31px; margin:10px 0 0 0; padding:7px 20px 0 20px; color:#343333; background-color:#cfcfcf; float:right; background-image:url(/images/button_highlighter.png); background-repeat:repeat-x;}
-.cart-total-checkout h2 {display:inline; color:#ffffff; font-size:20px; margin:0; padding:0;}
-.cart-total-checkout h2.shopcart-totalnum {color:#000000;}
-
-#payMethodWrapper {margin:20px 0 0 0;}
 
 h2.homeTitle {font-size: 20px; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px; color: #58595b;}
 
@@ -178,10 +161,6 @@ h2.homeTitle {font-size: 20px; margin-bottom: 12px; border-bottom: 2px solid #ea
   font-size: 13px;
   margin-bottom: 5px;
 }
-
-
-#ccShopCartWrapper {width:700px; float:left;}
-#ccCustomerInfoWrapper {width: 220px; margin-left: 20px; float:left;}
 
 a.prdcCatnameLink {color: #565656; font-weight: normal;}
 a.prdcCatnameLink:hover {color: #333333;}
@@ -218,9 +197,6 @@ a.prdcCatnameLink:hover {color: #333333;}
 .heylabel {
   background-image: url("/images/heylabel_red.gif");
 }
-
-#checkoutSubtotal {width:678px; text-align:right; font-weight:bold;}
-#checkoutShipCost {width:678px; margin-top:10px; text-align:right; font-weight:bold;}
 
 #topLangSel img, #topLangLGSel img {width: 16px;}
 
@@ -644,3 +620,14 @@ a#mobile-logo img {
 #checkout-steps ul li.active span {
   color: #000000;
 }
+
+/** ===================================
+
+  Checkout confirm
+
+======================================== **/
+#shipMethodWrapper {margin:20px 0 10px 0;}
+#shipMethodTitle {font-weight:bold; height:21px;}
+#shipMethodSection {padding:5px 0px 10px 0px;}
+#shipMethodSection .item {padding: 10px 10px 10px 10px;}
+#shipMethodSection .item.selected {color:#000000; background-color:#e9e9e9; border:0px solid #86E491;}
