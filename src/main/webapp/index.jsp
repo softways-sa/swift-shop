@@ -45,7 +45,10 @@ else {
 
   <link href='/css/owl-carousel/owl.carousel.css' rel='stylesheet'>
   <link href='/css/owl-carousel/owl.theme.css' rel='stylesheet'>
-  <style>.owl-carousel .item-box-wrapper{width: 200px; margin-right: 0; display: block; float: none; margin: 0 auto;}</style>
+  <style>
+    #homeContainerMain .itemsCarouselWrapper:first-child {margin-bottom: 20px;}
+    .owl-carousel .item-box-wrapper{width: 200px; margin-right: 0; display: block; float: none; margin: 0 auto;}
+  </style>
 
   <%=CMRHeadHTML%>
 </head>
@@ -81,7 +84,7 @@ else {
   <%=CMRBodyHTML%>
 
   <script src='/js/owl.carousel.min.js'></script>
-  <script>$(document).ready(function() {$('.owl-carousel').owlCarousel({navigation: true, items: 5, itemsDesktop: [1199,4], itemsDesktopSmall: [991,3], itemsTablet: [677,2], itemsMobile: [540,1]});});</script>
+  <script>$(document).ready(function() {$('.owl-carousel').owlCarousel({navigation: true, items: 5, itemsDesktop: [1199,4], itemsDesktopSmall: [991,3], itemsTablet: [677,2], itemsMobile: [540,1], navigationText:["<i class=\"fa fa-chevron-left\"></i>","<i class=\"fa fa-chevron-right\"></i>"]});});</script>
 
   <%
   searchArticle.closeResources();

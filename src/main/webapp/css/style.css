@@ -129,7 +129,14 @@ td.prdOptionTD h1 {font-size:12px; font-weight:normal; color:#000000; display:in
 .formInput input {float:left;}
 .formInput div {margin-top:10px;}
 
-h2.homeTitle {font-size: 20px; margin-bottom: 12px; border-bottom: 2px solid #eaeaea; padding-bottom: 8px; color: #58595b;}
+h2.homeTitle {
+  font-size: 28px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 8px;
+  color: #58595b;
+  font-weight: 400;
+}
 
 .megamenu .myprdmenu ul {list-style: none outside none;}
 .megamenu .myprdmenu ul.level-1 {margin:0 0 15px 0; padding:0;}
