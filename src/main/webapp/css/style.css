@@ -47,8 +47,7 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
 #homeContainerMain {padding:20px 0 0 0; background-color:#ffffff;}
 #homeContainerMainContent {float:left; width:750px;}
 
-#contentWrapper{margin:0; padding-top:0;}
-#content {float:left; width:748px; line-height:20px;}
+#content {line-height: 22px;}
 
 #contactContainer {width: 980px; margin:0 0 0 0;}
 #contactForm {background-color:#ffffff; float:left; width:450px; padding:20px 0 0 0;}
@@ -206,7 +205,7 @@ a.prdcCatnameLink:hover {color: #333333;}
 #flyoutAllCategories hr {margin: 6px 0 6px 0;}
 #flyoutAllCategories a {font-weight: bold;}
 
-.post {margin-bottom: 60px;}
+.post {margin-bottom: 40px; line-height: 22px;}
 h5.entry-title {font-size: 150%;}
 .post .entry-title {margin-bottom: 15px;}
 .post .post-content {color: #747474;}

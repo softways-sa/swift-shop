@@ -10,27 +10,22 @@
 <jsp:useBean id="cmcategory" scope="page" class="gr.softways.dev.swift.cmcategory.Present" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
   lb.put("htmlTitle","");
   lb.put("htmlTitleLG","");
-
   lb.put("more","Διαβάστε περισσότερα");
   lb.put("moreLG","Read more");
   lb.put("moreLG1","Read more");
   lb.put("moreLG2","Read more");
-  
   lb.put("pub","Δημοσιεύθηκε");
   lb.put("pubLG","Published on");
   lb.put("pubLG1","Published on");
   lb.put("pubLG2","Published on");
-
   lb.put("noRecords","Δεν βρέθηκαν καταχωρήσεις.");
   lb.put("noRecordsLG","No records found.");
-
   lb.put("next","Επόμενη");
   lb.put("nextLG","Next");
-
   lb.put("previous","Προηγούμενη");
   lb.put("previousLG","Previous");
 }
@@ -105,16 +100,15 @@ if (!CMCCode.equals("") && !CMCCode.trim().startsWith("01")) {
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
-    <%@ include file="/include/metatags.jsp" %>
-    
-    <meta name="keywords" content="<%= htmlKeywords %>" />
+  <%@ include file="/include/metatags.jsp" %>
 
-    <title><%= htmlTitle %></title>
-    
-    <%=CMRHeadHTML%>
+  <meta name="keywords" content="<%= htmlKeywords %>" />
+
+  <title><%= htmlTitle %></title>
+
+  <%=CMRHeadHTML%>
 </head>
 
 <body>
@@ -123,20 +117,15 @@ if (!CMCCode.equals("") && !CMCCode.trim().startsWith("01")) {
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer">
+<div id="contentContainer" class="container">
 
-<div id="contentWrapper" class="clearfix">
-    
-<%@ include file="/include/product_catalog_left.jsp" %>
-
-<div id="content">
 <%
 if (totalRowCount == 1) {
   String gimg = "", zoom_gimg = "";
   boolean pgallery = false;
 %>
   <div class="clearfix">
-    <div class="clearfix"><%= searchArticle.getColumn("CMRText" + lang) %></div>
+    <div id="content" class="clearfix"><%= searchArticle.getColumn("CMRText" + lang) %></div>
     
     <%
       for (int i=1; i<=20; i++) if (SwissKnife.fileExists(wwwrootFilePath + "/gimages/" + searchArticle.getColumn("CMRCode") + "-" + i + ".jpg")) {pgallery = true; gimg = "/gimages/" + searchArticle.getColumn("CMRCode") + "-" + i + ".jpg"; break;}
@@ -174,13 +163,6 @@ if (totalRowCount == 1) {
               }
             }
             %>
-            <%--<li class="ps_preview">
-              <div class="ps_preview_wrapper">
-                <!-- Thumbnail comes here -->
-              </div>
-              <!-- Little triangle -->
-              <span></span>
-            </li>--%>
           </ul>
           </div>
           
@@ -263,15 +245,12 @@ else if (totalRowCount > 1) {
 else if (totalRowCount <= 0) { %>
     <div><b><%= lb.get("noRecords" + lang) %></b></div>
 <% } %>
-</div> <!-- end: content -->
 
-</div> <!-- end: contentWrapper -->
-
-</div> <!-- end: contentContainer -->
+</div> <!-- /contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
-</div> <!-- end: site -->
+</div> <!-- /site -->
 
 <%=CMRBodyHTML%>
 
