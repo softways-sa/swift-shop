@@ -97,6 +97,8 @@ if (!CMCCode.equals("") && !CMCCode.trim().startsWith("01")) {
         }
     }
 }
+
+boolean pgallery = false;
 %>
 
 <!DOCTYPE html>
@@ -122,7 +124,6 @@ if (!CMCCode.equals("") && !CMCCode.trim().startsWith("01")) {
 <%
 if (totalRowCount == 1) {
   String gimg = "", zoom_gimg = "";
-  boolean pgallery = false;
 %>
   <div class="clearfix">
     <div id="content" class="clearfix"><%= searchArticle.getColumn("CMRText" + lang) %></div>
@@ -132,41 +133,20 @@ if (totalRowCount == 1) {
       
       if (pgallery == true) {
       %>
-        <link rel="stylesheet" type="text/css" href="/css/psgallery.css" />
-        
-        <script type="text/javascript" src="/js/psgallery.js"></script>
-      
-        <div class="pgallery clearfix">
-          
-          <%--<div id="loader" class="loader"></div>--%>
-
-          <div id="ps_container" class="ps_container">
-          <div class="ps_image_wrapper">
-            <!-- First initial image -->
-            <img src="<%=gimg%>" alt="" />
-          </div>
-          <!-- Navigation items -->
-          <div class="ps_next"></div>
-          <div class="ps_prev"></div>
-          <!-- Dot list with thumbnail preview -->
-          <ul class="ps_nav">
+        <div id="gallery-wrapper">
+          <div id="royalSlider" class="royalSlider rsDefault">
             <%
-            boolean first = true;
-
             for (int i=1; i<=20; i++) {
               if (SwissKnife.fileExists(wwwrootFilePath + "/gimages/" + searchArticle.getColumn("CMRCode") + "-" + i + ".jpg")) {
                 gimg = "/gimages/" + searchArticle.getColumn("CMRCode") + "-" + i + ".jpg";
             %>
-                  <li <%if (first == true) out.print("class=\"selected\"");%>><a href="<%=gimg%>" rel="<%=gimg%>">Image <%=i%></a></li>
+                <a class="rsImg" href="<%=gimg%>"><img class="rsTmb" src="<%=gimg%>" alt="Photo Gallery" /></a>
             <%
-                first = false;
               }
             }
             %>
-          </ul>
           </div>
-          
-        </div> <!-- end: pgallery -->
+        </div>
       <%
       }
       %>
@@ -251,6 +231,42 @@ else if (totalRowCount <= 0) { %>
 <%@ include file="/include/bottom.jsp" %>
 
 </div> <!-- /site -->
+
+<%
+if (pgallery == true) { %>
+  <link href="/css/royalslider/skins/default/rs-default.css?v=1.0.4" rel="stylesheet">
+  
+  <script>
+  jQuery(document).ready(function($) {
+    $('#royalSlider').royalSlider({
+      fullscreen: {
+        enabled: true,
+        nativeFS: true
+      },
+      controlNavigation: 'thumbnails',
+      autoScaleSlider: true,
+      autoScaleSliderWidth: 1024,
+      autoScaleSliderHeight: 768,
+      loop: false,
+      imageScaleMode: 'fit-if-smaller',
+      navigateByClick: true,
+      numImagesToPreload:2,
+      arrowsNav:true,
+      arrowsNavAutoHide: true,
+      arrowsNavHideOnTouch: true,
+      keyboardNavEnabled: true,
+      fadeinLoadedSlide: true,
+      globalCaption: true,
+      globalCaptionInside: false,
+      thumbs: {
+        appendSpan: true,
+        firstMargin: true,
+        paddingBottom: 4
+      }
+    });
+  });
+  </script>
+<%}%>
 
 <%=CMRBodyHTML%>
 

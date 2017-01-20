@@ -9,115 +9,58 @@
 <jsp:useBean id="contact_jsp_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
   lb.put("lastname","Επώνυμο");
   lb.put("lastnameLG","Last name");
-  lb.put("lastnameLG1","Last name");
-  lb.put("lastnameLG2","Last name");
   lb.put("firstname","Όνομα");
   lb.put("firstnameLG","First name");
-  lb.put("firstnameLG1","First name");
-  lb.put("firstnameLG2","First name");
   lb.put("companyname","Επωνυμία εταιρίας");
   lb.put("companynameLG","Company name");
-  lb.put("companynameLG1","Company name");
-  lb.put("companynameLG2","Company name");
   lb.put("address","Διεύθυνση");
   lb.put("addressLG","Address");
-  lb.put("addressLG1","Address");
-  lb.put("addressLG2","Address");
   lb.put("postalcode","Τ.Κ.");
   lb.put("postalcodeLG","Postal code");
-  lb.put("postalcodeLG1","Postal code");
-  lb.put("postalcodeLG2","Postal code");
   lb.put("city","Πόλη");
   lb.put("cityLG","City");
-  lb.put("cityLG1","City");
-  lb.put("cityLG2","City");
   lb.put("country","Xώρα");
   lb.put("countryLG","Country");
-  lb.put("countryLG1","Country");
-  lb.put("countryLG2","Country");
   lb.put("email","Εmail");
   lb.put("emailLG","Εmail");
-  lb.put("emailLG1","Εmail");
-  lb.put("emailLG2","Εmail");
   lb.put("phone","Τηλέφωνο");
   lb.put("phoneLG","Telephone");
-  lb.put("phoneLG1","Telephone");
-  lb.put("phoneLG2","Telephone");
   lb.put("fax","Φαξ");
   lb.put("faxLG","Fax");
-  lb.put("faxLG1","Fax");
-  lb.put("faxLG2","Fax");
   lb.put("cellphone","Κινητό");
   lb.put("cellphoneLG","Cellphone");
-  lb.put("cellphoneLG1","Cellphone");
-  lb.put("cellphoneLG2","Cellphone");
   lb.put("message","Μήνυμα");
   lb.put("messageLG","Message");
-  lb.put("messageLG1","Message");
-  lb.put("messageLG2","Message");
   lb.put("captchaLabel","Πληκτρολογείστε τους χαρακτήρες της παρακάτω εικόνας");
   lb.put("captchaLabelLG","Type the characters you see in the picture below");
-  lb.put("captchaLabelLG1","Type the characters you see in the picture below");
-  lb.put("captchaLabelLG2","Type the characters you see in the picture below");
   lb.put("sendButton","Αποστολή");
   lb.put("sendButtonLG","Send");
-  lb.put("sendButtonLG1","Send");
-  lb.put("sendButtonLG2","Send");
-
   lb.put("req","Απαραίτητα στοιχεία");
   lb.put("reqLG","Required fields");
-  lb.put("reqLG1","Required fields");
-  lb.put("reqLG2","Required fields");
-
   lb.put("jsLastName","Παρακαλούμε συμπληρώστε το επώνυμο σας.");
   lb.put("jsLastNameLG","Please enter your last name.");
-  lb.put("jsLastNameLG1","Please enter your last name.");
-  lb.put("jsLastNameLG2","Please enter your last name.");
   lb.put("jsFirstName","Παρακαλούμε συμπληρώστε το όνομα σας.");
   lb.put("jsFirstNameLG","Please enter your first name.");
-  lb.put("jsFirstNameLG1","Please enter your first name.");
-  lb.put("jsFirstNameLG2","Please enter your first name.");
   lb.put("jsEmail","Παρακαλούμε ελέγξτε το email σας.");
   lb.put("jsEmailLG","Please check your email.");
-  lb.put("jsEmailLG1","Please check your email.");
-  lb.put("jsEmailLG2","Please check your email.");
   lb.put("jsPhone","Παρακαλούμε συμπληρώστε το τηλέφωνό σας.");
   lb.put("jsPhoneLG","Please enter your telephone.");
-  lb.put("jsPhoneLG1","Please enter your telephone.");
-  lb.put("jsPhoneLG2","Please enter your telephone.");
   lb.put("jsCaptcha_response__hidden","Παρακαλούμε συμπληρώστε τους χαρακτήρες επαλήθευσης.");
   lb.put("jsCaptcha_response__hiddenLG","Please enter word verification.");
-  lb.put("jsCaptcha_response__hiddenLG1","Please enter word verification.");
-  lb.put("jsCaptcha_response__hiddenLG2","Please enter word verification.");
-
   lb.put("thankYou","Ευχαριστούμε που επικοινωνήσατε μαζί μας.");
   lb.put("thankYouLG","Thank you for contacting us.");
-  lb.put("thankYouLG1","Thank you for contacting us.");
-  lb.put("thankYouLG2","Thank you for contacting us.");
-  
   lb.put("captchaError","Η λέξη επαλήθευσης ήταν λάθος.");
   lb.put("captchaErrorLG","The characters you entered didn't match the word verification.");
-  lb.put("captchaErrorLG1","The characters you entered didn't match the word verification.");
-  lb.put("captchaErrorLG2","The characters you entered didn't match the word verification.");
-  
   lb.put("wrongCaptcha","Η λέξη επαλήθευσης ήταν λάθος.");
   lb.put("wrongCaptchaLG","The characters you entered didn't match the word verification.");
-  lb.put("wrongCaptchaLG1","The characters you entered didn't match the word verification.");
-  lb.put("wrongCaptchaLG2","The characters you entered didn't match the word verification.");
-  
   lb.put("errorSending","Παρουσιάστηκε κάποιο πρόβλημα. Παρακαλούμε δοκιμάστε ξανά.");
   lb.put("errorSendingLG","An error occurred. Please try again.");
-  lb.put("errorSendingLG1","An error occurred. Please try again.");
-  lb.put("errorSendingLG2","An error occurred. Please try again.");
-  
   lb.put("copyReq","Αποστολή αντιγράφου σε σας");
   lb.put("copyReqLG","Send copy to yourself");
-  lb.put("copyReqLG1","Send copy to yourself");
-  lb.put("copyReqLG2","Send copy to yourself");
 }
 %>
 
@@ -159,8 +102,7 @@ if (rowCount > 0) {
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
   <%@ include file="/include/metatags.jsp" %>
 
@@ -214,7 +156,7 @@ if (rowCount > 0) {
   }
   </style>
     
-  <script type="text/javascript">
+  <script>
   function validateForm(form) {
     if (isEmpty(form.firstname.value) == true) {
       alert("<%= lb.get("jsFirstName" + lang) %>");
@@ -249,84 +191,87 @@ if (rowCount > 0) {
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer" class="clearfix">
+<div id="contentContainer" class="container">
+  <div class="row"><div class="col-xs-12"><div id="google_map_canvas"></div></div></div>
   
-<div id="contactContainer" class="clearfix">
+  <div class="row mt">
+    
+    <div class="col-md-7">
+      <div id="contactForm">
 
-<div id="google_map_canvas"></div>
+      <form id="mailForm" method="post" action="/ContactUsForm.do" enctype="multipart/form-data">
 
-<div id="contactForm">
+      <div>
+      <input type="hidden" name="subject__hidden" value="WEB SITE ΕΠΙΚΟΙΝΩΝΙΑ"/>
+      <input type="hidden" name="returnurl__hidden" value="<%=urlSuccess%>"/>
+      <input type="hidden" name="formRecipientKey__hidden" value="contactEmailTo"/>
+      </div>
 
-<form id="mailForm" method="post" action="/ContactUsForm.do" enctype="multipart/form-data">
-  
-<div>
-<input type="hidden" name="subject__hidden" value="WEB SITE ΕΠΙΚΟΙΝΩΝΙΑ"/>
-<input type="hidden" name="returnurl__hidden" value="<%=urlSuccess%>"/>
-<input type="hidden" name="formRecipientKey__hidden" value="contactEmailTo"/>
-</div>
+      <fieldset id="field1">
+        <legend>E-mail</legend>
 
-<fieldset id="field1">
-  <legend>E-mail</legend>
-  
-  <%
-  if (status != null && "OK".equals(status)) { %>
-    <div style="padding-bottom: 25px;"><h3><%=lb.get("thankYou" + lang)%></h3></div>
-  <%
-  }
-  else if (status != null && request.getAttribute("regFormCaptchaError") != null) { %>
-    <div style="padding-bottom: 25px;"><h3 style="color: red;"><%=lb.get("wrongCaptcha" + lang)%></h3></div>
-  <%
-  }
-  else if (status != null && "ERROR".equals(status)) { %>
-    <div style="padding-bottom: 25px;"><h3 style="color: red;"><%=lb.get("errorSending" + lang)%></h3></div>
-  <%
-  } %>
+        <%
+        if (status != null && "OK".equals(status)) { %>
+          <div style="padding-bottom: 25px;"><h3><%=lb.get("thankYou" + lang)%></h3></div>
+        <%
+        }
+        else if (status != null && request.getAttribute("regFormCaptchaError") != null) { %>
+          <div style="padding-bottom: 25px;"><h3 style="color: red;"><%=lb.get("wrongCaptcha" + lang)%></h3></div>
+        <%
+        }
+        else if (status != null && "ERROR".equals(status)) { %>
+          <div style="padding-bottom: 25px;"><h3 style="color: red;"><%=lb.get("errorSending" + lang)%></h3></div>
+        <%
+        } %>
 
-  <input type="hidden" name="firstname__label" value="<%=lb.get("firstname" + lang)%>"/>
-  <input type="hidden" name="lastname__label" value="<%=lb.get("lastname" + lang)%>"/>
-  <input type="hidden" name="email__label" value="Email"/>
-  <input type="hidden" name="phone__label" value="<%=lb.get("phone" + lang)%>"/>
-  <input type="hidden" name="message__label" value="<%=lb.get("message" + lang)%>"/>
-  
-  <label for="firstname"><%=lb.get("firstname" + lang)%> <span class="required">*</span></label><input id="firstname" name="firstname" type="text" value="<%=firstname%>"/><br/>
-  <label for="lastname"><%=lb.get("lastname" + lang)%> <span class="required">*</span></label><input id="lastname" name="lastname" type="text" value="<%=lastname%>" /><br/>
-  <label for="email">E-mail <span class="required">*</span></label><input id="email" name="email" type="text" value="<%=email%>" /><br/>
-  <label for="phone"><%= lb.get("phone" + lang) %></label><input id="phone" name="phone" type="text" value="<%=phone%>" /><br/>
-  <label for="message"><%= lb.get("message" + lang) %></label><textarea id="message" name="message"><%=message%></textarea><br/>
-  <label for="copyReq__hidden" style="width:auto;"><%=lb.get("copyReq" + lang)%>&nbsp;</label><input id="copyReq__hidden" name="copyReq__hidden" type="checkbox" value="1" class="checkbox" <%if ("1".equals(copyReq__hidden)) out.print("checked");%>/><br  class="spacer"/>
-  <br/>
-  <label style="width:auto;" for="captcha_response__hidden"><%=lb.get("captchaLabel" + lang)%> *</label>
-  <br/>
-  <input id="captcha_response__hidden" name="captcha_response__hidden" type="text" value="" />
-  <br/>
-  <img alt="captcha" src="/servlet/captcha" onclick="this.src='/servlet/captcha?' + Math.floor(Math.random()*100)" />
-  <br/>
-  
-  <input type="button" onclick="if (validateForm(document.getElementById('mailForm')) == true) document.getElementById('mailForm').submit();" value="<%=lb.get("sendButton" + lang)%>" name="submitbtn" id="submitbtn" class="button" />
-  
-  <div style="margin-top: 15px;">* <%=lb.get("req" + lang)%></div>
-</fieldset>
+        <input type="hidden" name="firstname__label" value="<%=lb.get("firstname" + lang)%>"/>
+        <input type="hidden" name="lastname__label" value="<%=lb.get("lastname" + lang)%>"/>
+        <input type="hidden" name="email__label" value="Email"/>
+        <input type="hidden" name="phone__label" value="<%=lb.get("phone" + lang)%>"/>
+        <input type="hidden" name="message__label" value="<%=lb.get("message" + lang)%>"/>
 
-</form>
+        <label for="firstname"><%=lb.get("firstname" + lang)%> <span class="required">*</span></label><input id="firstname" name="firstname" type="text" value="<%=firstname%>"/><br/>
+        <label for="lastname"><%=lb.get("lastname" + lang)%> <span class="required">*</span></label><input id="lastname" name="lastname" type="text" value="<%=lastname%>" /><br/>
+        <label for="email">E-mail <span class="required">*</span></label><input id="email" name="email" type="text" value="<%=email%>" /><br/>
+        <label for="phone"><%= lb.get("phone" + lang) %></label><input id="phone" name="phone" type="text" value="<%=phone%>" /><br/>
+        <label for="message"><%= lb.get("message" + lang) %></label><textarea id="message" name="message"><%=message%></textarea><br/>
+        <label for="copyReq__hidden" style="width:auto;"><%=lb.get("copyReq" + lang)%>&nbsp;</label><input id="copyReq__hidden" name="copyReq__hidden" type="checkbox" value="1" class="checkbox" <%if ("1".equals(copyReq__hidden)) out.print("checked");%>/><br  class="spacer"/>
+        <br/>
+        <label style="width:auto;" for="captcha_response__hidden"><%=lb.get("captchaLabel" + lang)%> *</label>
+        <br/>
+        <input id="captcha_response__hidden" name="captcha_response__hidden" type="text" value="" />
+        <br/>
+        <img alt="captcha" src="/servlet/captcha" onclick="this.src='/servlet/captcha?' + Math.floor(Math.random()*100)" />
+        <br/>
 
-</div> <!-- end: contactForm -->
+        <input type="button" onclick="if (validateForm(document.getElementById('mailForm')) == true) document.getElementById('mailForm').submit();" value="<%=lb.get("sendButton" + lang)%>" name="submitbtn" id="submitbtn" class="button" />
 
-<div id="contactFormRight">
+        <div style="margin-top: 15px;">* <%=lb.get("req" + lang)%></div>
+      </fieldset>
 
-<%
-if (rowCount > 0) { %>
-  <div id="contactFormAddres"><%= contact_jsp_cmrow.getColumn("CMRText" + lang)%></div>
-<% } %>
+      </form>
 
-</div> <!-- end: contactFormRight -->
+      </div> <!-- /contactForm -->
+    </div> <!-- /col -->
 
-</div> <!-- end: contactContainer -->
+    <div class="col-md-5">
+      <div id="contactFormRight">
 
-</div> <!-- end: contentContainer -->
+      <%
+      if (rowCount > 0) { %>
+        <div id="contactFormAddres"><%= contact_jsp_cmrow.getColumn("CMRText" + lang)%></div>
+      <% } %>
+
+      </div> <!-- /contactFormRight -->
+    </div>
+      
+    </div> <!-- /row -->
+      
+</div> <!-- /contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
-</div> <!-- end: site -->
+</div> <!-- /site -->
 
 <%=CMRBodyHTML%>
 

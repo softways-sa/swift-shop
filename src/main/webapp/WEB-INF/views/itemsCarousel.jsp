@@ -7,10 +7,6 @@
 <%!
 static HashMap lb = new HashMap();
 static {
-  lb.put("addcart","Προσθήκη στο Καλάθι");
-  lb.put("addcartLG","Add to Cart");
-  lb.put("prdCode","Κωδ.");
-  lb.put("prdCodeLG","Code");
   lb.put("pLabelNew","ΝΕΟ!");
   lb.put("pLabelNewLG","NEW!");
   lb.put("pLabelSale","ΠΡΟΣΦΟΡΑ!");
@@ -88,16 +84,18 @@ if (prdTotalRowCount > 0) {
         <div class="item-box-content">
         <div class="item-box-bottom">
         <div class="item-box-price">
-        <div class="item-box-addcart"><a href="<%=viewPrdPageURL%>"><img src="/images/add-to-cart.png" alt="<%=lb.get("addcart" + lang)%>" title="<%=lb.get("addcart" + lang)%>"/></a></div>
+        <div class="item-box-addcart">
+          <a href="<%=viewPrdPageURL%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+        </div>
         <div class="item-box-amount">
-        <%
-        if (isOffer == true) { %>
-        <span style="text-decoration:line-through;"><%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? oldPrice.getUnitNetCurr1() : oldPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%></span> &euro;&nbsp;<%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? hdPrice.getUnitNetCurr1() : hdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
-        <%
-        }
-        else {%>
-          <%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? prdPrice.getUnitNetCurr1() : prdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
-        <%}%>
+          <%
+          if (isOffer == true) { %>
+          <span style="text-decoration:line-through;"><%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? oldPrice.getUnitNetCurr1() : oldPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%></span> &euro;&nbsp;<%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? hdPrice.getUnitNetCurr1() : hdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
+          <%
+          }
+          else {%>
+            <%= SwissKnife.formatNumber(gr.softways.dev.eshop.eways.Customer.CUSTOMER_TYPE_WHOLESALE == customerType ? prdPrice.getUnitNetCurr1() : prdPrice.getUnitGrossCurr1(), localeLanguage, localeCountry, minCurr1DispFractionDigits, curr1DisplayScale)%> &euro;
+          <%}%>
         </div>
         </div>
         </div>

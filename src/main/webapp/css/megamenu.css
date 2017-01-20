@@ -130,8 +130,7 @@ TABLE OF CONTENTS
 
 .megamenu_container {
 	width:100%;
-	height: 49px;
-	*height: 47px;
+	height: 50px;
 	margin:0 auto;
 	position: relative;
 	z-index:9999;
@@ -150,16 +149,14 @@ TABLE OF CONTENTS
 	-webkit-border-radius: 0 0 3px 3px;
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
-	/* IE7 Fix */
-	*width:expression(this.parentNode.currentStyle['width']);
 }
 .megamenu {
 	list-style:none;
 	padding:0;
 	position:relative; /* For IE7 */
 	margin:0;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
+	font-family: "Roboto Condensed", Arial, Helvetica, sans-serif;
+	font-size: 14px;
 	line-height:1;
 }
 .megamenu > li {
@@ -173,11 +170,11 @@ TABLE OF CONTENTS
 	transition: background 0.5s ease;
 }
 .megamenu > li > a {
-	font-size:15px;
-	text-transform:none;
+	font-size: 16px;
+	text-transform: none;
 	outline:0;
-	text-decoration:none;
-	display:block;
+	text-decoration: none;
+	display: block;
 	padding: 16px 15px 17px 15px;
 }
 .megamenu > li .megamenu_drop {
@@ -979,16 +976,7 @@ TABLE OF CONTENTS
 
 
 .megamenu_light_bar {
-	background: #eeeeee;
-	background: -webkit-linear-gradient(top,#f8f8f8 0%,#eeeeee);
-	background: -moz-linear-gradient(top,#f8f8f8 0%,#eeeeee);
-	background: -o-linear-gradient(top,#f8f8f8 0%,#eeeeee);
-	background: -ms-linear-gradient(top,#f8f8f8 0%,#eeeeee);
-	background: linear-gradient(top,#f8f8f8 0%,#eeeeee);	
-	border: 1px solid #CCCCCC;
-	-webkit-box-shadow:inset 0px 0px 2px rgba(255,255,255,0.7);
-	-moz-box-shadow:inset 0px 0px 2px rgba(255,255,255,0.7);
-	box-shadow:inset 0px 0px 2px rgba(255,255,255,0.7);
+	background: transparent;
 }
 .megamenu_light_bar .megamenu {
 	color:#212121;

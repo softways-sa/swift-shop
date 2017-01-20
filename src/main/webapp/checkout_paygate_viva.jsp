@@ -7,11 +7,10 @@
 <% whereAmI = "/checkout_paygate_viva.jsp"; %>
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
-  lb.put("htmlTitle","");
-  lb.put("htmlTitleLG","");
-
+  lb.put("htmlTitle","Ανακατεύθυνση");
+  lb.put("htmlTitleLG","Redirect");
   lb.put("msg","Μεταφορά σε ασφαλές περιβάλλον για πληρωμή...");
   lb.put("msgLG","You are being redirected to payment web site...");
 }
@@ -60,18 +59,17 @@ else {
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
-    <%@ include file="/include/metatags.jsp" %>
-    
-    <title><%= lb.get("htmlTitle" + lang) %></title>
-    
-    <script type="text/javascript">
-    $(function() {
-      $('#payForm').submit();
-    });
-    </script>
+  <%@ include file="/include/metatags.jsp" %>
+
+  <title><%= lb.get("htmlTitle" + lang) %></title>
+
+  <script>
+  $(function() {
+    $('#payForm').submit();
+  });
+  </script>
 </head>
 
 <body>
@@ -80,28 +78,22 @@ else {
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer" class="clearfix">
+<div id="contentContainer" class="container">
 
-<div id="checkoutContainer">
+  <div style="margin-top: 60px;">
+    <div style="margin-bottom: 20px;" class="text-center"><%=lb.get("msg" + lang)%></div>
+    <div><img src="/images/loading_big.gif" alt="" class="center-block"/></div>
+  </div>
 
-    <div style="height:300px;">
-      <div>
-        <div style="margin:100px 0 20px 350px;"><%=lb.get("msg" + lang)%></div>
-        <div style="margin:0 0 0 400px;"><img src="/images/loading_big.gif" alt=""/></div>
-      </div>
-    </div>
-    
-    <form name="payForm" id="payForm" method="GET" action="<%=redirectURL%>">
-    <input type="hidden" name="ref" value="<%=orderCode%>"/>
-    </form>
+  <form name="payForm" id="payForm" method="GET" action="<%=redirectURL%>">
+  <input type="hidden" name="ref" value="<%=orderCode%>"/>
+  </form>
 
-</div> <!-- end: checkoutContainer -->
-
-</div> <!-- end: contentContainer -->
+</div> <!-- /contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
-</div> <!-- end: site -->
+</div> <!-- /site -->
 
 </body>
 </html>

@@ -814,8 +814,8 @@ sw_cmrow.closeResources();
               <input type="hidden" name="CMRCode" value="<%=CMRCode%>" />
               <input type="hidden" name="uploadPath" value="<%=wwwrootFilePath+"/gimages"%>" />
               
-              <input type="hidden" name="imageMaxWidth" value="680" />
-              <input type="hidden" name="imageMaxHeight" value="450" />
+              <input type="hidden" name="imageMaxWidth" value="1024" />
+              <input type="hidden" name="imageMaxHeight" value="768" />
               <input type="hidden" name="bgColor" value="#ffffff" />
 
               <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">

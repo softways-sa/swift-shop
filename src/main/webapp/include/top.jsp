@@ -8,8 +8,8 @@ static HashMap top_jsp_lb = new HashMap();
 static {
   top_jsp_lb.put("allprds","Όλα τα προϊόντα");
   top_jsp_lb.put("allprdsLG","All products");
-  top_jsp_lb.put("prdTitle","Προϊόντα");
-  top_jsp_lb.put("prdTitleLG","Products");
+  top_jsp_lb.put("prdTitle","ΠΡΟΪΟΝΤΑ");
+  top_jsp_lb.put("prdTitleLG","PRODUCTS");
   top_jsp_lb.put("menuTitle","Επιλογές");
   top_jsp_lb.put("menuTitleLG","Menu");
   top_jsp_lb.put("productSearch","Αναζήτηση προϊόντων");
