@@ -67,6 +67,18 @@ function addLoadEvent(func) {
 }
 
 $(document).ready(function() {
+  var aboveMenuHeight = $('#headerContainer').outerHeight();
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > aboveMenuHeight) {
+      $('#main-nav').addClass('fixed-nav').css('top','0');
+      if ($('#main-nav').css('display') == 'block') $('#contentContainer, #homeSliderContainer').css('padding-top','50px');
+    }
+    else {
+      $('#main-nav').removeClass('fixed-nav');
+      if ($('#main-nav').css('display') == 'block') $('#contentContainer, #homeSliderContainer').css('padding-top','0');
+    }
+  });
+
   $(".item-box-image a img").hover(function() {
       $(this).stop().animate({opacity: "0.65"}, 500);
   },

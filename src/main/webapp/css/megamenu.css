@@ -170,7 +170,7 @@ TABLE OF CONTENTS
 	transition: background 0.5s ease;
 }
 .megamenu > li > a {
-	font-size: 16px;
+	font-size: 17px;
 	text-transform: none;
 	outline:0;
 	text-decoration: none;
@@ -974,49 +974,47 @@ TABLE OF CONTENTS
 
 /* 2. Light Menu Bar */
 
-
 .megamenu_light_bar {
 	background: transparent;
 }
 .megamenu_light_bar .megamenu {
-	color:#212121;
+	color: #212121;
 }
-	.megamenu_light_bar .megamenu > li:hover, 
-	.megamenu_light_bar .megamenu > li.active {
-		background: #DDDDDD;
-	}
-	.megamenu_light_bar .megamenu li.noactive {
+.megamenu_light_bar .megamenu > li:hover, 
+.megamenu_light_bar .megamenu > li.active {
+  background: #ed1c24;
+}
+.megamenu_light_bar .megamenu li.noactive {
 		background:none;
 		-webkit-box-shadow:none;
 		-moz-box-shadow:none;
 		box-shadow:none;
-	}
-	.megamenu_light_bar .megamenu > li > a {
-		color:#565656;
-		text-shadow:1px 1px 1px #FFFFFF;
-	}
-	.megamenu_light_bar .megamenu > li:hover > a {
-		color:#333333;
-		text-shadow:1px 1px 1px #FFFFFF;
-	}
-	.megamenu_light_bar .megamenu > li .megamenu_drop {
-		background:url("../img/dropdown-b.png") no-repeat right 21px;
-	}
-	.megamenu_light_bar .megamenu_vertical > li .megamenu_drop {
-		background:url("../img/right-b.png") no-repeat right 16px;
-	}
-	.megamenu_light_bar .megamenu li.megamenu_button,
-	.megamenu_light_bar .megamenu li.megamenu_button:hover {
-		background:url("../img/toggle-b.png") no-repeat right;
-	}
-	.megamenu_light_bar .megamenu li.megamenu_button_active,
-	.megamenu_light_bar .megamenu li.megamenu_button_active:hover {
-		background:url("../img/toggle-b.png") no-repeat right;
-	}
-
+}
+.megamenu_light_bar .megamenu > li > a {
+  color: #ffffff;
+  font-weight: 700;
+  /**text-shadow: 1px 1px 1px #FFFFFF;**/
+}
+.megamenu_light_bar .megamenu > li:hover > a {
+  color: #ffffff;
+  /**text-shadow :1px 1px 1px #FFFFFF;**/
+}
+.megamenu_light_bar .megamenu > li .megamenu_drop {
+  background:url("../img/dropdown-b.png") no-repeat right 21px;
+}
+.megamenu_light_bar .megamenu_vertical > li .megamenu_drop {
+  background:url("../img/right-b.png") no-repeat right 16px;
+}
+.megamenu_light_bar .megamenu li.megamenu_button,
+.megamenu_light_bar .megamenu li.megamenu_button:hover {
+  background:url("../img/toggle-b.png") no-repeat right;
+}
+.megamenu_light_bar .megamenu li.megamenu_button_active,
+.megamenu_light_bar .megamenu li.megamenu_button_active:hover {
+  background:url("../img/toggle-b.png") no-repeat right;
+}
 
 /* 3. Dark Drop Down */
-
 
 .megamenu_dark .megamenu li .dropdown_container,
 .megamenu_dark .megamenu li .dropdown_fullwidth,

@@ -202,7 +202,7 @@ String[] months = new String[] {"","01","02","03","04","05","06","07","08","09",
 
 <div class="row">
   
-  <div class="col-md-8">
+  <div class="col-md-9">
     
     <table class="table table-hover">
       <thead>

@@ -117,51 +117,44 @@ String target = request.getParameter("target") == null ? "" : request.getParamet
 
 <body>
 
-<div id="siteContainer">
 <div id="site">
 
 <%@ include file="/include/top.jsp" %>
 
-<div id="contentContainer" class="clearfix">
+<div id="contentContainer" class="container">
 
-<div id="shopWrapper">
-    
-<div id="myaccountContainer" class="clearfix">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="sectionHeader"><%= lb.get("newCustomers" + lang)%></div>
 
-<div class="sectionHeader"><%= lb.get("newCustomers" + lang)%></div>
+      <form name="registerForm" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>" method="post">
 
-<form name="registerForm" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>" method="post">
+      <input type="hidden" name="cmd" value="create_account" />
+      <input type="hidden" name="target" value="<%= target %>" />
+      <input type="hidden" name="custLang" value="<%=lang%>" />
 
-<input type="hidden" name="cmd" value="create_account" />
-<input type="hidden" name="target" value="<%= target %>" />
-<input type="hidden" name="custLang" value="<%=lang%>" />
+      <p><%= lb.get("newCustText" + lang) %></p>
 
-<p><%= lb.get("newCustText" + lang) %></p>
+      <div class="formInput">
+      <div class="clearfix"><span><%= lb.get("firstname" + lang) %>:</span>  <input name="firstname" type="text" value="" maxlength="30" class="text"/></div>
+      <div class="clearfix"><span><%= lb.get("lastname" + lang) %>:</span> <input name="lastname" type="text" value="" maxlength="30" class="text"/></div>
+      <div class="clearfix"><span>Email:</span> <input name="email" type="text" value="" maxlength="75" class="text"/></div>
+      <div class="clearfix"><span><%= lb.get("createPassword" + lang) %>:</span> <input name="password" type="password" maxlength="75" class="text"/></div>
+      <div class="clearfix"><span><%= lb.get("vPassword" + lang) %>:</span> <input name="vpassword" type="password" maxlength="75" class="text"/></div>
+      <div class="clearfix"><span><%= lb.get("noteForOffers" + lang) %>:</span> <input name="receiveEmail" type="checkbox" value="1" checked/></div>
+      </div>
 
+      <div style="margin:15px 0 0 160px;"><input type="button" onclick="javascript:confirmContinue();void(0);" value="<%= lb.get("btSubmit" + lang) %>" class="button" /></div>
 
-<div class="formInput">
-<div class="clearfix"><span><%= lb.get("firstname" + lang) %>:</span>  <input name="firstname" type="text" value="" maxlength="30" class="text"/></div>
-<div class="clearfix"><span><%= lb.get("lastname" + lang) %>:</span> <input name="lastname" type="text" value="" maxlength="30" class="text"/></div>
-<div class="clearfix"><span>Email:</span> <input name="email" type="text" value="" maxlength="75" class="text"/></div>
-<div class="clearfix"><span><%= lb.get("createPassword" + lang) %>:</span> <input name="password" type="password" maxlength="75" class="text"/></div>
-<div class="clearfix"><span><%= lb.get("vPassword" + lang) %>:</span> <input name="vpassword" type="password" maxlength="75" class="text"/></div>
-<div class="clearfix"><span><%= lb.get("noteForOffers" + lang) %>:</span> <input name="receiveEmail" type="checkbox" value="1" checked/></div>
-</div>
-
-<div style="margin:15px 0 0 160px;"><input type="button" onclick="javascript:confirmContinue();void(0);" value="<%= lb.get("btSubmit" + lang) %>" class="button" /></div>
-
-</form>
-
-</div> <!-- end: myaccountContainer -->
-
-</div> <!-- end: shopWrapper -->
+      </form>
+    </div>
+  </div>
 
 </div> <!-- end: contentContainer -->
 
 <%@ include file="/include/bottom.jsp" %>
 
 </div> <!-- end: site -->
-</div> <!-- end: siteContainer -->
 
 </body>
 </html>

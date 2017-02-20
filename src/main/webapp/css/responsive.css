@@ -7,14 +7,11 @@
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   #mobile-wrapper {display: none;}
-  
-  #headerContainer {display: block; z-index: 300; background: transparent url('/images/header_bg.png') no-repeat center top;}
-  
+  #headerWrapper {height: auto;}
+  #headerContainer {display: block; width: 100%; background-color: transparent;}
+  #main-nav {display: block; width: 100%; position: relative; background-color: #000000;}
+  #main-nav.fixed-nav {position: fixed !important; z-index: 2000;}
   .megamenu_container {display: block;}
-  
-  #headerLogoLinks {height: 100px;}
-  #headerWrapper {height: 149px;}
-  #headerContainer {height: 149px; z-index: 300; position: fixed; top: 0; width: 100%; background:transparent url('/images/header_bg.png') no-repeat center top;}
 }
 
 /* Large devices (large desktops, 1200px and up) */

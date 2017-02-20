@@ -1,5 +1,3 @@
-body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
-
 #topMenuPath {height: 200px; width: 980px; margin: 0 auto;}
 
 #contentContainer {background-color: #ffffff; min-height: 300px;}
@@ -12,6 +10,7 @@ body {background: transparent url('/images/body_bg.jpg') no-repeat center top;}
 #headerWrapper {height: 65px; margin-bottom: 10px;}
 
 #headerContainer {display: none;}
+#main-nav {display: none;}
 .megamenu_container {display: none;}
 
 #headerLogo img {max-width: 300px;}

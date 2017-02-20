@@ -113,30 +113,30 @@ String top_MenuURL = "";
         </div> <!-- /col -->
       </div> <!-- /row -->
       
-      <div class="row">
-        <div class="col-md-12">
-          <%@ include file="/include/top_menu.jsp" %>
-        </div> <!-- /col -->
-      </div> <!-- /row -->
-      
     </div> <!-- /header -->
   </div> <!-- /headerContainer -->
+  
+  <div id="main-nav">
+    <div class="container">
+      <div class="row"><%@ include file="/include/top_menu.jsp" %></div>
+    </div>
+  </div>
 
-<div id="mobile-wrapper" class="Fixed">
-  <nav id="mobile-nav">
-    <div class="mobileMenuBtnWrap"><a href="#" id="mobile-menu-link"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
-    <div class="mobileLogoWrap"><a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
-    <div class="mobileAccountWrap">
-      <div class="mobileAccountContainer">
-        <div class="myAccountContent"><a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-        <div class="mobileCartContent">
-          <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-          <div class="cartItemsCount"></div>
+  <div id="mobile-wrapper" class="Fixed">
+    <nav id="mobile-nav">
+      <div class="mobileMenuBtnWrap"><a href="#" id="mobile-menu-link"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
+      <div class="mobileLogoWrap"><a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
+      <div class="mobileAccountWrap">
+        <div class="mobileAccountContainer">
+          <div class="myAccountContent"><a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+          <div class="mobileCartContent">
+            <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            <div class="cartItemsCount"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-</div>
+    </nav>
+  </div>
 
 </div> <!-- /headerWrapper -->
 
