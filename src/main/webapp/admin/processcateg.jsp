@@ -192,8 +192,8 @@ else {
             <input type="hidden" name="oldimg2" value="<%=catImgName2%>" />
             <input type="hidden" name="flag" value="" />
             
-            <input type="hidden" name="imageMaxWidth" value="200" />
-            <input type="hidden" name="imageMaxHeight" value="150" />
+            <input type="hidden" name="imageMaxWidth" value="300" />
+            <input type="hidden" name="imageMaxHeight" value="210" />
             <input type="hidden" name="bgColor" value="#ffffff" />
             
             <input type="hidden" value="0" name="buttonPressed" />
