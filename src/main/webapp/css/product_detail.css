@@ -298,6 +298,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
   text-indent: -9999px;
   display: block;
   height: 18px;
+  font-size: 11px;
 }
 
 /** ===================================

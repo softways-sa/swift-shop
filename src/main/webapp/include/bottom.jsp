@@ -2,6 +2,8 @@
 
 <jsp:useBean id="bottom_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
 
+<%bottom_cmrow.initBean(databaseId, request, response, this, session);%>
+
 <%
 top_jsp_menu.getMenu("10", lang);
 top_jsp_menuLength = top_jsp_menu.getMenuLength();
@@ -10,8 +12,8 @@ top_jsp_menuLength = top_jsp_menu.getMenuLength();
 <%!
 static HashMap bottom_lb = new HashMap();
 static {
-  bottom_lb.put("nlTitle","Εγγραφή στο newsletter");
-  bottom_lb.put("nlTitleLG","Sign up in our newsletter");
+  bottom_lb.put("nlTitle","ΕΓΓΡΑΦΗ ΣΤΟ NEWSLETTER");
+  bottom_lb.put("nlTitleLG","SIGN UP TO OUR NEWSLETTER");
   bottom_lb.put("nlText","Το email σας");
   bottom_lb.put("nlTextLG","Enter your email");
   bottom_lb.put("subscribe","εγγραφή &gt;");
@@ -30,6 +32,18 @@ static {
   bottom_lb.put("displayAllLG2","Display all");
 }
 %>
+
+<%
+bottom_cmrow.getCMRow("0175", "");
+if (bottom_cmrow.inBounds() == true) {%>
+<div id="promos-footer">
+  <div class="container">
+    <div class="row"><%out.println(bottom_cmrow.getColumn("CMRHeadHTML")); out.println(bottom_cmrow.getColumn("CMRText" + lang)); out.println(bottom_cmrow.getColumn("CMRBodyHTML"));%></div>
+  </div>
+</div>
+<%
+}
+bottom_cmrow.closeResources();%>
 
 <div id="footer" class="clearfix">
     
@@ -75,7 +89,6 @@ static {
         </div>
         </div> <!-- /leftNewsLetterFrameContainer -->  
         <%
-        bottom_cmrow.initBean(databaseId, request, response, this, session);
         bottom_cmrow.getCMRow("0180", "");
         if (bottom_cmrow.inBounds() == true) {out.println(bottom_cmrow.getColumn("CMRHeadHTML")); out.println(bottom_cmrow.getColumn("CMRText" + lang)); out.println(bottom_cmrow.getColumn("CMRBodyHTML"));}
         bottom_cmrow.closeResources();
@@ -91,7 +104,7 @@ static {
 <div id="footerBottomWrapper">
   <div id="footerBottom" class="container">
     <div class="row">
-      <div class="col-sm-6"><img src="/images/vivapayments_logo_small.png" alt="viva logo"/> <img src="/images/paypal_logo_small.png" alt="paypal logo"/></div>
+      <div class="col-sm-6"><img src="/images/footer_cc_logos_EFG.png" alt="eurobank logo"/><%--<img src="/images/vivapayments_logo_small.png" alt="viva logo"/> <img src="/images/paypal_logo_small.png" alt="paypal logo"/>--%></div>
       <div class="col-sm-6"><span class="copyright">&copy; SOFTWAYS HELLAS SA&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="http://www.softways.gr/" target="_blank">Softways</a></span></div>
     </div>
   </div>

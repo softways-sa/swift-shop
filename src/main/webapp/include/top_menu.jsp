@@ -1,9 +1,8 @@
 <div class="megamenu_container megamenu_light_bar megamenu_light">
 
   <ul class="megamenu"><!-- Begin Mega Menu -->
-
       <li class="megamenu_button"><a href="#_"><%=top_jsp_lb.get("menuTitle" + lang)%></a></li>
-
+      <li class="home-btn"><a href="/"><i class="fa fa-home fa-lg"></i></a></li>
       <%
       if (USE_MEGAMENU) { %>
 

@@ -159,6 +159,9 @@ TABLE OF CONTENTS
 	font-size: 14px;
 	line-height:1;
 }
+.megamenu li.home-btn .fa-lg {
+	line-height: 15px;
+}
 .megamenu > li {
 	float:left;
 	margin:0;

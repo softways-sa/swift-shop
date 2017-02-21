@@ -3,7 +3,7 @@ html, body, img, div, form, a, script, input, ol, ul {margin:0; padding:0;}
 body {
   font-family: "Roboto Condensed", Arial, Tahoma, "Trebuchet MS";
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   color: #000000;
   line-height: inherit;
 }
@@ -19,10 +19,9 @@ p {margin:0; padding-top:5px; padding-bottom:5px;}
 
 input, select {font-size:12px;}
 
-a {color:#000000; text-decoration:none;}
-a:hover, a:active {color:#000000; text-decoration:underline;}
-
-a:focus, a:hover, a:active { outline:none }
+a {color: #666666; text-decoration: none;}
+a:hover, a:active {color: #000000; text-decoration: none;}
+a:focus, a:hover, a:active {outline: none;}
 
 h1 {
   padding: 0;
