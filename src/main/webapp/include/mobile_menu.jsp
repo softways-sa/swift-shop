@@ -68,7 +68,7 @@
       }%>
 
       <%if ("<a>".equals(menuOption.getTag()) && menuOption.getCode().length() > 4 && "1".equals(menuOption.getParent())) {%>
-        <li><a href="#_"><%=menuOption.getTitle()%></a><ul>
+        <li><span><%=menuOption.getTitle()%></span><ul>
       <%}%>
 
       <%if ("</li>".equals(menuOption.getTag()) && menuLevel == 1) out.print("</li>"); else if ("</li>".equals(menuOption.getTag())) out.print("</li>");%>
