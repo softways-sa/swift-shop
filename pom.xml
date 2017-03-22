@@ -6,7 +6,7 @@
   <artifactId>swift-shop</artifactId>
   
   <packaging>war</packaging>
-  <version>3.1.0</version>
+  <version>3.5.0</version>
   <name>swift-shop ecommerce platform</name>
   
   <url>http://maven.apache.org</url>
