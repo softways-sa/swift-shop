@@ -145,11 +145,6 @@
   </servlet>
 
   <servlet>
-    <servlet-name>ContactUs</servlet-name>
-    <servlet-class>gr.softways.dev.swift.contactus.servlets.ContactUs</servlet-class>
-  </servlet>
-
-  <servlet>
     <servlet-name>admin/SecurityObjects</servlet-name>
     <servlet-class>gr.softways.dev.eshop.securityobjects.servlets.doAction</servlet-class>
   </servlet>
@@ -340,10 +335,6 @@
   <servlet-mapping>
     <servlet-name>admin/Customer</servlet-name>
     <url-pattern>/servlet/admin/Customer</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ContactUs</servlet-name>
-    <url-pattern>/servlet/ContactUs</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
