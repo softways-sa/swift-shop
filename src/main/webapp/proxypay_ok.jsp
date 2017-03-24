@@ -38,7 +38,7 @@ static {
 
   <h4><%= lb.get("msgOK" + lang)%></h4>
   <p><%= lb.get("msgOK2" + lang) %></p>
-  <div style="float:left"><a href="<%= "http://" + serverName + "/?extLang=" + lang %>"><span class="button aux"><%= lb.get("continueShopping" + lang) %></span></a></div>
+  <div style="float:left"><a href="/"><span class="button aux"><%=lb.get("continueShopping" + lang)%></span></a></div>
 
 </div> <!-- /contentContainer -->
 

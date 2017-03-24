@@ -9,7 +9,7 @@
 <jsp:useBean id="product_catalogue" scope="page" class="gr.softways.dev.eshop.category.v2.Present" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
   lb.put("rootCat","Προϊόντα");
   lb.put("rootCatLG","Products");
@@ -43,12 +43,11 @@ request.setAttribute("catId",catId);
 %>
 
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="<%=localeLanguage%>">
 <head>
     <%@ include file="/include/metatags.jsp" %>
     
-    <title><%= htmlTitle %></title>
+    <title><%=htmlTitle%></title>
     
     <script type="text/javascript">
     $(document).ready(function(){
@@ -108,8 +107,8 @@ request.setAttribute("catId",catId);
         cat_img = "/images/prd_cat_not_avail.gif";
       }
 
-      if (product_catalogue.getColumn("catParentFlag").equals("1")) cat_url = "http://" + serverName + "/site/category/" + sef_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang" + lang;
-      else cat_url = "http://" + serverName + "/site/search/" + sef_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
+      if (product_catalogue.getColumn("catParentFlag").equals("1")) cat_url = "/site/category/" + sef_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang" + lang;
+      else cat_url = "/site/search/" + sef_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
     %>
       <div class="col-sm-4" style="margin-bottom: 25px;">
         <%if (!"/images/prd_cat_not_avail.gif".equals(cat_img)) {%><div style="margin-bottom:10px; padding-left:6px; padding-right:6px;"><a href="<%=cat_url%>"><img src="<%=cat_img%>" style="width: 100%;" class="prdcat_img_link" alt="<%=product_catalogue.getColumn("catName" + lang).replace("\"", "&quot;")%>" title="<%=product_catalogue.getColumn("catName" + lang).replace("\"", "&quot;")%>" /></a></div><%}%>

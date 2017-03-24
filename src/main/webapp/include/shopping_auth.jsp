@@ -10,7 +10,7 @@ if (whereAmI.equals("/checkout_billing.jsp")) {
 String shopping_auth_url = "customer_signin.jsp?target=" + shopping_auth_target;
 
 if (customer.isSignedIn() == false && customer.isGuestCheckout() == false) {
-  response.sendRedirect(HTTP_PROTOCOL + serverName + "/" + shopping_auth_url);
+  response.sendRedirect("/" + shopping_auth_url);
   return;
 }
 %>

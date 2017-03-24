@@ -63,7 +63,7 @@ if (prdTotalRowCount > 0) {
       }
       prdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
 
-      viewPrdPageURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
+      viewPrdPageURL = "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
 
       if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg")) {
         prd_img = "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg";
@@ -99,7 +99,7 @@ if (prdTotalRowCount > 0) {
         </div>
         </div>
         </div>
-        <div class="item-box-name"><a href="<%= viewPrdPageURL%>"><%= product_search.getColumn("name" + lang)%></a></div>
+        <div class="item-box-name"><a href="<%=viewPrdPageURL%>"><%=product_search.getColumn("name" + lang)%></a></div>
         </div>
       </div>
   <%

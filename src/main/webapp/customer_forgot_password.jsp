@@ -65,7 +65,7 @@ else if ("retrieve_password_ok".equals(request.getAttribute("retrieve_password")
 
 <div id="contentContainer" class="container">
   
-  <form name="forgotPasswordForm" action="<%= "http://" + serverName + "/" + "customer.do" %>" method="post" onsubmit="return validateForm(document.forgotPasswordForm); void(0);">
+  <form name="forgotPasswordForm" action="/customer.do" method="post" onsubmit="return validateForm(document.forgotPasswordForm); void(0);">
 
   <input type="hidden" name="cmd" value="retrieve_password" />
 
@@ -84,7 +84,7 @@ else if ("retrieve_password_ok".equals(request.getAttribute("retrieve_password")
           <%
           if (s == 1) out.print(lb.get("noSuchEmail" + lang));
           else if (s == 2) { %>
-              <div style="font-weight:normal; color:#666666;"><%=lb.get("passwordSent" + lang)%> <a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>" style="font-weight:bold; text-decoration:underline;"><%=lb.get("success" + lang)%></a></div>
+              <div style="font-weight:normal; color:#666666;"><%=lb.get("passwordSent" + lang)%> <a href="/customer_signin.jsp" style="font-weight:bold; text-decoration:underline;"><%=lb.get("success" + lang)%></a></div>
           <%
           }
           %>

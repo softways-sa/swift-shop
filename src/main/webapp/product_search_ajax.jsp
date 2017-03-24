@@ -34,7 +34,7 @@ currentRowCount = product_search.getTotalRowCount();
 for (int i=0; i<currentRowCount; i++) {
   JSONObject product = new JSONObject();
   product.put("value", product_search.getColumn("name" + lang));
-  product.put("link", "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("catName" + lang)) + "/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang);
+  product.put("link", "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("catName" + lang)) + "/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang);
 
   product_listing.put(i, product);
 

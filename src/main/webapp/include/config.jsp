@@ -20,7 +20,7 @@ String serverName = request.getServerName();
 
 String appDir = "";
 
-String whereAmI = "", HTTP_PROTOCOL = "", top_jsp_path = "",
+String whereAmI = "", URI_SCHEME = "", top_jsp_path = "",
     MEGAMENU_PRDPROMO_URL = null;
 
 boolean DISP_EQUAL_OPTIONS_PRICE = false, USE_MEGAMENU = true;
@@ -50,8 +50,12 @@ if (__configurationValues[2] != null && "1".equals(__configurationValues[2])) {
     }
 }
 
-if (__configurationValues[0] != null && "1".equals(__configurationValues[0])) HTTP_PROTOCOL = "https://";
-else HTTP_PROTOCOL = "http://";
+if (__configurationValues[0] != null && "1".equals(__configurationValues[0])) {
+  URI_SCHEME = "https://";
+}
+else {
+  URI_SCHEME = "http://";
+}
 
 if (__configurationValues[1] != null && "1".equals(__configurationValues[1])) DISP_EQUAL_OPTIONS_PRICE = true;
 else if (__configurationValues[1] != null && "0".equals(__configurationValues[1])) DISP_EQUAL_OPTIONS_PRICE = false;

@@ -58,14 +58,14 @@ String top_MenuURL = "";
   <%@ include file="/include/mobile_menu.jsp" %>
   
   <div><form name="langForm" method="post" action="#"><input type="hidden" name="lang" value="" /></form></div>
-  <div><noscript><a href="<%="http://" + serverName + "/?extLang="%>">ΕΛΛΗΝΙΚΑ</a></noscript></div>
-  <div><noscript><a href="<%="http://" + serverName + "/?extLang=LG"%>">ENGLISH</a></noscript></div>
+  <div><noscript><a href="/?extLang=">ΕΛΛΗΝΙΚΑ</a></noscript></div>
+  <div><noscript><a href="/?extLang=LG">ENGLISH</a></noscript></div>
   
   <div id="headerContainer">
     <div class="container" id="header">
 
       <div id="headerLogoLinks" class="row">
-        <div class="col-md-4"><div id="headerLogo"><a href="<%="http://" + serverName + "/"%>"><img src="/images/logo<%=lang%>.png" alt="logo" style="width: 100%;"/></a></div></div>
+        <div class="col-md-4"><div id="headerLogo"><a href="/"><img src="/images/logo<%=lang%>.png" alt="logo" style="width: 100%;"/></a></div></div>
         
         <div class="col-md-8">
         <div class="row">
@@ -76,11 +76,11 @@ String top_MenuURL = "";
               <ul>
                   <%
                   if (customer.isSignedIn() == false) { %>
-                    <li class="first"><a href="<%= HTTP_PROTOCOL + serverName + "/customer_signin.jsp"%>"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
+                    <li class="first"><a href="/customer_signin.jsp"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> <%=top_jsp_lb.get("signin" + lang)%></a></li>
                   <%
                   }
                   else { %>
-                    <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="<%= "http://" + serverName + "/" + "customer_myaccount.jsp"%>"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="<%= "http://" + serverName + "/" + "customer.do?cmd=signout"%>"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
+                    <li class="first"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <a href="/customer_myaccount.jsp"><%=authUsername%></a>&nbsp;&nbsp;&nbsp;<span>[ <a href="/customer.do?cmd=signout"><%=top_jsp_lb.get("signout" + lang)%></a> ]</span></li>
                   <%
                   }
                   %>
@@ -125,12 +125,12 @@ String top_MenuURL = "";
   <div id="mobile-wrapper" class="Fixed">
     <nav id="mobile-nav">
       <div class="mobileMenuBtnWrap"><a href="#" id="mobile-menu-link"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a></div>
-      <div class="mobileLogoWrap"><a href="<%="http://" + serverName + "/"%>" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
+      <div class="mobileLogoWrap"><a href="/" id="mobile-logo"><img src="/images/mobile-logo.png"></a></div>
       <div class="mobileAccountWrap">
         <div class="mobileAccountContainer">
-          <div class="myAccountContent"><a href="<%=HTTP_PROTOCOL + serverName + "/customer_myaccount.jsp"%>"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
+          <div class="myAccountContent"><a href="/customer_myaccount.jsp"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
           <div class="mobileCartContent">
-            <a href="<%="http://" + serverName + "/shopping_cart.jsp"%>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            <a href="/shopping_cart.jsp"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
             <div class="cartItemsCount"></div>
           </div>
         </div>

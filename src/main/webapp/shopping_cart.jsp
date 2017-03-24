@@ -79,7 +79,7 @@ BigDecimal _zero = new BigDecimal("0");
 
 <%@ include file="/include/checkout_steps.jsp" %>
 
-  <form name="cartForm" action="<%="http://" + serverName + "/" + "shopping_cart.jsp"%>" method="post">
+  <form name="cartForm" action="/shopping_cart.jsp" method="post">
 
   <input name="action1" type="hidden" value="CART_RECALC">
 
@@ -116,7 +116,7 @@ BigDecimal _zero = new BigDecimal("0");
                 prd_img = "/images/img_not_avail.jpg";
             }
 
-            viewPrdPageURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product.getPrdName()) + "?prdId=" + SwissKnife.hexEscape(product.getPrdId()) + "&amp;extLang=" + lang;
+            viewPrdPageURL = "/site/product/" + SwissKnife.sefEncode(product.getPrdName()) + "?prdId=" + SwissKnife.hexEscape(product.getPrdId()) + "&amp;extLang=" + lang;
           %>
             <tr>
               <td class="col-sm-8 col-md-6">
@@ -133,7 +133,7 @@ BigDecimal _zero = new BigDecimal("0");
               <td class="col-sm-1 col-md-1 text-center"><strong><%=SwissKnife.formatNumber(prdPrice.getTotalGrossCurr1(),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%>&euro;</strong></td>
               <td class="col-sm-1 col-md-1 text-right">
                 <button type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></button>
-                <a href="<%="http://" + serverName + "/" + response.encodeURL("shopping_cart.jsp?action1=CART_REMOVE&prdIndex=" + i)%>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="<%="/shopping_cart.jsp?action1=CART_REMOVE&prdIndex=" + i%>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></a>
               </td>
             </tr>
           <%}%>
@@ -149,7 +149,7 @@ BigDecimal _zero = new BigDecimal("0");
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
-              <td><a href="<%=HTTP_PROTOCOL + serverName + "/" + response.encodeURL("checkout_billing.jsp")%>" class="btn btn-primary"><%=lb.get("proceedToCheckout" + lang)%> <span class="glyphicon glyphicon-play"></span></a></td>
+              <td><a href="/checkout_billing.jsp" class="btn btn-primary"><%=lb.get("proceedToCheckout" + lang)%> <span class="glyphicon glyphicon-play"></span></a></td>
             </tr>
           </tbody>
         </table>

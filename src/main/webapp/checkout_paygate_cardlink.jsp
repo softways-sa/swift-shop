@@ -72,8 +72,8 @@ String orderDesc = "cart checkout";
         ProxyPayMerchantID = values[1],
         ProxyPayConfirmPass = values[2];
 
-    String confirmUrl = "http://" + serverName + "/cardlink_confirm.do",
-        cancelUrl = "http://" + serverName + "/cardlink_confirm.do";
+    String confirmUrl = URI_SCHEME + serverName + "/cardlink_confirm.do",
+        cancelUrl = URI_SCHEME + serverName + "/cardlink_confirm.do";
 
     String data = ProxyPayMerchantID + checkout_lang + orderID + orderDesc +
         totalAmount.setScale(2, BigDecimal.ROUND_HALF_UP) + "EUR" +

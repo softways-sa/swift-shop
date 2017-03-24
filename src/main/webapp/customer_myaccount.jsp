@@ -55,7 +55,7 @@ static {
 
       <p>Email: <span style="font-weight:bold;"><%= customer.getEmail()%></span></p>
 
-      <div style="margin-top:20px; float:left;"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_edit_info.jsp?extLang=" + lang)%>"><span class="button"><%= lb.get("updateInformationBtn" + lang)%></span></a></div>
+      <div style="margin-top:20px; float:left;"><a href="/customer_edit_info.jsp"><span class="button"><%=lb.get("updateInformationBtn" + lang)%></span></a></div>
     
     </div> <!-- /col -->
   </div> <!-- /row -->

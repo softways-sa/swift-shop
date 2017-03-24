@@ -11,12 +11,11 @@
 <jsp:useBean id="product_catalogue" scope="page" class="gr.softways.dev.eshop.category.v2.Present" />
 
 <%!
-static Hashtable lb = new Hashtable();
+static HashMap lb = new HashMap();
 static {
   lb.put("resultsFor","Αποτελέσματα αναζήτησης για");
   lb.put("resultsForLG","Search results for");
   lb.put("resultsForLG1","Search results for");
-
   lb.put("prdsFrom","Προϊόντα");
   lb.put("prdsFromLG","Products");
   lb.put("prdsFromLG1","Products");
@@ -32,11 +31,9 @@ static {
   lb.put("nPage","Επόμενη");
   lb.put("nPageLG","Next");
   lb.put("nPageLG1","Next");
-
   lb.put("noResults","Δεν βρέθηκαν εγγραφές.");
   lb.put("noResultsLG","We are sorry but no results were found.");
   lb.put("noResultsLG1","We are sorry but no results were found.");
-
   lb.put("searchTips","Πληροφορίες Αναζήτησης");
   lb.put("searchTipsLG","Search Tips");
   lb.put("searchTipsLG1","Search Tips");
@@ -46,25 +43,20 @@ static {
   lb.put("useWords","Χρησιμοποιήστε μία ή δύο λέξεις");
   lb.put("useWordsLG","Use only one or two words");
   lb.put("useWordsLG1","Use only one or two words");
-
   lb.put("featuredPrds","Προτάσεις");
   lb.put("featuredPrdsLG","Featured Products");
   lb.put("featuredPrdsLG1","Featured Products");
-
   lb.put("rootCat","Προϊόντα");
   lb.put("rootCatLG","Products");
   lb.put("rootCatLG1","Products");
-
   lb.put("addtocart","Αγορά");
   lb.put("addtocartLG","Buy");
   lb.put("seerec","Έχετε δει πρόσφατα");
   lb.put("seerecLG","Recently viewed");
-
   lb.put("pLabelNew","ΝΕΟ!");
   lb.put("pLabelNewLG","NEW!");
   lb.put("pLabelSale","ΠΡΟΣΦΟΡΑ!");
   lb.put("pLabelSaleLG","SALE!");
-  
   lb.put("sortLabel","Ταξινόμηση");
   lb.put("sortLabelLG","Sort");
   lb.put("sortAscLabel","φθηνότερο -> ακριβότερο");
@@ -149,7 +141,7 @@ boolean isOffer = false;
 request.setAttribute("catId",catId);
 
 if (totalRowCount == 1) {
-  response.sendRedirect( "http://" + serverName + "/site/product/" + java.net.URLEncoder.encode( SwissKnife.sefEncode(product_search.getColumn("name" + lang)), "UTF-8") + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang );
+  response.sendRedirect( "/site/product/" + java.net.URLEncoder.encode( SwissKnife.sefEncode(product_search.getColumn("name" + lang)), "UTF-8") + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang );
   return;
 }
 %>
@@ -159,7 +151,7 @@ if (totalRowCount == 1) {
 <head>
   <%@ include file="/include/metatags.jsp" %>
 
-  <title><%= htmlTitle %></title>
+  <title><%=htmlTitle%></title>
 
   <style>
   .searchSort {margin:0 0 10px 0; float:right;}
@@ -204,7 +196,7 @@ if (totalRowCount > 0) {
     <div class="row">
       <div class="col-xs-12">
       <div class="searchSort">
-      <form id="searchSortForm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
+      <form id="searchSortForm" action="<%="/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
         <input name="qid" value="<%=product_search.getQID()%>" type="hidden"/>
         <input name="catId" value="<%=product_search.getCatId()%>" type="hidden">
         <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
@@ -244,7 +236,7 @@ if (totalRowCount > 0) {
       }
       prdPrice = PriceChecker.calcPrd(one,product_search.getQueryDataSet(),customerType,false,customer.getDiscountPct());
 
-      viewPrdPageURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
+      viewPrdPageURL = "/site/product/" + SwissKnife.sefEncode(product_search.getColumn("name" + lang)) + "?prdId=" + product_search.getHexColumn("prdId") + "&amp;extLang=" + lang;
 
       if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg")) {
         prd_img = "/prd_images/" + product_search.getColumn("prdId") + "-1.jpg";
@@ -290,7 +282,7 @@ if (totalRowCount > 0) {
     <div class="row">
       <div class="col-xs-12">
       <div class="searchSort hidden-xs">
-      <form id="searchSortFormBtm" action="<%="http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
+      <form id="searchSortFormBtm" action="<%="/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "")%>" method="get">
           <input name="qid" value="<%=product_search.getQID()%>" type="hidden"/>
           <input name="catId" value="<%=product_search.getCatId()%>" type="hidden">
           <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
@@ -317,7 +309,7 @@ if (totalRowCount > 0) {
     
     <%
     if (totalPages > 1) {
-        String urlQuerySearch = "http://" + serverName + "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "") + "?catId=" + SwissKnife.hexEscape(product_search.getCatId()) + "&amp;qid=" + SwissKnife.hexEscape(product_search.getQID()) + "&amp;spof=" + SwissKnife.hexEscape(product_search.getHotdealFlag()) + "&amp;newarr=" + SwissKnife.hexEscape(product_search.getPrdCompFlag()) + "&amp;fprd=" + SwissKnife.hexEscape(product_search.getPrdNewColl()) + "&amp;sort=" + SwissKnife.hexEscape(sort) + "&amp;pperpage=" + SwissKnife.hexEscape(pperpage) + "&amp;extLang=" + lang;
+        String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "") + "?catId=" + SwissKnife.hexEscape(product_search.getCatId()) + "&amp;qid=" + SwissKnife.hexEscape(product_search.getQID()) + "&amp;spof=" + SwissKnife.hexEscape(product_search.getHotdealFlag()) + "&amp;newarr=" + SwissKnife.hexEscape(product_search.getPrdCompFlag()) + "&amp;fprd=" + SwissKnife.hexEscape(product_search.getPrdNewColl()) + "&amp;sort=" + SwissKnife.hexEscape(sort) + "&amp;pperpage=" + SwissKnife.hexEscape(pperpage) + "&amp;extLang=" + lang;
     %>
         <div id="searchPagination">
         
@@ -391,7 +383,7 @@ if (recentlyViewedProducts.getSize() > 0) { %>
         Product recentlyViewedProduct = recentlyViewedProducts.getProductAt(i);
         
         if (recentlyViewedProduct != null) {
-            rvpViewURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(recentlyViewedProduct.getPrdName()) + "?prdId=" + recentlyViewedProduct.getPrdId() + "&amp;extLang=" + lang;
+            rvpViewURL = "/site/product/" + SwissKnife.sefEncode(recentlyViewedProduct.getPrdName()) + "?prdId=" + recentlyViewedProduct.getPrdId() + "&amp;extLang=" + lang;
             
             if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + recentlyViewedProduct.getPrdId() + "-1.jpg")) {
                 rvpPrdImg = "/prd_images/" + recentlyViewedProduct.getPrdId() + "-1.jpg";

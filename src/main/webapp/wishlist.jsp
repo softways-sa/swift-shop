@@ -99,7 +99,7 @@ orderLines = dbRet.getRetInt();
           String viewPrdPageURL = "", prd_img = "";
 
           for (int i=0; i<orderLines; i++) {
-            viewPrdPageURL = "http://" + serverName + "/" + response.encodeURL("product_detail.jsp?prdId=" + wishList.getHexColumn("prdId") + "&amp;extLang=" + lang);
+            viewPrdPageURL = "/product_detail.jsp?prdId=" + wishList.getHexColumn("prdId") + "&amp;extLang=" + lang;
 
             prdPrice = null;
 
@@ -169,7 +169,7 @@ orderLines = dbRet.getRetInt();
               </td>
               <td class="col-sm-2 col-md-1 text-right">
                 <button type="submit" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-transfer"></span></button>
-                <a href="<%="http://" + serverName + "/" + response.encodeURL("wishlist.jsp?action1=WISH_LIST_REMOVE&prdId=" + wishList.getColumn("prdId") + "&PO_Code=" + wishList.getColumn("WLST_PO_Code"))%>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></a>
+                <a href="<%="/wishlist.jsp?action1=WISH_LIST_REMOVE&prdId=" + wishList.getColumn("prdId") + "&PO_Code=" + wishList.getColumn("WLST_PO_Code")%>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></a>
               </td>
               
               </form>

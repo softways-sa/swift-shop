@@ -7,12 +7,12 @@
 <jsp:useBean id="product_catalog_left_jsp_cmrow" scope="page" class="gr.softways.dev.swift.cmrow.Present" />
 
 <%!
-static Hashtable left_jsp_lb = new Hashtable();
+static HashMap left_jsp_lb = new HashMap();
 static {
-    left_jsp_lb.put("search","Αναζήτηση");
-    left_jsp_lb.put("searchLG","Search");
-    left_jsp_lb.put("productSearch","κωδικός ή περιγραφή");
-    left_jsp_lb.put("productSearchLG","item code or title");
+  left_jsp_lb.put("search","Αναζήτηση");
+  left_jsp_lb.put("searchLG","Search");
+  left_jsp_lb.put("productSearch","κωδικός ή περιγραφή");
+  left_jsp_lb.put("productSearchLG","item code or title");
 }
 %>
 
@@ -49,8 +49,8 @@ String left_cat_url = "";
         while (prd_catalogue_left_helperBean1.inBounds() == true) {
           p_cat_1 = SwissKnife.sefEncode(prd_catalogue_left_helperBean1.getColumn("catName" + lang)) + "/";
           
-          if (prd_catalogue_left_helperBean1.getColumn("catParentFlag").equals("1")) left_cat_url = "http://" + serverName + "/site/category/" + SwissKnife.sefEncode(prd_catalogue_left_helperBean1.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean1.getColumn("catId") + "&amp;extLang=" + lang;
-          else left_cat_url = "http://" + serverName + "/site/search/" + p_cat_1.substring(0,p_cat_1.length()-1) + "?catId=" + prd_catalogue_left_helperBean1.getColumn("catId") + "&amp;extLang=" + lang;
+          if (prd_catalogue_left_helperBean1.getColumn("catParentFlag").equals("1")) left_cat_url = "/site/category/" + SwissKnife.sefEncode(prd_catalogue_left_helperBean1.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean1.getColumn("catId") + "&amp;extLang=" + lang;
+          else left_cat_url = "/site/search/" + p_cat_1.substring(0,p_cat_1.length()-1) + "?catId=" + prd_catalogue_left_helperBean1.getColumn("catId") + "&amp;extLang=" + lang;
         %>
             <li style="border-bottom:1px solid #e0e0e0;" class="AspNet-TreeView-Parent<% if(prd_catalogue_left_catId.startsWith(prd_catalogue_left_helperBean1.getColumn("catId"))) out.print(" AspNet-TreeView-Selected"); %>"><a href="<%= left_cat_url %>"><%= prd_catalogue_left_helperBean1.getColumn("catName" + lang) %></a>
 
@@ -62,8 +62,8 @@ String left_cat_url = "";
                     if (prd_catalogue_left_helperBean2.getColumn("catId").startsWith(prd_catalogue_left_rootCatID) && !prd_catalogue_left_helperBean2.getColumn("catId").equals(prd_catalogue_left_rootCatID)) {
                       p_cat_2 = p_cat_1 + SwissKnife.sefEncode(prd_catalogue_left_helperBean2.getColumn("catName" + lang)) + "/";
                       
-                      if (prd_catalogue_left_helperBean2.getColumn("catParentFlag").equals("1")) left_cat_url = "http://" + serverName + "/site/category/" + p_cat_1 + SwissKnife.sefEncode(prd_catalogue_left_helperBean2.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean2.getColumn("catId") + "&amp;extLang=" + lang;
-                      else left_cat_url = "http://" + serverName + "/site/search/" + p_cat_2.substring(0,p_cat_2.length()-1) + "?catId=" + prd_catalogue_left_helperBean2.getColumn("catId") + "&amp;extLang=" + lang;
+                      if (prd_catalogue_left_helperBean2.getColumn("catParentFlag").equals("1")) left_cat_url = "/site/category/" + p_cat_1 + SwissKnife.sefEncode(prd_catalogue_left_helperBean2.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean2.getColumn("catId") + "&amp;extLang=" + lang;
+                      else left_cat_url = "/site/search/" + p_cat_2.substring(0,p_cat_2.length()-1) + "?catId=" + prd_catalogue_left_helperBean2.getColumn("catId") + "&amp;extLang=" + lang;
                         
                       if (write_ul == true) out.print("<ul>");
             %>
@@ -75,8 +75,8 @@ String left_cat_url = "";
                                 boolean write_ul3 = true;
                                 while (prd_catalogue_left_helperBean3.inBounds() == true) {
                                     if (prd_catalogue_left_helperBean3.getColumn("catId").startsWith(prd_catalogue_left_rootCatID3) && !prd_catalogue_left_helperBean3.getColumn("catId").equals(prd_catalogue_left_rootCatID3)) {
-                                      if (prd_catalogue_left_helperBean3.getColumn("catParentFlag").equals("1")) left_cat_url = "http://" + serverName + "/site/category/" + p_cat_2 + SwissKnife.sefEncode(prd_catalogue_left_helperBean3.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean3.getColumn("catId") + "&amp;extLang=" + lang;
-                                      else left_cat_url = "http://" + serverName + "/site/search/" + p_cat_2.substring(0,p_cat_2.length()) + SwissKnife.sefEncode(prd_catalogue_left_helperBean3.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean3.getColumn("catId") + "&amp;extLang=" + lang;
+                                      if (prd_catalogue_left_helperBean3.getColumn("catParentFlag").equals("1")) left_cat_url = "/site/category/" + p_cat_2 + SwissKnife.sefEncode(prd_catalogue_left_helperBean3.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean3.getColumn("catId") + "&amp;extLang=" + lang;
+                                      else left_cat_url = "/site/search/" + p_cat_2.substring(0,p_cat_2.length()) + SwissKnife.sefEncode(prd_catalogue_left_helperBean3.getColumn("catName" + lang)) + "?catId=" + prd_catalogue_left_helperBean3.getColumn("catId") + "&amp;extLang=" + lang;
 
                                       if (write_ul3 == true) out.print("<ul>");
                             %>

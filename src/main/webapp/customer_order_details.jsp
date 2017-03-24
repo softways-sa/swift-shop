@@ -47,7 +47,7 @@ dbRet = helperBean.getOrder(customer.getCustomerId(), SwissKnife.sqlEncode(reque
 
 if (dbRet.getNoError() == 0 || dbRet.getRetInt() <= 0) {
     helperBean.closeResources();
-    response.sendRedirect( "http://" + serverName + "/" + response.encodeRedirectURL("problem.jsp") );
+    response.sendRedirect( "/" + response.encodeRedirectURL("problem.jsp") );
     return;
 }
 
@@ -166,7 +166,7 @@ BigDecimal prdNetValueEU = zero, prdVATValEU = zero, prdValueEU = zero;
       </tr>
       </table>
       <br/>
-      <div style="float:right;"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_order_history.jsp?extLang=" + lang) %>"><span class="button aux"><%= lb.get("back" + lang) %></span></a></div>
+      <div style="float: right;"><a href="/customer_order_history.jsp"><span class="button aux"><%= lb.get("back" + lang) %></span></a></div>
     
     </div> <!-- /col -->
   </div> <!-- /row -->

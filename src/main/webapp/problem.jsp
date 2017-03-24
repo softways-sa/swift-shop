@@ -51,13 +51,13 @@ if (errorStatus == null) errorStatus = "";
   
   <%
   if (errorStatus.equals("20")) { %>
-    <p><b><%= lb.get("doOrderProblem" + lang) %></b></p>
-    <p><a href="<%="http://" + serverName + "/"%>"><%=lb.get("continueShopping" + lang)%></a></p>
+    <p><b><%=lb.get("doOrderProblem" + lang)%></b></p>
+    <p><a href="/"><%=lb.get("continueShopping" + lang)%></a></p>
   <%
   }
   else if (errorStatus.equals("26")) { %>
-    <p><b><%= lb.get("doOrderNoPrdsProblem" + lang)%></b></p>
-    <p><a href="<%="http://" + serverName + "/"%>"><%= lb.get("continueShopping" + lang)%></a></p>
+    <p><b><%=lb.get("doOrderNoPrdsProblem" + lang)%></b></p>
+    <p><a href="/"><%=lb.get("continueShopping" + lang)%></a></p>
   <%
   }
   else if (errorStatus.startsWith("cc")) { %>
@@ -65,7 +65,7 @@ if (errorStatus == null) errorStatus = "";
   <%
   } else { %>
     <p><b><%= lb.get("genMsg" + lang)%></b></p>
-    <p><a href="<%="http://" + serverName + "/"%>"><%= lb.get("continue" + lang)%></a></p>
+    <p><a href="/"><%=lb.get("continue" + lang)%></a></p>
   <% } %>
 
   <%

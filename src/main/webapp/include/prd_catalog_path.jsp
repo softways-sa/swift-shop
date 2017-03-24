@@ -16,8 +16,8 @@ if (category_path_length > 0) {
         <%
         for (int x=0; x<category_path_length; x++) {
 
-            if (product_catalogue.getColumn("catParentFlag").equals("1")) cat_path_url = "http://" + serverName + "/site/category/" + i_c_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
-            else cat_path_url = "http://" + serverName + "/site/search/" + i_c_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
+            if (product_catalogue.getColumn("catParentFlag").equals("1")) cat_path_url = "/site/category/" + i_c_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
+            else cat_path_url = "/site/search/" + i_c_url + SwissKnife.sefEncode(product_catalogue.getColumn("catName" + lang)) + "?catId=" + product_catalogue.getColumn("catId") + "&amp;extLang=" + lang;
 
             i_c_url += SwissKnife.sefEncode( product_catalogue.getColumn("catName" + lang) ) + "/";
         %>

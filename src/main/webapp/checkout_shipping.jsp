@@ -66,7 +66,7 @@ helperBean.initBean(databaseId, request, response, this, session);
 DbRet dbRet = null;
 
 if (order.getOrderLines() <= 0) {
-    response.sendRedirect("http://" + serverName + "/" + response.encodeRedirectURL("shopping_cart.jsp"));
+    response.sendRedirect("/" + response.encodeRedirectURL("shopping_cart.jsp"));
     return;
 }
 
@@ -153,7 +153,7 @@ int rows = 0;
     
     <div class="sectionHeader"><%= lb.get("recipientTitle" + lang) %></div>
 
-    <form name="shippingForm" method="post" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>">
+    <form name="shippingForm" method="post" action="/customer.do">
 
     <input type="hidden" name="cmd" value="set_shipping_address" />
 

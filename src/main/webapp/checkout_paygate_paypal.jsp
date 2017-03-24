@@ -84,7 +84,7 @@ ProductOptionsValue productOptionsValue = null;
       <input type="hidden" name="zip" value="<%=customer.getBillingZipCode()%>" />
       <input type="hidden" name="email" value="<%=customerEmail%>" />
 
-      <%if (SwissKnife.fileExists(wwwrootFilePath + "/images/logo_for_paypal.png")) {%><input type="hidden" name="image_url" value="<%="http://" + serverName + "/images/logo_for_paypal.png"%>" /><%}%>
+      <%if (SwissKnife.fileExists(wwwrootFilePath + "/images/logo_for_paypal.png")) {%><input type="hidden" name="image_url" value="<%=URI_SCHEME + serverName + "/images/logo_for_paypal.png"%>" /><%}%>
 
       <input type="hidden" name="invoice" value="<%=orderID%>" />
 
@@ -95,9 +95,9 @@ ProductOptionsValue productOptionsValue = null;
       <%-- 1 – the buyer’s browser is redirected to the return URL by using the GET method, but no payment variables are included  --%>
       <input type="hidden" name="rm" value="1" />
 
-      <input type="hidden" name="return" value="<%="http://" + serverName + "/paypal_ok.jsp"%>" />
-      <input type="hidden" name="cancel_return" value="<%="http://" + serverName + "/shopping_cart.jsp"%>" />
-      <input type="hidden" name="notify_url" value="<%="http://" + serverName + "/paypal_confirm.do"%>" />
+      <input type="hidden" name="return" value="<%=URI_SCHEME + serverName + "/paypal_ok.jsp"%>" />
+      <input type="hidden" name="cancel_return" value="<%=URI_SCHEME + serverName + "/shopping_cart.jsp"%>" />
+      <input type="hidden" name="notify_url" value="<%=URI_SCHEME + serverName + "/paypal_confirm.do"%>" />
 
       <input type="hidden" name="handling_cart" value="<%=totalShippingAmount.setScale(2, BigDecimal.ROUND_HALF_UP)%>" />
       <input type="hidden" name="tax_cart" value="<%=order.getOrderPrice().getVATCurr1().setScale(2, BigDecimal.ROUND_HALF_UP)%>" />

@@ -84,7 +84,7 @@ static {
 helperBean.initBean(databaseId, request, response, this, session);
 
 if (order.getOrderLines() <= 0) {
-    response.sendRedirect("http://" + serverName + "/" + response.encodeRedirectURL("shopping_cart.jsp"));
+    response.sendRedirect("/" + response.encodeRedirectURL("shopping_cart.jsp"));
     return;
 }
 
@@ -193,7 +193,7 @@ int rows = 0;
 
     <div class="sectionHeader"><%= lb.get("customer" + lang)%></div>
 
-    <form name="billingForm" method="post" action="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer.do") %>">
+    <form name="billingForm" method="post" action="/customer.do">
 
     <input type="hidden" name="cmd" value="set_billing_address" />
     <%if (!customer.isGuestCheckout()) {%><input type="hidden" name="email" value="<%=email%>" /><%}%>

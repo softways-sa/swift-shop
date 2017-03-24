@@ -186,7 +186,7 @@ if (dbRet.getRetStr().length() > 0) receiveEmail = "1";
 
       <div class="sectionHeader"><%= lb.get("subTitle" + lang) %></div>
 
-      <form name="billingForm" action="<%= "http://" + serverName + "/" + response.encodeURL("customer.do") %>" method="post">
+      <form name="billingForm" action="/customer.do" method="post">
 
       <input type="hidden" name="cmd" value="edit_info" />
 
@@ -224,7 +224,7 @@ if (dbRet.getRetStr().length() > 0) receiveEmail = "1";
 
       <div style="float:left; margin:15px 0 0 160px;">
       <div style="float:left; margin-right:20px;"><a href="javascript:confirmContinue();void(0);"><span class="button"><%= lb.get("update" + lang)%></span></a></div>
-      <div style="float:left;"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_myaccount.jsp")%>"><span class="button"><%= lb.get("cancel" + lang)%></span></a></div>
+      <div style="float:left;"><a href="/customer_myaccount.jsp"><span class="button"><%=lb.get("cancel" + lang)%></span></a></div>
       </div>
 
       </form>

@@ -66,8 +66,8 @@ bottom_cmrow.closeResources();%>
         }
         else if ("<a>".equals(menuOption.getTag()) && !"1".equals(menuOption.getParent())) { %>
             <li>
-            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() == null) { %><a href="<%="http://" + serverName + "/site/page/" + SwissKnife.sefEncode(menuOption.getTitle()) + "?CMCCode=" + menuOption.getCode() + "&amp;extLang=" + lang%>"><%= menuOption.getTitle() %></a><% } %>
-            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() != null) { %><a href="<% if (menuOption.getURL().startsWith("/")) out.print("http://" + serverName + menuOption.getURL()); else out.print(menuOption.getURL()); %>"><%= menuOption.getTitle() %></a><% } %>
+            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() == null) { %><a href="<%="/site/page/" + SwissKnife.sefEncode(menuOption.getTitle()) + "?CMCCode=" + menuOption.getCode() + "&amp;extLang=" + lang%>"><%=menuOption.getTitle()%></a><%}%>
+            <% if (!"1".equals(menuOption.getParent()) && menuOption.getURL() != null) { %><a href="<%=menuOption.getURL()%>"><%=menuOption.getTitle()%></a><%}%>
             </li>
         <% } %>
       <%

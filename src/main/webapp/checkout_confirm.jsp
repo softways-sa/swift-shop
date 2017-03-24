@@ -104,8 +104,8 @@ static {
 <%
 DbRet dbRet = null;
 
-String urlCart = "http://" + serverName + "/" + response.encodeRedirectURL("shopping_cart.jsp"),
-       urlConfirmOrder = HTTP_PROTOCOL + serverName + "/checkout_placeorder.do";
+String urlCart = "/" + response.encodeRedirectURL("shopping_cart.jsp"),
+    urlConfirmOrder = "/checkout_placeorder.do";
 
 Product product = null;
 PrdPrice prdPrice = null;
@@ -261,7 +261,7 @@ String[] months = new String[] {"","01","02","03","04","05","06","07","08","09",
     <div id="customerInfo">
       <div style="margin:0 0 10px 0;" class="clearfix">
         <span style="float:left; margin-top: 10px; margin-right: 5px; font-weight: bold;"><%= lb.get("customerInfo" + lang)%></span>
-        <div style="float:left;"><a href="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("checkout_billing.jsp")%>"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
+        <div style="float:left;"><a href="/checkout_billing.jsp"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
       </div>
 
       <p><%= customer.getFirstname() %> <%= customer.getLastname() %></p>
@@ -276,7 +276,7 @@ String[] months = new String[] {"","01","02","03","04","05","06","07","08","09",
       <div id="invoiceInfo">
         <div style="margin:0 0 10px 0;" class="clearfix">
           <span style="float:left; margin-top: 10px; margin-right: 5px; font-weight: bold;"><%= lb.get("invoiceInfo" + lang) %></span>
-          <div style="float: left;"><a href="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("checkout_billing.jsp") %>"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
+          <div style="float: left;"><a href="/checkout_billing.jsp"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
         </div>
 
         <p><%= customer.getBillingName() %></p>
@@ -289,7 +289,7 @@ String[] months = new String[] {"","01","02","03","04","05","06","07","08","09",
     <div id="shippingInfo">
       <div style="margin:0 0 10px 0;" class="clearfix">
         <span style="float:left; margin-top: 10px; margin-right: 5px; font-weight: bold;"><%= lb.get("shippingInfo" + lang) %></span>
-        <div style="float:left;"><a href="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("checkout_shipping.jsp") %>"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
+        <div style="float:left;"><a href="/checkout_shipping.jsp"><span class="button aux"><%= lb.get("change" + lang)%></span></a></div>
       </div>
 
       <p><%= customer.getShippingName() %></p>

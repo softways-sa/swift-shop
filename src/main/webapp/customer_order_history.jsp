@@ -119,9 +119,9 @@ BigDecimal valueEU = zero, vatValEU = zero, shippingValueEU = zero, shippingVatV
               else if (status.equals(gr.softways.dev.eshop.eways.v2.Order.STATUS_PENDING_PAYMENT)) status = lb.get("pendingPayment" + lang).toString();
       %>
               <tr>
-                  <td align="left"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId")) %>" style="text-decoration:underline;"><%= helperBean.getColumn("orderId") %></a></td>
-                  <td class="text"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId"))%>"><%= SwissKnife.formatDate(helperBean.getTimestamp("orderDate"), "dd/MM/yyyy")%></a></td>
-                  <td class="text"><a href="<%= "http://" + serverName + "/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId"))%>"><%= status%></a></td>
+                  <td align="left"><a href="<%="/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId"))%>" style="text-decoration:underline;"><%= helperBean.getColumn("orderId") %></a></td>
+                  <td class="text"><a href="<%="/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId"))%>"><%= SwissKnife.formatDate(helperBean.getTimestamp("orderDate"), "dd/MM/yyyy")%></a></td>
+                  <td class="text"><a href="<%="/" + response.encodeURL("customer_order_details.jsp?extLang=" + lang + "&orderId=" + helperBean.getHexColumn("orderId"))%>"><%= status%></a></td>
                   <td class="text" align="right">&euro;<%= SwissKnife.formatNumber(totalValueEU,localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale) %></td>
               </tr>
       <%

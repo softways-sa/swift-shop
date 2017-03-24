@@ -394,7 +394,7 @@ for (int i=1; i<=5; i++) {
     </script>
     
     <div>
-        <form id="prdForm" name="prdForm" method="post" action="<%= "http://" + serverName + "/shopping_cart.jsp" %>">
+        <form id="prdForm" name="prdForm" method="post" action="/shopping_cart.jsp">
 
         <div>
         <input name="prdId" type="hidden" value="<%= helperBean.getHexColumn("prdId") %>" />
@@ -550,7 +550,7 @@ for (int i=1; i<=5; i++) {
             <%
             }
             else { %>
-                <a href="<%= HTTP_PROTOCOL + serverName + "/" + response.encodeURL("customer_signin.jsp")%>"><%=lb.get("addwishlist" + lang)%></a>
+                <a href="/customer_signin.jsp"><%=lb.get("addwishlist" + lang)%></a>
             <% } %>
         </div>
         <div id="miniwishlist">
@@ -631,7 +631,7 @@ for (int i=1; i<=5; i++) {
             }
             prdPrice = PriceChecker.calcPrd(one,helperBean.getQueryDataSet(),customerType,false,customer.getDiscountPct());
 
-            rvpViewURL = "http://" + serverName + "/site/product/" + SwissKnife.sefEncode(helperBean.getColumn("name" + lang)) + "?prdId=" + helperBean.getColumn("prdId") + "&amp;extLang=" + lang;
+            rvpViewURL = "/site/product/" + SwissKnife.sefEncode(helperBean.getColumn("name" + lang)) + "?prdId=" + helperBean.getColumn("prdId") + "&amp;extLang=" + lang;
 
             if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-1.jpg")) {
                 rvpPrdImg = "/prd_images/" + helperBean.getColumn("prdId") + "-1.jpg";

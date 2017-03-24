@@ -55,7 +55,7 @@ int startPage = 0, endPage = 0;
 
 int start = searchArticle.getStart();
 
-String urlQuerySearch = "http://" + serverName + "/site/page" + "?CMCCode=" + SwissKnife.hexEscape(searchArticle.getCMCCode()) + "&amp;extLang=" + lang;
+String urlQuerySearch = "/site/page" + "?CMCCode=" + SwissKnife.hexEscape(searchArticle.getCMCCode()) + "&amp;extLang=" + lang;
 
 String htmlTitle = "", htmlKeywords = "", CMRHeadHTML = "", CMRBodyHTML = "";
 
@@ -92,7 +92,7 @@ if (!CMCCode.equals("") && !CMCCode.trim().startsWith("01")) {
                 if ((i+1)<CMCTree.length) top_jsp_path += "&nbsp;|&nbsp;";
 
                 CMCURL = CMCTree[i][2];
-                if (CMCURL.equals("")) CMCURL = "http://" + serverName + "/" + "swift.jsp?CMCCode=" + CMCTree[i][1] + "&amp;extLang=" + lang;
+                if (CMCURL.equals("")) CMCURL = "/swift.jsp?CMCCode=" + CMCTree[i][1] + "&amp;extLang=" + lang;
             }
         }
     }
@@ -156,11 +156,11 @@ if (totalRowCount == 1) {
 else if (totalRowCount > 1) {
     while (searchArticle.inBounds() == true) { %>
         <div class="clearfix post">
-          <h5 class="entry-title"><a href="<%="http://" + serverName + "/site/page/" + SwissKnife.sefEncode(searchArticle.getColumn("CMRTitle" + lang)) + "?CMRCode=" + searchArticle.getColumn("CMRCode") + "&amp;extLang=" + lang%>"><%=searchArticle.getColumn("CMRTitle" + lang)%></a></h5>
+          <h5 class="entry-title"><a href="<%="/site/page/" + SwissKnife.sefEncode(searchArticle.getColumn("CMRTitle" + lang)) + "?CMRCode=" + searchArticle.getColumn("CMRCode") + "&amp;extLang=" + lang%>"><%=searchArticle.getColumn("CMRTitle" + lang)%></a></h5>
           <%if (searchArticle.getColumn("CMRSummary" + lang).length()>0) {%><div class="post-content"><%=searchArticle.getColumn("CMRSummary" + lang)%></div><%}%>
           <div class="meta-info">
             <%=lb.get("pub" + lang)%> <%=SwissKnife.formatDate(searchArticle.getTimestamp("CMRDateCreated"),"dd/MM/yyyy")%> 
-            <div class="right"><a class="read-more" href="<%="http://" + serverName + "/site/page/" + SwissKnife.sefEncode(searchArticle.getColumn("CMRTitle" + lang)) + "?CMRCode=" + searchArticle.getColumn("CMRCode") + "&amp;extLang=" + lang%>"><%=lb.get("more" + lang)%> &rsaquo;</a></div>
+            <div class="right"><a class="read-more" href="<%="/site/page/" + SwissKnife.sefEncode(searchArticle.getColumn("CMRTitle" + lang)) + "?CMRCode=" + searchArticle.getColumn("CMRCode") + "&amp;extLang=" + lang%>"><%=lb.get("more" + lang)%> &rsaquo;</a></div>
           </div>
         </div>
 <%

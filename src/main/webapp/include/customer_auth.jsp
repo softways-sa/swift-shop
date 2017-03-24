@@ -4,7 +4,7 @@
 String shopping_auth_url = "customer_signin.jsp";
 
 if (customer.isSignedIn() == false) {
-  response.sendRedirect(HTTP_PROTOCOL + serverName + "/" + shopping_auth_url);
+  response.sendRedirect("/" + shopping_auth_url);
   return;
 }
 %>
