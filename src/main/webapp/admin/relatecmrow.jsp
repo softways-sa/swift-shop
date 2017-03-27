@@ -55,7 +55,6 @@ if (CMCM_CMRCode1 == null || CMCM_CMRCode1.equals("")) {
     return;
 }
 
-
 String sorted_by_col = sw_relCMRow.getSortedByCol(),
        sorted_by_order = sw_relCMRow.getSortedByOrder();
 
@@ -68,12 +67,11 @@ String searchCMRDateCreatedDay = sw_relCMRow.getSearchCMRDateCreatedDay(),
        searchCMRTitle = sw_relCMRow.getSearchCMRTitle(),
        searchCMCCode = sw_relCMRow.getSearchCMCCode();
 
-
-String urlSearch = response.encodeURL("relatecmrow.jsp"),
-       urlReturn = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&goLabel=relCMRow&CMRCode=" + CMCM_CMRCode1),
-       urlRelCMRow = response.encodeURL("/servlet/admin/RelateCMRow"),
-       urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/relatecmrow.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
+String urlSearch = "relatecmrow.jsp",
+       urlReturn = "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&goLabel=relCMRow&CMRCode=" + CMCM_CMRCode1,
+       urlRelCMRow = "/servlet/admin/RelateCMRow",
+       urlSuccess = "/" + appDir + "admin/relatecmrow.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
        action = request.getParameter("action1") == null ? "" : request.getParameter("action1"),
        urlQuerySearch = "relatecmrow.jsp?searchCMRTitle=" + SwissKnife.hexEscape(searchCMRTitle)
                         + "&searchCMRDateCreatedDay=" + SwissKnife.hexEscape(searchCMRDateCreatedDay)        

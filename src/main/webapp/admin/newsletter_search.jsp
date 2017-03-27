@@ -43,8 +43,8 @@ String urlSearch = response.encodeURL("newsletter_search.jsp"),
        urlQuerySearch = "newsletter_search.jsp?1=1",
        action = request.getParameter("action1") == null ? "" : request.getParameter("action1");
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/newsletter_search.jsp?action1=SEARCH&goLabel=results"),
-    urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlSuccess = "/" + appDir + "admin/newsletter_search.jsp?action1=SEARCH&goLabel=results",
+    urlFailure = "/" + appDir + "admin/problem.jsp";
 
 String goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel");
 

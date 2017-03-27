@@ -18,10 +18,10 @@ app_catPlan.initBean(databaseId, request, response, this, session);
 String action = request.getParameter("action1") == null ? "" : request.getParameter("action1"),
        catId = request.getParameter("catId") == null ? "" : request.getParameter("catId"),
        prdId = request.getParameter("prdId") == null ? "" : request.getParameter("prdId"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
+       urlFailure = "/" + appDir + "admin/problem.jsp",
        anchorName = request.getParameter("anchorName") == null ? "" : request.getParameter("anchorName");
 
-String urlBack = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId + "&goLabel=cat&tab=tab8");
+String urlBack = "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId + "&goLabel=cat&tab=tab8";
 
 boolean openAllCat = false;
 
@@ -61,9 +61,9 @@ String pageTitle = "Αποθήκη&nbsp;<span class=\"menuPathTD\" id=\"white\">
             document.searchForm.action1.value = "INSERT";
             document.searchForm.catId.value = catId;
             
-            document.searchForm.urlSuccess.value = "<%= response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId + "&goLabel=cat&tab=tab8") %>";
+            document.searchForm.urlSuccess.value = "<%="/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId + "&goLabel=cat&tab=tab8"%>";
             
-            document.searchForm.action = "<%= response.encodeURL("/servlet/admin/RelateProductCategory") %>";
+            document.searchForm.action = "/servlet/admin/RelateProductCategory";
             
             document.searchForm.submit();
         }

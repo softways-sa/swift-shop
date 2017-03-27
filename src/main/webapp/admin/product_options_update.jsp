@@ -70,9 +70,9 @@ else {
     tableHeader = "Στοιχεία νέας εγγραφής";
 }
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + SwissKnife.hexEscape(PO_prdId) + "&goLabel=ProductOptions&tab=tab8"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + SwissKnife.hexEscape(PO_prdId) + "&goLabel=ProductOptions&tab=tab8"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlSuccess = "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + SwissKnife.hexEscape(PO_prdId) + "&goLabel=ProductOptions&tab=tab8",
+       urlCancel = "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + SwissKnife.hexEscape(PO_prdId) + "&goLabel=ProductOptions&tab=tab8",
+       urlFailure = "/" + appDir + "admin/problem.jsp";
 
 String pageTitle = "Αποθήκη&nbsp;<span class=\"menuPathTD\" id=\"white\">|</span>&nbsp;Προϊόν&nbsp;<span class=\"menuPathTD\" id=\"white\">|</span>&nbsp;Επιλογή";
 %>

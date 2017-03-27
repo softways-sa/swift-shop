@@ -18,10 +18,10 @@ helperBean.initBean(databaseId, request, response, this, session);
 String action = request.getParameter("action1") != null ? request.getParameter("action1") : "",
        SHCMCode = request.getParameter("SHCMCode") != null ? request.getParameter("SHCMCode") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_method_search.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_method_search.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_method_update.jsp");
+String urlSuccess = "/" + appDir + "admin/ship_method_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/ship_method_search.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/ship_method_update.jsp";
 
 String SHCMTitle = "", SHCMTitleLG = "";
 

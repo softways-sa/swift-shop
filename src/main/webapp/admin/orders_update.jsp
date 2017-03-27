@@ -19,9 +19,9 @@ DbRet dbRet = null;
 
 String orderId = request.getParameter("orderId") == null ? "" : request.getParameter("orderId");
 
-String  urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/orders_search.jsp?goLabel=results"),
-        urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/orders_search.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-        urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlCancel = "/" + appDir + "admin/orders_search.jsp?goLabel=results",
+    urlSuccess = "/" + appDir + "admin/orders_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+    urlFailure = "/" + appDir + "admin/problem.jsp";
         
 dbRet = helperBean.getOrder(orderId, "catId, transId, TAVCode");
 

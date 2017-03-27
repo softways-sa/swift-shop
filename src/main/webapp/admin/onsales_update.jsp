@@ -15,8 +15,8 @@ request.setAttribute("admin.topmenu","products");
 
 helperBean.initBean(databaseId, request, response, this, session);
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/onsales_update.jsp"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlSuccess = "/" + appDir + "admin/onsales_update.jsp",
+       urlFailure = "/" + appDir + "admin/problem.jsp";
 
 int rows = 0;
 %>

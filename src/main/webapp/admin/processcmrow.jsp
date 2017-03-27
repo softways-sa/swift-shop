@@ -28,15 +28,15 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        CMRCode = request.getParameter("CMRCode") != null ? request.getParameter("CMRCode") : "",
        tab = request.getParameter("tab") == null ? "" : request.getParameter("tab");
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/cmrow.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlCMCat = response.encodeURL("/servlet/admin/RelateCMRowCMCategory"),        
-       urlRelCMRow = response.encodeURL("/servlet/admin/RelateCMRow"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/cmrow.jsp?goLabel=results"),
-       urlSuccess1 = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode),        
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmrow.jsp");
+String urlSuccess = "/" + appDir + "admin/cmrow.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlCMCat = "/servlet/admin/RelateCMRowCMCategory",
+       urlRelCMRow = "/servlet/admin/RelateCMRow",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/cmrow.jsp?goLabel=results",
+       urlSuccess1 = "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode,
+       urlSuccessInsAgain = "/" + appDir + "admin/processcmrow.jsp";
 
-       String[] months = new String[] {"","Ιαν","Φεβ","Μαρ","Απρ","Μάϊ","Ιουν","Ιουλ","Αυγ","Σεπ","Οκτ","Νοε","Δεκ"};
+String[] months = new String[] {"","Ιαν","Φεβ","Μαρ","Απρ","Μάϊ","Ιουν","Ιουλ","Αυγ","Σεπ","Οκτ","Νοε","Δεκ"};
 
 Timestamp currentDate = SwissKnife.currentDate();
 

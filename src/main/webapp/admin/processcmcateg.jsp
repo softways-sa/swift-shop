@@ -17,10 +17,10 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        CMCCode = request.getParameter("CMCCode") != null ? request.getParameter("CMCCode") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/cmcategory.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/cmcategory.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmcateg.jsp");
+String urlSuccess = "/" + appDir + "admin/cmcategory.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/cmcategory.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/processcmcateg.jsp";
 
 String CMCName = "", CMCNameLG = "",
        CMCParentFlag = "", CMCShowFlag = "1", CMCText = "", CMCTextLG = "", CMCURL = "", CMCURLLG = "";

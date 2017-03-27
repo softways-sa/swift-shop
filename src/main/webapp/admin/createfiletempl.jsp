@@ -14,9 +14,9 @@ present.initBean(databaseId, request, response, this, session);
 
 String tableHeader = "Στοιχεία εισαγωγής-εξαγωγής";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/createfiletempl.jsp"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlFileTemplate = response.encodeURL("/servlet/admin/FTImportExport");
+String urlSuccess = "/" + appDir + "admin/createfiletempl.jsp",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlFileTemplate = "/servlet/admin/FTImportExport";
 
 int rows = 0;
 %>
@@ -125,7 +125,7 @@ int rows = 0;
                 present.goToRow(0);
                 for (int i = 0; i < rows; i++){
                 %>
-                    <a href="<%= response.encodeURL("http://" + serverName + "/" + appDir + "admin/template_data/out/" + present.getColumn("FTemFilename")) %>" class="link"><%= present.getColumn("FTemName") %></a>&nbsp;<br>
+                    <a href="<%="/" + appDir + "admin/template_data/out/" + present.getColumn("FTemFilename")%>" class="link"><%= present.getColumn("FTemName") %></a>&nbsp;<br>
                 <% 
                     present.nextRow();
                 }

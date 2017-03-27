@@ -17,10 +17,10 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        EMLTCode = request.getParameter("EMLTCode") != null ? request.getParameter("EMLTCode") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/searchemaillists.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/searchemaillists.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processemaillist.jsp");
+String urlSuccess = "/" + appDir + "admin/searchemaillists.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/searchemaillists.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/processemaillist.jsp";
 
 String EMLTName = "", EMLTDescr = "", EMLTTo = "",
        EMLTField1 = "", EMLTField2 = "";

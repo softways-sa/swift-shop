@@ -25,8 +25,8 @@ if (dbRet.authError == 1) {
     return;
 }
 
-String urlSearch = response.encodeURL("http://" + serverName + "/" + appDir + "admin/adminusers.jsp"),
-       urlNewUser = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processadminusers.jsp?action1=INSERT"), 
+String urlSearch = "/" + appDir + "admin/adminusers.jsp",
+       urlNewUser = "/" + appDir + "admin/processadminusers.jsp?action1=INSERT",
        action = request.getParameter("action1") == null ? "" : request.getParameter("action1");
 
 String goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel");

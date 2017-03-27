@@ -16,11 +16,11 @@ request.setAttribute("admin.topmenu","admin");
 String action = request.getParameter("action1") != null ? request.getParameter("action1") : "",
        ausrCode = request.getParameter("ausrCode") != null ? request.getParameter("ausrCode") : "";
 
-String  urlCancel = "http://" + serverName + "/admin/" + response.encodeURL("adminusers.jsp?goLabel=results"),
-        urlSuccessInsAgain = "http://" + serverName + "/admin/" +  response.encodeURL("processadminusers.jsp"),
-        urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/adminusers.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-        urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-        urlReturn = response.encodeURL("http://" + serverName + "/" + appDir + "admin/adminusers.jsp?goLabel=results" );
+String  urlCancel = "/admin/adminusers.jsp?goLabel=results",
+        urlSuccessInsAgain = "/admin/processadminusers.jsp",
+        urlSuccess = "/" + appDir + "admin/adminusers.jsp?action1=UPDATE_SEARCH&goLabel=results",
+        urlFailure = "/" + appDir + "admin/problem.jsp",
+        urlReturn = "/" + appDir + "admin/adminusers.jsp?goLabel=results" ;
         
 String ausrLastname = "", ausrFirstname = "",
        ausrUsername = "", ausrUserGroupId = "",
@@ -101,7 +101,7 @@ else {
         <td valign="top">
             <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">
             
-            <form name="inputForm" method="POST" action="<%= response.encodeURL("/servlet/admin/AdminUsers") %>">
+            <form name="inputForm" method="POST" action="/servlet/admin/AdminUsers">
             <input type="hidden" name="action1" value="" />
             <input type="hidden" name="urlSuccess" value="" />
             <input type="hidden" name="urlFailure" value="<%= urlFailure %>" />

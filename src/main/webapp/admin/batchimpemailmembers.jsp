@@ -13,8 +13,8 @@ helperBean.initBean(databaseId, request, response, this, session);
 
 request.setAttribute("admin.topmenu","newsletter");
    
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/batchimpemailmembers.jsp"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlSuccess = "/" + appDir + "admin/batchimpemailmembers.jsp",
+       urlFailure = "/" + appDir + "admin/problem.jsp";
 
 int rows = helperBean.getTable("emailListTab", "EMLTName");
 

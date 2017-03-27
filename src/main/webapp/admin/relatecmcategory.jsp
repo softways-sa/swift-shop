@@ -16,10 +16,10 @@ sw_CMCBrowser.initBean(databaseId, request, response, this, session);
 String action = request.getParameter("action1") == null ? "" : request.getParameter("action1"),
        CMCCode = request.getParameter("CMCCode") == null ? "" : request.getParameter("CMCCode"),
        CMRCode = request.getParameter("CMRCode") == null ? "" : request.getParameter("CMRCode"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
+       urlFailure = "/" + appDir + "admin/problem.jsp",
        anchorName = request.getParameter("anchorName") == null ? "" : request.getParameter("anchorName");
 
-String urlBack = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode + "&goLabel=CMCat");
+String urlBack = "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode + "&goLabel=CMCat";
 
 boolean openAllCat = false;
 
@@ -58,9 +58,9 @@ String pageTitle = "Περιεχόμενο&nbsp;<span class=\"menuPathTD\" id=\"
             document.searchForm.action1.value = "INSERT";
             document.searchForm.CMCCode.value = CMCCode;
             
-            document.searchForm.urlSuccess.value = "<%= response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode + "&goLabel=CMCat") %>";
+            document.searchForm.urlSuccess.value = "<%="/" + appDir + "admin/processcmrow.jsp?action1=EDIT&CMRCode=" + CMRCode + "&goLabel=CMCat"%>";
             
-            document.searchForm.action = "<%= response.encodeURL("/servlet/admin/RelateCMRowCMCategory") %>";
+            document.searchForm.action = "/servlet/admin/RelateCMRowCMCategory";
             
             document.searchForm.submit();
         }

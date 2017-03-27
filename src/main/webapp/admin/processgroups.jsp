@@ -61,13 +61,13 @@ groupPages = app_processso.getGroupPages();
 
 String goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel");
 
-String urlSearchGrp = response.encodeURL("processgroups.jsp?action1=UPDATE_SEARCH"),
-       urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId + "&goLabel=results"),
-       urlSuccessDelete = response.encodeURL("http://" + serverName + "/" + appDir + "admin/groups.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlSuccessLocalUpdate = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId),
-       urlSuccessSO = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId + "&goLabel=results2"),
-       urlFailure  = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlReturn = response.encodeURL("groups.jsp?action1=UPDATE_SEARCH&goLabel=results");
+String urlSearchGrp = "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH",
+       urlSuccess = "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId + "&goLabel=results",
+       urlSuccessDelete = "/" + appDir + "admin/groups.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlSuccessLocalUpdate = "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId,
+       urlSuccessSO = "/" + appDir + "admin/processgroups.jsp?action1=UPDATE_SEARCH&action2=UPDATE_SEARCH&userGroupId=" + userGroupId + "&goLabel=results2",
+       urlFailure  = "/" + appDir + "admin/problem.jsp",
+       urlReturn = "/" + appDir + "admin/groups.jsp?action1=UPDATE_SEARCH&goLabel=results";
 
 String userGroupName       = app_processgroup.getColumn("userGroupName");
 String userGroupDescr      = app_processgroup.getColumn("userGroupDescr");

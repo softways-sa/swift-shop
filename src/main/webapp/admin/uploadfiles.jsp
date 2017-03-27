@@ -11,9 +11,9 @@
 <%
 request.setAttribute("admin.topmenu","content");
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/uploadfiles.jsp"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlPost = response.encodeURL("/servlet/admin/UploadFiles");
+String urlSuccess = "/" + appDir + "admin/uploadfiles.jsp",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlPost = "/servlet/admin/UploadFiles";
        
 String fileAction = request.getParameter("fileAction") == null ? "" : request.getParameter("fileAction");
 String fileName = request.getParameter("fileName") == null ? "" : request.getParameter("fileName");
@@ -146,7 +146,7 @@ int filesCount = 5;
             
             <table width="100%" border="0" cellspacing="1" cellpadding="5" class="resultsTBL">
             
-            <form name="listFilesForm" method="POST" action="<%= response.encodeURL("http://" + serverName + "/" + appDir + "admin/uploadfiles.jsp") %>">
+            <form name="listFilesForm" method="POST" action="<%="/" + appDir + "admin/uploadfiles.jsp"%>">
             
             <input type="hidden" name="fileAction" value="">
             <input type="hidden" name="fileName" value="">

@@ -19,13 +19,13 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        atrCode = request.getParameter("atrCode") != null ? request.getParameter("atrCode") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/attribute.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlRelAttribute = response.encodeURL("/servlet/admin/RelateAttribute"),
-       urlATVA = response.encodeURL("/servlet/admin/AttributeValue"),        
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/attribute.jsp?goLabel=results"),
-       urlSuccess1 = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processattribute.jsp?action1=EDIT&atrCode=" + atrCode),        
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processattribute.jsp");
+String urlSuccess = "/" + appDir + "admin/attribute.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlRelAttribute = "/servlet/admin/RelateAttribute",
+       urlATVA = "/servlet/admin/AttributeValue",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/attribute.jsp?goLabel=results",
+       urlSuccess1 = "/" + appDir + "admin/processattribute.jsp?action1=EDIT&atrCode=" + atrCode,
+       urlSuccessInsAgain = "/" + appDir + "admin/processattribute.jsp";
 
 String atrName = "", atrNameLG = "", atrKeepStock = "", atrHasPrice = "";
 int ATVARows = 0;

@@ -51,10 +51,10 @@ int usrAccessLevel = -1;
 String action = request.getParameter("action1") == null ? "" : request.getParameter("action1"),
        customerId = request.getParameter("customerId") == null ? "" : request.getParameter("customerId");
 
-String  urlCancel = "",
-        urlSuccess = "",
-        urlSuccessInsAgain = "http://" + serverName + "/admin/" +  response.encodeURL("customer_update.jsp"),
-        urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp");
+String urlCancel = "",
+    urlSuccess = "",
+    urlSuccessInsAgain = "/admin/customer_update.jsp",
+    urlFailure = "/" + appDir + "admin/problem.jsp";
 
 String tableHeader = "";
 if (action.equals("EDIT")) {
@@ -125,8 +125,8 @@ else {
 
 helperBean.closeResources();
 
-urlSuccess = "http://" + serverName + "/admin/" + response.encodeURL("customer_search.jsp?action1=UPDATE_SEARCH&goLabel=results");
-urlCancel = "http://" + serverName + "/admin/" + response.encodeURL("customer_search.jsp?goLabel=results");
+urlSuccess = "/admin/customer_search.jsp?action1=UPDATE_SEARCH&goLabel=results";
+urlCancel = "/admin/customer_search.jsp?goLabel=results";
 
 int rows = 0;
 %>

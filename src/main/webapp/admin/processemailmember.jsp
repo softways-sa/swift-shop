@@ -28,10 +28,10 @@ if (urlCallReturn.length() == 0) {
     urlCallReturn = "searchemailmembers.jsp";
 }
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/" + urlCallReturn + "?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/" + urlCallReturn + "?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processemailmember.jsp");
+String urlSuccess = "/" + appDir + "admin/" + urlCallReturn + "?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/" + urlCallReturn + "?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/processemailmember.jsp";
 
 String EMLMEmail = "", EMLMAltEmail = "",
        EMLMLastName = "", EMLMFirstName = "",

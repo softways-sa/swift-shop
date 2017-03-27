@@ -72,19 +72,19 @@ String action = request.getParameter("action1") == null ? "" : request.getParame
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"),
        tab = request.getParameter("tab") == null ? "" : request.getParameter("tab");
 
-String  urlPMA = response.encodeURL("/servlet/admin/ProductMasterAttribute"),
-        urlCat = response.encodeURL("/servlet/admin/RelateProductCategory"),
-        urlRelPrd = response.encodeURL("/servlet/admin/RelateProduct"),
-        urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_search.jsp?goLabel=results"),
-        urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp"),
-        urlRelateCategory = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_relate_category.jsp?action1=SEARCH"),
-        urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_search.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-        urlSuccess1 = response.encodeURL("http://" + serverName + "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId),
-        urlSuccessAttribute = response.encodeURL("http://" + serverName + "/" + appDir + "admin/chooseattraction.jsp?prdId=" + SwissKnife.hexEscape(prdId)),
-        urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-        urlReturn = response.encodeURL("http://" + serverName + "/" + appDir + "admin/prd.jsp?action1=EDIT&prdId="+ SwissKnife.hexEscape(prdId)),
-        urlAttribute = response.encodeURL("http://" + serverName + "/" + appDir + "admin/chooseattraction.jsp"),
-        urlProductOptions = response.encodeURL("/servlet/admin/ProductOptions");
+String  urlPMA = "/servlet/admin/ProductMasterAttribute",
+        urlCat = "/servlet/admin/RelateProductCategory",
+        urlRelPrd = "/servlet/admin/RelateProduct",
+        urlCancel = "/" + appDir + "admin/product_search.jsp?goLabel=results",
+        urlSuccessInsAgain = "/" + appDir + "admin/product_update.jsp",
+        urlRelateCategory = "/" + appDir + "admin/product_relate_category.jsp?action1=SEARCH",
+        urlSuccess = "/" + appDir + "admin/product_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+        urlSuccess1 = "/" + appDir + "admin/product_update.jsp?action1=EDIT&prdId=" + prdId,
+        urlSuccessAttribute = "/" + appDir + "admin/chooseattraction.jsp?prdId=" + SwissKnife.hexEscape(prdId),
+        urlFailure = "/" + appDir + "admin/problem.jsp",
+        urlReturn = "/" + appDir + "admin/prd.jsp?action1=EDIT&prdId="+ SwissKnife.hexEscape(prdId),
+        urlAttribute = "/" + appDir + "admin/chooseattraction.jsp",
+        urlProductOptions = "/servlet/admin/ProductOptions";
 
 String pageTitle = "", tableHeader = "";
 

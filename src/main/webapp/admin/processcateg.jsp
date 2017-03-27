@@ -17,11 +17,11 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        catId = request.getParameter("catId") != null ? request.getParameter("catId") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/category.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlSuccess1 = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcateg.jsp?action1=EDIT&catId=" + catId),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/category.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processcateg.jsp");
+String urlSuccess = "/" + appDir + "admin/category.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlSuccess1 = "/" + appDir + "admin/processcateg.jsp?action1=EDIT&catId=" + catId,
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/category.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/processcateg.jsp";
 
 String catName = "", catNameLG = "", catNameLG1 = "", keywords = "", 
        keywordsLG = "", catParentFlag = "", catShowFlag = "1",

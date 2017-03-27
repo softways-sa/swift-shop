@@ -60,18 +60,18 @@ String sorted_by_col = bean_relAttribute.getSortedByCol(),
 String searchatrName = bean_relAttribute.getSearchatrName();
 
 
-String urlSearch = response.encodeURL("relateattribute.jsp"),
-       urlReturn = response.encodeURL("http://" + serverName + "/" + appDir + "admin/processattribute.jsp?action1=EDIT&goLabel=relAttribute&atrCode=" + SLAT_master_atrCode),
-       urlrelAttribute = response.encodeURL("/servlet/admin/RelateAttribute"),
-       urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/relateattribute.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
+String urlSearch = "relateattribute.jsp",
+       urlReturn = "/" + appDir + "admin/processattribute.jsp?action1=EDIT&goLabel=relAttribute&atrCode=" + SLAT_master_atrCode,
+       urlrelAttribute = "/servlet/admin/RelateAttribute",
+       urlSuccess = "/" + appDir + "admin/relateattribute.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
        action = request.getParameter("action1") == null ? "" : request.getParameter("action1"),
        urlQuerySearch = "relateattribute.jsp?searchatrName=" + SwissKnife.hexEscape(searchatrName)
                         + "&sorted_by_col=" + SwissKnife.hexEscape(sorted_by_col)
                         + "&sorted_by_order=" + SwissKnife.hexEscape(sorted_by_order),        
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel");
-int rows = 0;
 
+int rows = 0;
 %>
 
 <HTML>

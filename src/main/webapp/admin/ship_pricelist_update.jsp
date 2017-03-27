@@ -18,10 +18,10 @@ updateShipPricelist.initBean(databaseId, request, response, this, session);
 String action = request.getParameter("action1") != null ? request.getParameter("action1") : "",
        SHCECode = request.getParameter("SHCECode") != null ? request.getParameter("SHCECode") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_pricelist_search.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_pricelist_search.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/ship_pricelist_update.jsp");
+String urlSuccess = "/" + appDir + "admin/ship_pricelist_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/ship_pricelist_search.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/ship_pricelist_update.jsp";
 
 String SHCE_SHCRCode = "", SHCE_countryCode = "", SHCE_SHCMCode = "", SHCE_VAT_ID = "";
 

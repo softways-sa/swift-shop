@@ -13,8 +13,8 @@ request.setAttribute("admin.topmenu","newsletter");
 
 helperBean.initBean(databaseId, request, response, this, session);
    
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/sendemail.jsp"),
-       urlFailure = "http://" + serverName + "/" + appDir + "admin/sendemail.jsp";
+String urlSuccess = "/" + appDir + "admin/sendemail.jsp",
+       urlFailure = "/" + appDir + "admin/sendemail.jsp";
 
 String body = "", from = "", subject = "", mailContent = "", mailCharset = "", NWLR_Title = "";
 

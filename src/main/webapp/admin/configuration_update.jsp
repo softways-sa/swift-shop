@@ -17,10 +17,10 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        CO_Code = request.getParameter("CO_Code") != null ? request.getParameter("CO_Code") : "";
 
-String urlSuccess = response.encodeURL("http://" + serverName + "/" + appDir + "admin/configuration_search.jsp?action1=UPDATE_SEARCH&goLabel=results"),
-       urlFailure = response.encodeURL("http://" + serverName + "/" + appDir + "admin/problem.jsp"),
-       urlCancel = response.encodeURL("http://" + serverName + "/" + appDir + "admin/configuration_search.jsp?goLabel=results"),
-       urlSuccessInsAgain = response.encodeURL("http://" + serverName + "/" + appDir + "admin/configuration_update.jsp");
+String urlSuccess = "/" + appDir + "admin/configuration_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+       urlFailure = "/" + appDir + "admin/problem.jsp",
+       urlCancel = "/" + appDir + "admin/configuration_search.jsp?goLabel=results",
+       urlSuccessInsAgain = "/" + appDir + "admin/configuration_update.jsp";
 
 String CO_Key = "", CO_Title = "", CO_Description = "", 
        CO_Value = "", CO_ValueLG ="", CO_ValueLG1 = "", CO_ValueLG2 = "",
