@@ -647,3 +647,24 @@ a#mobile-logo img {
   width: 100%;
   user-select: none;
 }
+
+/** ===================================
+
+  Search filters
+
+======================================== **/
+#selectedFilters {margin-bottom: 10px;}
+a.selected-filter {
+    border: 1px solid #ddd;
+    color: #000;
+    font-size: 14px;
+    margin-right: 10px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    float: left;
+}
+a.selected-filter:hover {
+    background: #fff none repeat scroll 0 0;
+    color: #df0000;
+    border-color: #ed1c24;
+}

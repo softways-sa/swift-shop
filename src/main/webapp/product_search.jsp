@@ -4,9 +4,12 @@
 
 <%@ include file="/include/config.jsp" %>
 
+<%@ page import="gr.softways.dev.eshop.product.v2.*,
+                org.apache.commons.lang3.StringUtils" %>
+
 <% whereAmI = "/product_search.jsp"; %>
 
-<jsp:useBean id="product_search" scope="page" class="gr.softways.dev.eshop.product.v2.Search2_3" />
+<jsp:useBean id="product_search" scope="page" class="gr.softways.dev.eshop.product.v2.Search3" />
 
 <jsp:useBean id="product_catalogue" scope="page" class="gr.softways.dev.eshop.category.v2.Present" />
 
@@ -140,10 +143,12 @@ boolean isOffer = false;
 
 request.setAttribute("catId",catId);
 
-if (totalRowCount == 1) {
-  response.sendRedirect( "/site/product/" + java.net.URLEncoder.encode( SwissKnife.sefEncode(product_search.getColumn("name" + lang)), "UTF-8") + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang );
-  return;
-}
+//if (totalRowCount == 1) {
+  //response.sendRedirect( "/site/product/" + java.net.URLEncoder.encode( SwissKnife.sefEncode(product_search.getColumn("name" + lang)), "UTF-8") + "?prdId=" + product_search.getHexColumn("prdId") + "&extLang=" + lang );
+  //return;
+//}
+
+String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "") + "?catId=" + SwissKnife.hexEscape(product_search.getCatId()) + "&amp;qid=" + SwissKnife.hexEscape(product_search.getQID()) + "&amp;spof=" + SwissKnife.hexEscape(product_search.getHotdealFlag()) + "&amp;newarr=" + SwissKnife.hexEscape(product_search.getPrdCompFlag()) + "&amp;fprd=" + SwissKnife.hexEscape(product_search.getPrdNewColl()) + "&amp;sort=" + SwissKnife.hexEscape(sort) + "&amp;pperpage=" + SwissKnife.hexEscape(pperpage) + "&amp;extLang=" + lang;
 %>
 
 <!DOCTYPE html>
@@ -179,7 +184,36 @@ if (totalRowCount == 1) {
 <%@ include file="/include/prd_catalog_path.jsp" %>
 
 <div id="prdContainer" class="row">
-  <div class="col-md-2 hidden-xs hidden-sm"><%@ include file="/include/product_catalog_left.jsp" %></div>
+  <div class="col-md-2 hidden-xs hidden-sm">
+    <div id="productNavColumn">
+      <%
+      String facetsQuery = request.getParameter("facets") == null ? "" : request.getParameter("facets");
+        
+      List<FacetValue> selectedFacetValues = null;
+      
+      if (StringUtils.isNotBlank(facetsQuery)) {
+        selectedFacetValues = FacetService.getFacetValuesFromQuery(facetsQuery);
+      }
+      
+      List<Facet> facets = FacetService.getFacets(catId);
+      for (Facet facet : facets) {
+        out.println("<h1>" + facet.name + "</h1><ul>");
+        for (FacetValue val : facet.facetValues) {
+          String u = "";
+          if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
+            u = urlQuerySearch + "&amp;facets=" + facetsQuery;
+            out.println("<li><a style='color: red;' href='" + u + "'>" + val.name + "</a></li>");
+          }
+          else {
+            u = urlQuerySearch + "&amp;facets=" + facetsQuery + facet.id + "@" + val.id + ",";
+            out.println("<li><a href='" + u + "'>" + val.name + "</a></li>");
+          }
+        }
+        out.println("</ul><hr/>");
+      }
+      %>
+    </div>
+  </div>
   
   <div class="col-md-10">
 
@@ -188,7 +222,23 @@ if (totalRowCount == 1) {
         <b><%= lb.get("resultsFor" + lang) %> "<%= product_search.getQID() %>"</b>
       </div>
     <%}%>
-
+    
+    <%
+    if (selectedFacetValues != null) {%>
+      <div id="selectedFilters" class="clearfix">
+      <%
+      for (Facet facet : facets) {
+        for (FacetValue val : facet.facetValues) {
+          if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
+            String u = urlQuerySearch + "&amp;facets=" + facetsQuery.replace(facet.id + "@" + val.id + ",", "");
+            out.println("<a class='selected-filter' href='" + u + "'><i class='fa fa-times-circle' aria-hidden='true'></i> " + val.name + "</a>");
+          }
+        }
+      }
+      %>
+      </div>
+    <%}%>
+    
 <%
 if (totalRowCount > 0) {
     String prd_img = "", viewPrdPageURL = "";
@@ -309,7 +359,6 @@ if (totalRowCount > 0) {
     
     <%
     if (totalPages > 1) {
-        String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.substring(0,sef_url.length()-1) : "") + "?catId=" + SwissKnife.hexEscape(product_search.getCatId()) + "&amp;qid=" + SwissKnife.hexEscape(product_search.getQID()) + "&amp;spof=" + SwissKnife.hexEscape(product_search.getHotdealFlag()) + "&amp;newarr=" + SwissKnife.hexEscape(product_search.getPrdCompFlag()) + "&amp;fprd=" + SwissKnife.hexEscape(product_search.getPrdNewColl()) + "&amp;sort=" + SwissKnife.hexEscape(sort) + "&amp;pperpage=" + SwissKnife.hexEscape(pperpage) + "&amp;extLang=" + lang;
     %>
         <div id="searchPagination">
         
