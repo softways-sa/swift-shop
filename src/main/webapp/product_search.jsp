@@ -187,26 +187,26 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
   <div class="col-md-2 hidden-xs hidden-sm">
     <div id="productNavColumn">
       <%
-      String facetsQuery = request.getParameter("facets") == null ? "" : request.getParameter("facets");
+      String facetsQuery = product_search.getFacetsQuery();
         
       List<FacetValue> selectedFacetValues = null;
       
-      if (StringUtils.isNotBlank(facetsQuery)) {
+      if (product_search.isFacetedSearch()) {
         selectedFacetValues = FacetService.getFacetValuesFromQuery(facetsQuery);
       }
       
-      List<Facet> facets = FacetService.getFacets(catId);
+      List<Facet> facets = FacetService.getFacets(catId, request);
       for (Facet facet : facets) {
         out.println("<h1>" + facet.name + "</h1><ul>");
         for (FacetValue val : facet.facetValues) {
           String u = "";
           if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
-            u = urlQuerySearch + "&amp;facets=" + facetsQuery;
-            out.println("<li><a style='color: red;' href='" + u + "'>" + val.name + "</a></li>");
+            u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
+            out.println("<li><a style='color: red;' href='" + u + "'><input name='filter' checked='' type='checkbox'> " + val.name + "</a></li>");
           }
           else {
-            u = urlQuerySearch + "&amp;facets=" + facetsQuery + facet.id + "@" + val.id + ",";
-            out.println("<li><a href='" + u + "'>" + val.name + "</a></li>");
+            u = urlQuerySearch + "&amp;facets=" + FacetService.addFacetValueToQuery(facetsQuery, val);
+            out.println("<li><a href='" + u + "'><input name='filter' type='checkbox'> " + val.name + "</a></li>");
           }
         }
         out.println("</ul><hr/>");
@@ -230,7 +230,7 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
       for (Facet facet : facets) {
         for (FacetValue val : facet.facetValues) {
           if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
-            String u = urlQuerySearch + "&amp;facets=" + facetsQuery.replace(facet.id + "@" + val.id + ",", "");
+            String u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
             out.println("<a class='selected-filter' href='" + u + "'><i class='fa fa-times-circle' aria-hidden='true'></i> " + val.name + "</a>");
           }
         }
@@ -252,6 +252,7 @@ if (totalRowCount > 0) {
         <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
         <input name="fprd" value="<%=product_search.getPrdNewColl()%>" type="hidden">
         <input name="newarr" value="<%=product_search.getPrdCompFlag()%>" type="hidden">
+        <input name="facets" value="<%=facetsQuery%>" type="hidden">
         <input name="action1" value="SEARCH" type="hidden">
 
         <select name="sort" onchange="this.form.submit();" title="<%=lb.get("sortLabel" + lang)%>">
@@ -338,6 +339,7 @@ if (totalRowCount > 0) {
           <input name="spof" value="<%=product_search.getHotdealFlag()%>" type="hidden">
           <input name="fprd" value="<%=product_search.getPrdNewColl()%>" type="hidden">
           <input name="newarr" value="<%=product_search.getPrdCompFlag()%>" type="hidden">
+          <input name="facets" value="<%=facetsQuery%>" type="hidden">
           <input name="action1" value="SEARCH" type="hidden">
 
           <select name="sort" onchange="this.form.submit();" title="<%=lb.get("sortLabel" + lang)%>">
@@ -367,7 +369,7 @@ if (totalRowCount > 0) {
         <table class="pagination" align="center"><tr>
         <%
         if (currentPage > 1) { %>
-            <td><a href="<%= urlQuerySearch + "&amp;start=" + ((currentPage-2)*dispRows) %>"><b class="paginationArrows">&laquo;</b> <%= lb.get("pPage" + lang) %></a></td>
+            <td><a href="<%= urlQuerySearch + "&amp;facets=" + facetsQuery + "&amp;start=" + ((currentPage-2)*dispRows) %>"><b class="paginationArrows">&laquo;</b> <%= lb.get("pPage" + lang) %></a></td>
         <%
         }
         else { %>
@@ -397,12 +399,12 @@ if (totalRowCount > 0) {
             if (i == currentPage) { %>
                 <td><a href="#" class="searchCurrentPage"><%= i %></a></td>
         <%  } else { %>
-                <td class="hidden-xs"><a href="<%= urlQuerySearch + "&amp;start=" + ((i-1)*dispRows) %>"><%= i %></a></td>
+                <td class="hidden-xs"><a href="<%=urlQuerySearch + "&amp;facets=" + facetsQuery + "&amp;start=" + ((i-1)*dispRows)%>"><%=i%></a></td>
         <%  }
         }
         
         if (currentPage < totalPages) { %>
-            <td><a href="<%= urlQuerySearch + "&amp;start=" + (currentPage*dispRows) %>"><%= lb.get("nPage" + lang) %> <b class="paginationArrows">&raquo;</b></a></td>
+            <td><a href="<%=urlQuerySearch + "&amp;facets=" + facetsQuery + "&amp;start=" + (currentPage*dispRows)%>"><%= lb.get("nPage" + lang) %> <b class="paginationArrows">&raquo;</b></a></td>
         <%
         }
         else { %>
