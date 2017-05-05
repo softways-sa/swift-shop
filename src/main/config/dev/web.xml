@@ -762,7 +762,6 @@
     <servlet-name>Kaptcha</servlet-name>
     <url-pattern>/servlet/captcha</url-pattern>
   </servlet-mapping>
-	
 	<servlet>
     <servlet-name>OrderChart</servlet-name>
     <servlet-class>gr.softways.dev.eshop.orders.v2.chart.ChartServlet</servlet-class>
@@ -771,7 +770,14 @@
     <servlet-name>OrderChart</servlet-name>
     <url-pattern>/servlet/admin/OrderChart</url-pattern>
   </servlet-mapping>
-	
+  <servlet>
+    <servlet-name>admin/Facet</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.facet.FacetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/Facet</servlet-name>
+    <url-pattern>/servlet/admin/Facet</url-pattern>
+  </servlet-mapping>
 	
   <session-config>
     <session-timeout>30</session-timeout>
