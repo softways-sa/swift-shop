@@ -2,7 +2,10 @@
 
 <%@ page errorPage="problem.jsp" %>
 
-<%@ page import="java.math.BigDecimal,gr.softways.dev.util.*,java.sql.Timestamp,gr.softways.dev.eshop.eways.Product" %>
+<%@ page import="java.math.BigDecimal,gr.softways.dev.util.*,
+         java.sql.Timestamp,
+         gr.softways.dev.eshop.eways.Product,
+         gr.softways.dev.eshop.product.v2.*" %>
 
 <%@ include file="include/config.jsp" %>
 
@@ -228,6 +231,8 @@ prdadmin.closeResources();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+    <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" media="all" />
+  
     <script type="text/javascript" src="js/calendar/calendar.js"></script>
     <script type="text/javascript" src="js/calendar/calendar-setup.js"></script>
     <script type="text/javascript" src="js/calendar/calendar-el.js"></script>
@@ -323,11 +328,9 @@ prdadmin.closeResources();
 
     <!-- from front-end -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
-
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script language="JavaScript" src="js/jsfunctions.js" charset="UTF-8"></script>
-
     <script type="text/javascript" language="javascript" src="js/date.js" charset="UTF-8"></script>
-    
     <script language="javascript" src="js/jscripts/tiny_mce/tiny_mce.js"></script>
 
     <script language="javascript">
@@ -529,7 +532,7 @@ prdadmin.closeResources();
     </script>
 </head>
 
-<body <%= bodyString %>>
+<body <%=bodyString%>>
     <%@ include file="include/top.jsp" %>
     
     <table width="0" border="0" cellspacing="2" cellpadding="20">
@@ -549,11 +552,11 @@ prdadmin.closeResources();
                 <li id="atab11"><a href="#tab11">Χονδρική</a></li>
                 <li id="atab2"><a href="#tab2">Περιγραφή</a></li>
                 <li id="atab3"><a href="#tab3">Πλαίσια</a></li>
-                <% if (action.equals("EDIT")) {%>
+                <li id="atab85"><a href="#tab85">Φίλτρα</a></li>
+                <%if (action.equals("EDIT")) {%>
                   <li id="atab8"><a href="#tab8">Κατηγορίες / Επιλογές / Συναφή</a></li>
                   <li id="atab9"><a href="#tab9">Φωτογραφίες</a></li>
-                <%
-                } %>
+                <%}%>
             </ul>
 
             <form name="inputForm" method="post" action="<%= response.encodeURL("/servlet/admin/Product") %>" enctype="multipart/form-data">
@@ -962,6 +965,54 @@ prdadmin.closeResources();
             </div> <!-- end: tabs_slide_container -->
 
             </div> <!-- end: tab3 -->
+            
+            <div class="tab_content" id="tab85">
+                <div style="background-color: #ffffff; padding: 15px;">
+                  <script>
+                  $(function() {
+                    var allFacets = [
+                    <%
+                    List<Facet> facets = FacetService.getAdminFacets();
+                    for (Facet facet : facets) {
+                      for (FacetValue val : facet.facetValues) {
+                        out.print("{label: '" + facet.name + " > " + val.name + "', id: '" + val.id + "'},");
+                        }
+                      }
+                    %>
+                    ];
+
+                    $("#facet-input").autocomplete({
+                      source: allFacets,
+                      select: function(event, ui) {
+                        $("#facet_val" + ui.item.id).remove();
+                        $("#facets").append('<div id="facet_val' + ui.item.id + '"><span class="ui-icon ui-icon-circle-minus" style="display: inline-block;"></span> ' + ui.item.label + '<input type="hidden" name="facet_val_id" value="' + ui.item.id + '"></div>');
+                        $("#facet-input").val("");
+                        return false;
+                      }
+                    });
+
+                    $('#facets').delegate('.ui-icon-circle-minus', 'click', function() {
+                      $(this).parent().remove();
+                    });
+                  });
+                  </script>
+                  <div class="ui-widget">
+                    <label for="facet-input">Προσθήκη φίλτρου: </label>
+                    <input id="facet-input">
+                  </div>
+                  <style>#facets div {margin-top: 10px;}</style>
+                  <div id="facets" style="margin-top: 20px;">
+                    <%
+                    facets = FacetService.getProductFacets(prdId);
+                    for (Facet facet : facets) {
+                      for (FacetValue val : facet.facetValues) {%>
+                        <div id="facet_val<%=val.id%>"><span class="ui-icon ui-icon-circle-minus" style="display: inline-block;"></span> <%=facet.name%> > <%=val.name%><input type="hidden" name="facet_val_id" value="<%=val.id%>"></div>
+                    <%}
+                    }
+                    %>
+                  </div>
+                </div>
+              </div> <!-- /tab85 -->
             
             </form>
             

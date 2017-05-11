@@ -778,6 +778,14 @@
     <servlet-name>admin/Facet</servlet-name>
     <url-pattern>/servlet/admin/Facet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>admin/FacetValue</servlet-name>
+    <servlet-class>gr.softways.dev.eshop.facet.FacetValueServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin/FacetValue</servlet-name>
+    <url-pattern>/servlet/admin/FacetValue</url-pattern>
+  </servlet-mapping>
 	
   <session-config>
     <session-timeout>30</session-timeout>

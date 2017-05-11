@@ -139,7 +139,7 @@ int rows = 0;
             for (disp=0; moreDataRows && disp < dispRows; disp++) {
             %>
                 <tr class="resultsDataTR" onmouseover="this.className='resultsDataTROver'" onmouseout="this.className='resultsDataTR'">
-                    <td class="resultsDataTD" onmouseover="this.className='resultsDataTDOver'" onmouseout="this.className='resultsDataTD'"><a href="<%= response.encodeURL("configuration_update.jsp?action1=EDIT&id=" + facetValueAdminSearch.getInt("id")) %>" class="resultsLink"><%=facetValueAdminSearch.getColumn("name")%></a></td>
+                    <td class="resultsDataTD" onmouseover="this.className='resultsDataTDOver'" onmouseout="this.className='resultsDataTD'"><a href="<%="facet_val_update.jsp?action1=EDIT&id=" + facetValueAdminSearch.getInt("id")%>" class="resultsLink"><%=facetValueAdminSearch.getColumn("name")%></a></td>
                     <td class="resultsDataTD" onmouseover="this.className='resultsDataTDOver'" onmouseout="this.className='resultsDataTD'"><%=facetValueAdminSearch.getColumn("facet_name")%></td>
                 </tr>
             <%

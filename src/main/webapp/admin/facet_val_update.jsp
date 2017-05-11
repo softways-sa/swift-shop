@@ -6,10 +6,10 @@
 
 <%@ include file="include/auth.jsp" %>
 
-<jsp:useBean id="facet_update" scope="page" class="gr.softways.dev.util.JSPBean" />
+<jsp:useBean id="facet_val_update" scope="page" class="gr.softways.dev.util.JSPBean" />
 
 <%
-facet_update.initBean(databaseId, request, response, this, session);
+facet_val_update.initBean(databaseId, request, response, this, session);
 
 request.setAttribute("admin.topmenu","products");
    
@@ -17,33 +17,32 @@ String action = request.getParameter("action1") != null ? request.getParameter("
        goLabel = request.getParameter("goLabel") == null ? "" : request.getParameter("goLabel"), 
        id = request.getParameter("id") != null ? request.getParameter("id") : "";
 
-String urlSuccess = "/" + appDir + "admin/facet_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
+String urlSuccess = "/" + appDir + "admin/facet_val_search.jsp?action1=UPDATE_SEARCH&goLabel=results",
     urlFailure = "/" + appDir + "admin/problem.jsp",
-    urlCancel = "/" + appDir + "admin/facet_search.jsp?goLabel=results";
+    urlCancel = "/" + appDir + "admin/facet_val_search.jsp?goLabel=results";
 
-String name = "", nameLG = "";
+String facet_id = "", name = "", nameLG = "";
 
-int found = 0, display_order = 0;
+int found = 0;
 
 String tableHeader = "";
 
 if (action.equals("EDIT")) {
     tableHeader = "Στοιχεία εγγραφής";
     
-    found = facet_update.getTablePK("facet", "id", id);
+    found = facet_val_update.getTablePK("facet_values", "id", id);
 
     if (found < 0) {
-      facet_update.closeResources();
+      facet_val_update.closeResources();
       response.sendRedirect( response.encodeURL("noaccess.jsp?authCode=" + found) );
       return;
     }
     else if (found >= 1) {
-      name = facet_update.getColumn("name");
-      nameLG = facet_update.getColumn("nameLG");
+      facet_id = facet_val_update.getColumn("facet_id");
+      name = facet_val_update.getColumn("name");
+      nameLG = facet_val_update.getColumn("nameLG");
 
-      display_order = facet_update.getInt("display_order");
-
-      facet_update.closeResources();
+      facet_val_update.closeResources();
     }
 }
 else {
@@ -62,12 +61,18 @@ else {
     
     <script language="JavaScript">
     function validateForm(forma) {
-      if (isEmpty(forma.name.value) == true) {
-          alert("Παρακαλούμε συμπληρώστε το πεδίο.");
-          forma.name.focus();
-          return false;
-      }
-      else return true;
+        // έλεγξε αν έχουν συμπληρωθεί τα απαραίτητα στοιχεία
+        if (forma.facet_id.options[forma.facet_id.selectedIndex].value == "") {
+            alert("Παρακαλούμε επιλέξτε μία από τις επιλογές.");
+            forma.facet_id.focus();
+            return false;
+        }
+        else if (isEmpty(forma.name.value) == true) {
+            alert("Παρακαλούμε συμπληρώστε το πεδίο.");
+            forma.name.focus();
+            return false;
+        }
+        else return true;
     }
     </script>
 </head>
@@ -77,7 +82,7 @@ else {
     <%@ include file="include/top.jsp" %>
     <table width="0" border="0" cellspacing="2" cellpadding="20">
     <tr>
-    <td class="menuPathTD" align="middle"><b>Αποθήκη&nbsp;<span class="menuPathTD" id="white">|</span>&nbsp;Ομάδα Φίλτρων</b></td>
+    <td class="menuPathTD" align="middle"><b>Αποθήκη&nbsp;<span class="menuPathTD" id="white">|</span>&nbsp;Φίλτρο</b></td>
     </tr>
     </table>
     <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -87,7 +92,7 @@ else {
         <td valign="top">
             <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">
             
-            <form name="inputForm" method="post" action="/servlet/admin/Facet">
+            <form name="inputForm" method="post" action="/servlet/admin/FacetValue">
             
             <input type="hidden" name="action1" value="" />
             <input type="hidden" name="urlSuccess" value="" />
@@ -98,6 +103,23 @@ else {
             <input type="hidden" value="0" name="buttonPressed" />
             
             <input type="hidden" name="id" value="<%=id%>" />
+            
+            <tr>
+              <td class="inputFrmLabelTD">Ομάδα</td>
+              <td class="inputFrmFieldTD">
+                  <select name="facet_id" class="inputFrmField">
+                      <option value="">---</option>
+                      <%
+                      int rows = facet_val_update.getTable("facet", "display_order");
+
+                      for (int i = 0; i < rows; i++) { %>
+                          <option value="<%=facet_val_update.getColumn("id")%>" <%if (facet_val_update.getColumn("id").equals(facet_id)) out.print("SELECTED");%>><%=facet_val_update.getColumn("name")%></option>
+                      <%
+                          facet_val_update.nextRow();
+                      } %>
+                  </select>
+              </td>
+            </tr>
             <tr>
               <td class="inputFrmLabelTD">Ονομασία</td>
               <td class="inputFrmFieldTD">
@@ -113,11 +135,7 @@ else {
                 </table>
               </td>
             </tr>
-            <tr>
-              <td class="inputFrmLabelTD">Σειρά εμφάνισης</td>
-              <td class="inputFrmFieldTD"><input type="text" name="display_order" size="5" value="<%=display_order%>" class="inputFrmField" onfocus="this.className='inputFrmFieldFocus'" onblur="this.className='inputFrmField'" /></td>
-            </tr>
-           
+                  
             <tr class="inputFrmFooter">
                 <td colspan="2" align="center"></br></br>
                     <%
@@ -136,7 +154,7 @@ else {
             </form>
             
             </table>
-            </br></br>
+            <br/><br/>
         </td>
         
         <%@ include file="include/right.jsp" %>
@@ -145,7 +163,7 @@ else {
     
     <%@ include file="include/bottom.jsp" %>
     
-    <% facet_update.closeResources(); %>
+    <% facet_val_update.closeResources(); %>
     
 </body>
 </html>
