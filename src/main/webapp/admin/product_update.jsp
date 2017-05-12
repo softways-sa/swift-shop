@@ -28,6 +28,8 @@ DbRet dbRet = null;
 
 int rows = 0;
 
+boolean hasFacets = true;
+
 String prdId2 = "", name = "", nameLG = "", nameLG1 = "", catId = "", catName = "",
        prdManufactId = "", supplierId = "",
        descr = "", descrLG = "", descrLG1 = "",
@@ -579,6 +581,8 @@ prdadmin.closeResources();
 
             <input type="hidden" value="0" name="buttonPressed" />
             
+            <input type="hidden" value="<%=hasFacets%>" name="hasFacets" />
+            
             <div class="tab_content" id="tab1">
 
             <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">
@@ -976,8 +980,8 @@ prdadmin.closeResources();
                     for (Facet facet : facets) {
                       for (FacetValue val : facet.facetValues) {
                         out.print("{label: '" + facet.name + " > " + val.name + "', id: '" + val.id + "'},");
-                        }
                       }
+                    }
                     %>
                     ];
 
