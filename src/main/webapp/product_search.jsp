@@ -184,8 +184,8 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
 <%@ include file="/include/prd_catalog_path.jsp" %>
 
 <div id="prdContainer" class="row">
-  <div class="col-md-2 hidden-xs hidden-sm">
-    <div id="productNavColumn">
+  <div class="col-md-2">
+    <div id="swift-filters">
       <%
       String facetsQuery = product_search.getFacetsQuery();
         
@@ -197,22 +197,33 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
       
       List<Facet> facets = FacetService.getFacets(catId, request);
       for (Facet facet : facets) {
-        out.println("<h1>" + facet.name + "</h1><ul>");
+        out.println("<div class='filter-by-title'>" + facet.name + "</div><ul class='filter-by-content'>");
         for (FacetValue val : facet.facetValues) {
           String u = "";
           if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
             u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
-            out.println("<li><a style='color: red;' href='" + u + "'><input name='filter' checked='' type='checkbox'> " + val.name + "</a></li>");
+            out.println("<li><input name='filter' checked='' type='checkbox' data-url=\"" + u + "\"> <a style='color: red;' href='" + u + "'>" + val.name + "</a></li>");
           }
           else {
             u = urlQuerySearch + "&amp;facets=" + FacetService.addFacetValueToQuery(facetsQuery, val);
-            out.println("<li><a href='" + u + "'><input name='filter' type='checkbox'> " + val.name + "</a></li>");
+            out.println("<li><input name='filter' type='checkbox' data-url=\"" + u + "\"> <a href='" + u + "'>" + val.name + "</a></li>");
           }
         }
         out.println("</ul><hr/>");
       }
       %>
     </div>
+    <script>
+    $(document).ready(function() {
+      $('#swift-filters input').click(function() {
+        $(location).attr("href", $(this).data('url'));
+      });
+      $('#swift-filters .filter-by-title').click(function() {
+        $(this).next().slideToggle();
+        $(this).toggleClass("filter-by-title-collapsed");
+      });
+    });
+    </script>
   </div>
   
   <div class="col-md-10">

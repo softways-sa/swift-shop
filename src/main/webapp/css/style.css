@@ -650,9 +650,25 @@ a#mobile-logo img {
 
 /** ===================================
 
-  Search filters
+  Search filters - facets
 
 ======================================== **/
+#swift-filters .filter-by-title {
+  cursor: pointer;
+  background: url('/images/toggle-up.png') no-repeat right center;
+  padding: 10px 0;
+}
+#swift-filters .filter-by-title-collapsed {
+  background-image: url('/images/toggle-down.png');
+}
+#swift-filters ul li {
+  font-size: 14px;
+  padding: 5px 0;
+}
+#swift-filters ul li:first-child {
+  padding-top: 0;
+}
+#swift-filters input {cursor: pointer;}
 #selectedFilters {margin-bottom: 10px;}
 a.selected-filter {
     border: 1px solid #ddd;
