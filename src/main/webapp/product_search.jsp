@@ -229,6 +229,7 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
       });
       </script>
     <%}%>
+    <div class="hidden-xs hidden-sm"><%@ include file="/include/product_catalog_left.jsp" %></div>
   </div>
   
   <div class="col-md-10">
