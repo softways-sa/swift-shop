@@ -27,6 +27,8 @@ boolean DISP_EQUAL_OPTIONS_PRICE = false, USE_MEGAMENU = true;
 
 String HOME_CMCCode = "0101", LEFT_INFO_TABLE_CMCCode = "0102", RIGHT_INFO_TABLE_CMCCode = "0103";
 
+request.setAttribute("FACETED_SEARCH_ENABLED", false);
+
 String[] __configurationValues = Configuration.getValues(new String[] {"useSSL","dispEqualOptPrc","maintenance","maintenancePass","maintenancePage","not_megamenu","megamenu_prdpromo_url"});
 
 if (__configurationValues[2] != null && "1".equals(__configurationValues[2])) {
@@ -164,7 +166,7 @@ customer.setCurr1DisplayScale(curr1DisplayScale);
 customer.setMinCurr1DispFractionDigits(minCurr1DispFractionDigits);
 
 order = customer.getOrder();
-    
+
 if (customer.getOccupation() == null || customer.getOccupation().length() == 0) {
     String refCookieValue = request.getHeader("referer");
     if (refCookieValue == null || refCookieValue.length() == 0) {

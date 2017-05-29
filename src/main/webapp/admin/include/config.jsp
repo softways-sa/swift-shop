@@ -10,6 +10,8 @@ String databaseId = gr.softways.dev.util.SwissKnife.jndiLookup("swconf/databaseI
 
 String wwwrootFilePath = application.getRealPath("");
 
+request.setAttribute("FACETED_SEARCH_ENABLED", false);
+
 String appDir = "";
 
 String userImagesWebPath = "/images",

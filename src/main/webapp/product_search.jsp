@@ -185,45 +185,50 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
 
 <div id="prdContainer" class="row">
   <div class="col-md-2">
-    <div id="swift-filters">
-      <%
-      String facetsQuery = product_search.getFacetsQuery();
-        
-      List<FacetValue> selectedFacetValues = null;
-      
-      if (product_search.isFacetedSearch()) {
-        selectedFacetValues = FacetService.getFacetValuesFromQuery(facetsQuery);
-      }
-      
-      List<Facet> facets = FacetService.getFacets(catId, request);
-      for (Facet facet : facets) {
-        out.println("<div class='filter-by-title'>" + facet.name + "</div><ul class='filter-by-content'>");
-        for (FacetValue val : facet.facetValues) {
-          String u = "";
-          if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
-            u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
-            out.println("<li><input name='filter' checked='' type='checkbox' data-url=\"" + u + "\"> <a style='color: red;' href='" + u + "'>" + val.name + "</a></li>");
-          }
-          else {
-            u = urlQuerySearch + "&amp;facets=" + FacetService.addFacetValueToQuery(facetsQuery, val);
-            out.println("<li><input name='filter' type='checkbox' data-url=\"" + u + "\"> <a href='" + u + "'>" + val.name + "</a></li>");
-          }
+    <%
+    List<FacetValue> selectedFacetValues = null;
+    List<Facet> facets = null;
+    String facetsQuery = "";
+    
+    if (request.getAttribute("FACETED_SEARCH_ENABLED") != null && (Boolean) request.getAttribute("FACETED_SEARCH_ENABLED") == true) {%>
+      <div id="swift-filters">
+        <%
+        facetsQuery = product_search.getFacetsQuery();
+
+        if (product_search.isFacetedSearch()) {
+          selectedFacetValues = FacetService.getFacetValuesFromQuery(facetsQuery);
         }
-        out.println("</ul><hr/>");
-      }
-      %>
-    </div>
-    <script>
-    $(document).ready(function() {
-      $('#swift-filters input').click(function() {
-        $(location).attr("href", $(this).data('url'));
+
+        facets = FacetService.getFacets(catId, request);
+        for (Facet facet : facets) {
+          out.println("<div class='filter-by-title'>" + facet.name + "</div><ul class='filter-by-content'>");
+          for (FacetValue val : facet.facetValues) {
+            String u = "";
+            if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
+              u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
+              out.println("<li><input name='filter' checked='' type='checkbox' data-url=\"" + u + "\"> <a style='color: red;' href='" + u + "'>" + val.name + "</a></li>");
+            }
+            else {
+              u = urlQuerySearch + "&amp;facets=" + FacetService.addFacetValueToQuery(facetsQuery, val);
+              out.println("<li><input name='filter' type='checkbox' data-url=\"" + u + "\"> <a href='" + u + "'>" + val.name + "</a></li>");
+            }
+          }
+          out.println("</ul><hr/>");
+        }
+        %>
+      </div>
+      <script>
+      $(document).ready(function() {
+        $('#swift-filters input').click(function() {
+          $(location).attr("href", $(this).data('url'));
+        });
+        $('#swift-filters .filter-by-title').click(function() {
+          $(this).next().slideToggle();
+          $(this).toggleClass("filter-by-title-collapsed");
+        });
       });
-      $('#swift-filters .filter-by-title').click(function() {
-        $(this).next().slideToggle();
-        $(this).toggleClass("filter-by-title-collapsed");
-      });
-    });
-    </script>
+      </script>
+    <%}%>
   </div>
   
   <div class="col-md-10">
@@ -235,20 +240,24 @@ String urlQuerySearch = "/site/search" + (sef_url.length() > 0 ? "/" + sef_url.s
     <%}%>
     
     <%
-    if (selectedFacetValues != null) {%>
-      <div id="selectedFilters" class="clearfix">
-      <%
-      for (Facet facet : facets) {
-        for (FacetValue val : facet.facetValues) {
-          if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
-            String u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
-            out.println("<a class='selected-filter' href='" + u + "'><i class='fa fa-times-circle' aria-hidden='true'></i> " + val.name + "</a>");
+    if (request.getAttribute("FACETED_SEARCH_ENABLED") != null && (Boolean) request.getAttribute("FACETED_SEARCH_ENABLED") == true) {
+      if (selectedFacetValues != null) {%>
+        <div id="selectedFilters" class="clearfix">
+        <%
+        for (Facet facet : facets) {
+          for (FacetValue val : facet.facetValues) {
+            if (selectedFacetValues != null && selectedFacetValues.contains(val)) {
+              String u = urlQuerySearch + "&amp;facets=" + FacetService.removeFacetValueFromQuery(facetsQuery, val);
+              out.println("<a class='selected-filter' href='" + u + "'><i class='fa fa-times-circle' aria-hidden='true'></i> " + val.name + "</a>");
+            }
           }
         }
+        %>
+        </div>
+    <%
       }
-      %>
-      </div>
-    <%}%>
+    }
+    %>
     
 <%
 if (totalRowCount > 0) {

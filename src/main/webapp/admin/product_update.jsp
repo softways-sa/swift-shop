@@ -28,7 +28,7 @@ DbRet dbRet = null;
 
 int rows = 0;
 
-boolean hasFacets = true;
+boolean hasFacets = request.getAttribute("FACETED_SEARCH_ENABLED") != null ? (Boolean) request.getAttribute("FACETED_SEARCH_ENABLED") : false;
 
 String prdId2 = "", name = "", nameLG = "", nameLG1 = "", catId = "", catName = "",
        prdManufactId = "", supplierId = "",
@@ -554,8 +554,8 @@ prdadmin.closeResources();
                 <li id="atab11"><a href="#tab11">Χονδρική</a></li>
                 <li id="atab2"><a href="#tab2">Περιγραφή</a></li>
                 <li id="atab3"><a href="#tab3">Πλαίσια</a></li>
-                <li id="atab85"><a href="#tab85">Φίλτρα</a></li>
                 <%if (action.equals("EDIT")) {%>
+                  <%if (hasFacets) {%><li id="atab85"><a href="#tab85">Φίλτρα</a></li><%}%>
                   <li id="atab8"><a href="#tab8">Κατηγορίες / Επιλογές / Συναφή</a></li>
                   <li id="atab9"><a href="#tab9">Φωτογραφίες</a></li>
                 <%}%>

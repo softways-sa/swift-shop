@@ -49,8 +49,10 @@
               <ul class="submenu">
                 <li><a href="/admin/product_search.jsp?action1=SEARCH">Προϊόντα</a></li>
                 <li><a href="/admin/category.jsp?action1=SEARCH">Κατηγορίες</a></li>
-                <li><a href="/admin/facet_search.jsp?action1=SEARCH">Ομάδες Φίλτρων</a></li>
-                <li><a href="/admin/facet_val_search.jsp?action1=SEARCH">Φίλτρα</a></li>
+                <%if (request.getAttribute("FACETED_SEARCH_ENABLED") != null && (Boolean) request.getAttribute("FACETED_SEARCH_ENABLED") == true) {%>
+                  <li><a href="/admin/facet_search.jsp?action1=SEARCH">Ομάδες Φίλτρων</a></li>
+                  <li><a href="/admin/facet_val_search.jsp?action1=SEARCH">Φίλτρα</a></li>
+                <%}%>
                 <li><a href="/admin/batchimport.jsp">Μαζική ενημέρωση</a></li>
                 <li><a href="/admin/tax_rate.jsp">Κλίμακες Φ.Π.Α.</a></li>
                 <li><a href="/admin/onsales_update.jsp">Εκπτώσεις</a></li>
