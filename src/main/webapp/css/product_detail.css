@@ -119,6 +119,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
     display: none !important;
 }
 
+.addthis_toolbox.addthis_default_style {margin-top: 20px;}
+
 /** ===================================
 
   Mini Cart

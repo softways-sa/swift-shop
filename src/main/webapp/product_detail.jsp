@@ -116,89 +116,7 @@ if (catId.length() > 0) {
 }
 
 htmlTitle += " - " + helperBean.getColumn("name" + lang);
-%>
 
-<!DOCTYPE html>
-<html lang="<%=localeLanguage%>">
-<head>
-    <%@ include file="/include/metatags.jsp" %>
-    
-    <title><%= htmlTitle %></title>
-    
-    <link rel="stylesheet" type="text/css" href="/css/product_detail.css" />
-    <link rel="stylesheet" type="text/css" href="/css/magiczoomplus.css" />
-    
-    <script type="text/javascript" src="/js/magiczoomplus.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        
-        $("#zoomButton").click(function(e) { 
-          e.preventDefault();
-          MagicZoomPlus.expand('item_gallery');
-        });
-        
-      });
-    </script>
-</head>
-
-<body>
-
-<div id="site">
-
-<%@ include file="/include/top.jsp" %>
-
-<div class="container" id="contentContainer">
-  
-<%@ include file="/include/prd_catalog_path.jsp" %>
-
-<div id="prdContainer" class="row">
-
-<div class="col-md-12">
-
-<div id="productMain">
-    
-    <div style="float:right; margin-right:231px;">
-    <div id="minicart">
-	<div id="minicart-content">
-		<div id="minicart-error" class="errors" style="display: none;"><p>[minicart_error]</p></div>
-                <div class="titleBar"><a id="closebtn" href="#" class="showMiniCart closeX">Close</a> <%=lb.get("addedtoyourcart" + lang)%></div>
-		<div class="minicart-content-wrapper">
-                        
-			<div id="minicart-lines">
-                            <div class="minicart-line">
-                                <div class="minicart-line-content">
-                                    <div class="minicart-product-line">
-                                        <div class="minicart-img"><span class="itemImage"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" height="80" width="80"/></span></div>
-                                        <div class="minicart-details">
-
-                                                <h2><span class="itemName"></span></h2>
-                                                <div class="minicart-data-list">
-                                                        <ul class="minicart-line-content-details"><li></li></ul>
-                                                        <div id="minicart-qty">: <strong>__itemQuantity__</strong></div>
-                                                </div>
-                                                <div class="minicart-unit-price"><span class="itemPrice"></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="minicart-total-price"></div>
-                                </div>
-                            </div>
-			</div>
-                        
-			<div id="minicart-summary">
-                            <div><span id="minicartTotalQty"></span>&nbsp;<%=lb.get("itemsincart" + lang)%></div>
-                            <div class="subtotal"><%=lb.get("totalCart" + lang)%>: <span id="minicartSubtotal"></span></div>
-			</div>
-                        
-			<div id="minicart-footer">
-                            <a href="/shopping_cart.jsp" class="button-sec checkout"><span><%=lb.get("checkout" + lang)%></span></a>
-			</div>
-		</div>
-
-	</div>
-    </div>
-    </div>
-
-<%
 String prd_img = "", zoom_prd_img = "";
 
 if (SwissKnife.fileExists(wwwrootFilePath + "/prd_images/" + helperBean.getColumn("prdId") + "-1.jpg")) {
@@ -263,6 +181,93 @@ for (int i=1; i<=5; i++) {
     }
 }
 %>
+
+<!DOCTYPE html>
+<html lang="<%=localeLanguage%>">
+<head>
+    <%@ include file="/include/metatags.jsp" %>
+    
+    <title><%= htmlTitle %></title>
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%=helperBean.getColumn("name" + lang)%>" />
+    <meta property="og:description" content="&nbsp;" />
+    <meta property="og:image" content="<%=URI_SCHEME + serverName + zoom_prd_img%>" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+
+    <link rel="stylesheet" type="text/css" href="/css/product_detail.css" />
+    <link rel="stylesheet" type="text/css" href="/css/magiczoomplus.css" />
+    
+    <script type="text/javascript" src="/js/magiczoomplus.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        
+        $("#zoomButton").click(function(e) {
+          e.preventDefault();
+          MagicZoomPlus.expand('item_gallery');
+        });
+        
+      });
+    </script>
+</head>
+
+<body>
+
+<div id="site">
+
+<%@ include file="/include/top.jsp" %>
+
+<div class="container" id="contentContainer">
+  
+<%@ include file="/include/prd_catalog_path.jsp" %>
+
+<div id="prdContainer" class="row">
+
+<div class="col-md-12">
+
+<div id="productMain">
+    
+    <div style="float:right; margin-right:231px;">
+    <div id="minicart">
+	<div id="minicart-content">
+		<div id="minicart-error" class="errors" style="display: none;"><p>[minicart_error]</p></div>
+                <div class="titleBar"><a id="closebtn" href="#" class="showMiniCart closeX">Close</a> <%=lb.get("addedtoyourcart" + lang)%></div>
+		<div class="minicart-content-wrapper">
+                        
+			<div id="minicart-lines">
+                            <div class="minicart-line">
+                                <div class="minicart-line-content">
+                                    <div class="minicart-product-line">
+                                        <div class="minicart-img"><span class="itemImage"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" height="80" width="80"/></span></div>
+                                        <div class="minicart-details">
+
+                                                <h2><span class="itemName"></span></h2>
+                                                <div class="minicart-data-list">
+                                                        <ul class="minicart-line-content-details"><li></li></ul>
+                                                        <div id="minicart-qty">: <strong>__itemQuantity__</strong></div>
+                                                </div>
+                                                <div class="minicart-unit-price"><span class="itemPrice"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="minicart-total-price"></div>
+                                </div>
+                            </div>
+			</div>
+                        
+			<div id="minicart-summary">
+                            <div><span id="minicartTotalQty"></span>&nbsp;<%=lb.get("itemsincart" + lang)%></div>
+                            <div class="subtotal"><%=lb.get("totalCart" + lang)%>: <span id="minicartSubtotal"></span></div>
+			</div>
+                        
+			<div id="minicart-footer">
+                            <a href="/shopping_cart.jsp" class="button-sec checkout"><span><%=lb.get("checkout" + lang)%></span></a>
+			</div>
+		</div>
+
+	</div>
+    </div>
+    </div>
 
     <script type="text/javascript">
     //var jsonData = {'minicart-total-qty': 5, 'itemImage': '/prd_images/50496-1.jpg'}
@@ -457,6 +462,8 @@ for (int i=1; i<=5; i++) {
             
             <%if (helperBean.getColumn("prdHomePageLink").length() > 0) {%><div style="margin:10px 0 5px 0;"><%=lb.get("manufact" + lang)%>: <%=helperBean.getColumn("prdHomePageLink")%></div><%}%>
             
+
+            
             <div style="margin:8px 0 10px 0;" class="clearfix"><%= helperBean.getColumn("descr" + lang)%></div>
             
             <%
@@ -542,7 +549,7 @@ for (int i=1; i<=5; i++) {
       
       <%if ("1".equals(helperBean.getColumn("PRD_GiftWrapAvail"))) {%><div id="item-PRD_GiftWrap"><input type="checkbox" name="PRD_GiftWrap" value="1"/>&nbsp;&nbsp;<%= lb.get("choose_PRD_GiftWrap" + lang)%> (+<%=SwissKnife.formatNumber(helperBean.getBig("giftPrcEU"),localeLanguage,localeCountry,minCurr1DispFractionDigits,curr1DisplayScale)%> &euro;)</div><%}%>
       
-        <div id="wishlist-btn" style="float:left; margin-top:20px;">
+        <div id="wishlist-btn" style="margin-top:20px;">
             <img style="display:inline; vertical-align:middle;" src="/images/favorites_add.png" alt="<%=lb.get("addwishlist" + lang)%>"/>
             <%
             if (customer.isSignedIn() == true) { %>
@@ -575,7 +582,12 @@ for (int i=1; i<=5; i++) {
 
         </div>
         </div>
-
+        
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+        <!-- AddThis Button END -->
+        
       </div> <!-- end: item-options -->
       
       </div> <!-- end: item-main -->
