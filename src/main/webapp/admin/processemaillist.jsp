@@ -22,8 +22,7 @@ String urlSuccess = "/" + appDir + "admin/searchemaillists.jsp?action1=UPDATE_SE
        urlCancel = "/" + appDir + "admin/searchemaillists.jsp?goLabel=results",
        urlSuccessInsAgain = "/" + appDir + "admin/processemaillist.jsp";
 
-String EMLTName = "", EMLTDescr = "", EMLTTo = "",
-       EMLTField1 = "", EMLTField2 = "";
+String EMLTName = "", EMLTDescr = "", EMLTTo = "", EMLTField1 = "", EMLTField2 = "";
 
 int EMLTActive = -1;
 
@@ -96,14 +95,14 @@ else {
         <td valign="top">
             <table width="100%" border="0" cellspacing="1" cellpadding="5" class="inputFrmTBL">
             
-            <form name="inputForm" method="POST" action="<%= response.encodeURL("/servlet/admin/MailList") %>">
+            <form name="inputForm" method="POST" action="/servlet/admin/MailList">
             <input type="hidden" name="action1" value="" />
             <input type="hidden" name="urlSuccess" value="" />
-            <input type="hidden" name="urlFailure" value="<%= urlFailure %>" />
-            <input type="hidden" name="urlNoAccess" value="<%= urlNoAccess %>" />
-            <input type="hidden" name="databaseId" value="<%= databaseId %>" />
+            <input type="hidden" name="urlFailure" value="<%=urlFailure%>" />
+            <input type="hidden" name="urlNoAccess" value="<%=urlNoAccess%>" />
+            <input type="hidden" name="databaseId" value="<%=databaseId%>" />
             
-            <input type="hidden" name="EMLTCode" value="<%= EMLTCode %>" />
+            <input type="hidden" name="EMLTCode" value="<%=EMLTCode%>" />
             
             <input type="hidden" value="0" name="buttonPressed" />
             
@@ -142,6 +141,7 @@ else {
                     if (action.equals("EDIT")) { %>
                         <input type="button" value="Αποθήκευση" onClick='if (validateForm(document.inputForm)) { if (checkButton(document.inputForm.buttonPressed) == true) { document.inputForm.urlSuccess.value="<%= urlSuccess %>"; document.inputForm.action1.value="UPDATE"; document.inputForm.submit(); } }' class="loginFrmBtn" onmouseover="this.className='loginFrmBtnOver'" onmouseout="this.className='loginFrmBtn'" />
                         <input type="button" value="Αποθήκευση/Νέα Καταχώρηση" onClick='if (validateForm(document.inputForm)) { if (checkButton(document.inputForm.buttonPressed) == true) { document.inputForm.urlSuccess.value="<%= urlSuccessInsAgain %>"; document.inputForm.action1.value="UPDATE"; document.inputForm.submit();}}' class="loginFrmBtn" onmouseover="this.className='loginFrmBtnOver'" onmouseout="this.className='loginFrmBtn'" />
+                        <input type="button" value="Εξαγωγή" onClick='document.inputForm.urlSuccess.value="<%=urlSuccess%>"; document.inputForm.action1.value="EXCEL"; document.inputForm.submit();' class="loginFrmBtn" onmouseover="this.className='loginFrmBtnOver'" onmouseout="this.className='loginFrmBtn'" />
                         <input type="button" value="Διαγραφή" onClick='if (confirm("Είστε σίγουρος(η) για τη διαγραφή") == true) { document.inputForm.urlSuccess.value="<%= urlSuccess %>"; document.inputForm.action1.value="DELETE"; document.inputForm.submit()} else return false;' class="loginFrmBtn" onmouseover="this.className='loginFrmBtnOver'" onmouseout="this.className='loginFrmBtn'" />
                     <%
                     }
